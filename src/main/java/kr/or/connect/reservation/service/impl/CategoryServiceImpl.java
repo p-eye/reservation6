@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dao.CategoryDao;
 import kr.or.connect.reservation.dto.Category;
+import kr.or.connect.reservation.dto.CategoryResponse;
 import kr.or.connect.reservation.service.CategoryService;
 
 @Service
@@ -18,6 +19,15 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public List<Category> getCategoryList() {
 		return categoryDao.getCategoryList();
+	}
+
+	@Override
+	public CategoryResponse getCategoryResponse() {
+
+		CategoryResponse categoryResponse = new CategoryResponse();
+		categoryResponse.setItems(getCategoryList());
+
+		return categoryResponse;
 	}
 
 }

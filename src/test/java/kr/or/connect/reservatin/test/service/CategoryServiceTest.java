@@ -16,6 +16,9 @@ public class CategoryServiceTest {
 
 		/* getCategoryList */
 		System.out.println(categoryService.getCategoryList());
+		
+		/*getCategoryResponse*/
+		System.out.println(categoryService.getCategoryResponse());
 	}
 
 }
