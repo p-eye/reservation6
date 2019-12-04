@@ -1,5 +1,7 @@
 package kr.or.connect.reservation.dao;
 
+import static kr.or.connect.reservation.dao.sqls.CategorySqls.SELECT_CATEGORIES;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -21,16 +23,6 @@ public class CategoryDao {
 	}
 
 	public List<Category> getCategoryList() {
-		String sql = "SELECT c.id, "
-				+"c.name, "
-				+"count(di.id) AS count "
-				+"FROM display_info di "
-				+"INNER JOIN product p "
-				+"ON di.product_id = p.id "
-				+"INNER JOIN category c "
-				+"ON c.id = p.category_id "
-				+"GROUP BY c.id";
-		
-		return jdbc.query(sql, Collections.emptyMap(), new CategoryMapper());
+		return jdbc.query(SELECT_CATEGORIES, Collections.emptyMap(), new CategoryMapper());
 	}
 }
