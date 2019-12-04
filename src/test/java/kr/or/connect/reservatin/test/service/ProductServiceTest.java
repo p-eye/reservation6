@@ -32,6 +32,7 @@ public class ProductServiceTest {
 		
 		/*getProductResponseByCategoryId */
 		 System.out.println(productService.getProductResponseByCategoryId(1, 0));
+		 System.out.println(productService.getProductResponseByCategoryId(0, 0));
 	}
 
 }

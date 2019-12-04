@@ -1,6 +1,7 @@
 package kr.or.connect.reservation.dao;
 
-import java.util.Collections;
+import static kr.or.connect.reservation.dao.sqls.ProductSqls.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,24 +28,16 @@ public class ProductDao {
 		params.put("categoryId", categoryId);
 		params.put("start", start);
 		params.put("limit", limit);
-		
-		String sql ="SELECT di.id, "
-				+"di.product_id, "
-				+"p.description, "
-				+"di.place_name, "
-				+"p.content, "
-				+"fi.save_file_name "
-				+"from display_info di "
-				+"INNER JOIN product p "
-				+"ON di.product_id = p.id "
-				+"INNER JOIN product_image pi "
-				+"ON p.id = pi.product_id "
-				+"INNER JOIN file_info fi "
-				+"ON fi.id = pi.file_id "
-				+"WHERE pi.type = 'th' "
-				+"AND p.category_id = :categoryId "
-				+"limit :start, :limit";
-		
-		return jdbc.query(sql, params, new ProductMapper());
+
+		return jdbc.query(SELECT_PRODUCTS_BY_CATEGORY, params, new ProductMapper());
+	}
+
+	public List<Product> getProductListAll(int start, int limit) {
+		Map<String, Integer> params = new HashMap<>();
+		params.put("start", start);
+		params.put("limit", limit);
+
+		return jdbc.query(SELECT_PRODUCTS_ALL, params, new ProductMapper());
+
 	}
 }

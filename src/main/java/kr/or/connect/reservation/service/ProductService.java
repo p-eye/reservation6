@@ -9,13 +9,12 @@ import kr.or.connect.reservation.dto.ProductResponse;
 
 @Service
 public interface ProductService {
-	
+
 	public final int PRODUCT_PER_PAGE = 4;
-	
+	public final int TOTAL_CATEGORIES = 0;
+
 	public List<Product> getProductListByCategoryId(int categoryId, int start);
 
 	public ProductResponse getProductResponseByCategoryId(int categoryId, int start);
-	
-	
-	
+
 }
