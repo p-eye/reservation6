@@ -14,8 +14,11 @@ public class PromotionServiceTest {
 
 		PromotionService promotionService = ac.getBean(PromotionService.class);
 
-		/* getCategoryList */
+		/* getPromotionList */
 		System.out.println(promotionService.getPromotionList());
+		
+		/* getPromotionResponse */
+		System.out.println(promotionService.getPromotionResponse());
 
 	}
 
