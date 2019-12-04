@@ -7,6 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import kr.or.connect.reservation.config.ApplicationConfig;
 import kr.or.connect.reservation.dto.Product;
+import kr.or.connect.reservation.dto.ProductResponse;
 import kr.or.connect.reservation.service.ProductService;
 
 public class ProductServiceTest {
@@ -18,6 +19,7 @@ public class ProductServiceTest {
 		ProductService productService = ac.getBean(ProductService.class);
 
 		/* getProductListByCategoryId */
+		/*
 		List<Product> productList = productService.getProductListByCategoryId(2, 4);
 
 		for (Product product : productList) {
@@ -25,7 +27,11 @@ public class ProductServiceTest {
 			System.out.println("==========");
 
 		}
-
+		*/
+		
+		
+		/*getProductResponseByCategoryId */
+		 System.out.println(productService.getProductResponseByCategoryId(1, 0));
 	}
 
 }
