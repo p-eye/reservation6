@@ -18,7 +18,7 @@ public class ProductImageDaoTest {
 		ProductImageDao productImageDao = ac.getBean(ProductImageDao.class);
 
 		/* getProductImageList */
-		List<ProductImage> productImageList = productImageDao.getProductImageList(2);
+		List<ProductImage> productImageList = productImageDao.getProductImageList(38);
 
 		for (ProductImage productImage : productImageList) {
 			System.out.println(productImage);

@@ -23,9 +23,9 @@ public class ProductPriceDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public List<ProductPrice> getProductPriceList(int displayInfoId) {
+	public List<ProductPrice> getProductPriceList(int productId) {
 		Map<String, Integer> params = new HashMap<>();
-		params.put("displayInfoId", displayInfoId);
+		params.put("productId", productId);
 
 		return jdbc.query(SELECT_PRODUCT_PRICE_LIST, params, new ProductPriceMapper());
 

@@ -16,10 +16,8 @@ public class ProductImageSqls {
 			+"FROM product_image pi "
 			+"INNER JOIN file_info fi "
 	 		+"ON fi.id = pi.file_id "
-			+"INNER JOIN display_info di "
-			+"ON di.product_id = pi.product_id "
 			+"WHERE pi.type NOT IN ('th') "
-			+"AND di.id = :displayInfoId "
+			+"AND pi.product_id = :productId "
 			+"LIMIT 2";
 
 }

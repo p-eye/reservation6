@@ -11,8 +11,6 @@ public class ProductPriceSqls {
 			+"pp.create_date, "
 			+"pp.modify_date "
 			+"FROM product_price pp "
-			+"INNER JOIN display_info di "
-			+"ON di.product_id = pp.product_id "
-			+"WHERE di.id = :displayInfoId "
+			+"WHERE pp.product_id = :productId "
 			+"ORDER BY pp.id DESC";
 }

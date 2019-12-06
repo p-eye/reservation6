@@ -9,7 +9,7 @@ import kr.or.connect.reservation.dto.ProductPrice;
 @Service
 public interface ProductPriceService {
 
-	public List<ProductPrice> getProductPriceList(int displayInfoId);
+	public List<ProductPrice> getProductPriceList(int productId);
 	
 
 }

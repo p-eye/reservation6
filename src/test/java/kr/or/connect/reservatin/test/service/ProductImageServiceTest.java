@@ -18,7 +18,7 @@ public class ProductImageServiceTest {
 		ProductImageService productImageService = ac.getBean(ProductImageService.class);
 
 		/* getProductImageList */
-		List<ProductImage> productImageList = productImageService.getProductImageList(2);
+		List<ProductImage> productImageList = productImageService.getProductImageList(38);
 
 		for (ProductImage productImage : productImageList) {
 			System.out.println(productImage);

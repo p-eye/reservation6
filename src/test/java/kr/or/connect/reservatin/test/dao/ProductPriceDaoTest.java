@@ -18,7 +18,7 @@ public class ProductPriceDaoTest {
 		ProductPriceDao productPriceDao = ac.getBean(ProductPriceDao.class);
 
 		/* getProductPriceList */
-		List<ProductPrice> productPriceList = productPriceDao.getProductPriceList(2);
+		List<ProductPrice> productPriceList = productPriceDao.getProductPriceList(38);
 
 		for (ProductPrice productPrice : productPriceList) {
 			System.out.println(productPrice);
