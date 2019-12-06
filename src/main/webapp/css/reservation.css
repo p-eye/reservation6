@@ -686,8 +686,8 @@ hr {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url('../img/spr_book2.png?1602251400');
-    background-size: 330px 300px;
+    background-image: url('../img/spr_book2.png');
+    background-size: 330px 400px;
     vertical-align: top;
     text-indent: 100%;
     white-space: nowrap;
@@ -921,7 +921,7 @@ hr {
 .spr_book2.ico_arr6_lt {
     width: 11px;
     height: 20px;
-    background-position: -151px -50px;
+    background-position: -150px -50px;
 }
 .spr_book2.ico_arr6_lt.off {
     opacity: 0.6;
@@ -1119,7 +1119,7 @@ hr {
     width: 30px;
     height: 30px;
     color: transparent;
-    background-image: url('../img/spr_icons.png?1511161500');
+    background-image: url('../img/spr_icons.png');
     background-size: 200px 320px;
     vertical-align: top;
     text-indent: 100%;
@@ -1549,8 +1549,29 @@ input[type="checkbox"].chk_custom,
 input[type="radio"].rating_input,
 input[type="checkbox"].chk_agree {
     position: absolute;
-    left: -9999px;
+    width: 26px;
+    height: 26px;
+    top: 7px;
+    background-image: url(../img/spr_book2.png);
+    background-size: 330px 400px;
+    background-position: -47px -673px;
+
 }
+
+input[type="checkbox"].chk_custom:checked,
+input[type="radio"].rating_input:checked,
+input[type="checkbox"].chk_agree:checked {
+
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    top: 7px;
+    background-image: url(../img/spr_book2.png);
+    background-size: 330px 400px;
+    background-position: -75px -673px;
+
+}
+
 input[type="checkbox"].chk_custom + label,
 input[type="checkbox"].chk_agree + label {
     position: relative;
@@ -1561,6 +1582,8 @@ input[type="checkbox"].chk_agree + label {
 input[type="checkbox"].chk_custom + label {
     padding-left: 29px;
 }
+
+/*
 input[type="checkbox"].chk_custom:focus + label::before,
 input[type="checkbox"].chk_agree:focus + label::before {
     outline: 1px dotted #000;
@@ -1572,7 +1595,7 @@ input[type="checkbox"].chk_agree + label::before {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url('../img/spr_book2.png?1512221500');
+    background-image: url('../img/spr_book2.png');
     background-size: 330px 300px;
     vertical-align: top;
 }
@@ -1604,6 +1627,7 @@ input[type="checkbox"].chk_agree:checked + label::before {
     background-position: -75px -273px;
     background-color: transparent;
 }
+*/
 input[type="search"],
 input[type="text"],
 input[type="password"],
@@ -1715,7 +1739,7 @@ select {
     line-height: 15px;
 }
 .form_horizontal .inline_form > .label {
-    padding-top: 3px;
+    padding-top: 6.5px;
     padding-bottom: 2px;
 }
 .form_horizontal .inline_form label.select_extra::before {
@@ -1791,7 +1815,7 @@ select {
     font-size: 14px;
 }
 .form_horizontal .inline_form .inline_control .inline_txt {
-    padding-top: 5px;
+    padding-top: 2px;
     font-size: 14px;
     color: #bbb;
 }
@@ -3548,7 +3572,7 @@ select {
     display: inline-block;
     margin-right: 5px;
     width: auto;
-    height: 80px;
+  /*  height: 80px; */
 }
 .item_preview_thumbs .lst_thumb .item a {
     position: relative;
@@ -4143,6 +4167,7 @@ select {
     display: inline-block;
     white-space: normal;
     vertical-align: top;
+    width: 100%
 }
 .group_visual .visual_img .item .img_bg {
     background: rgba(255, 255, 255, 0);
@@ -6512,7 +6537,7 @@ select {
     display: inline-block;
     padding: 10px 6px;
 }
-.section_info_tab .info_tab_lst li > a :hover,
+/* .section_info_tab .info_tab_lst li > a :hover, */
 .section_info_tab .info_tab_lst li > a.active {
     border-bottom: 2px solid #00c73c;
     color: #00c73c;
@@ -7536,9 +7561,9 @@ select {
 }
 .section_booking_agreement .agreement .btn_agreement {
     position: absolute;
-    top: 0;
+    top: 14px;
     right: 2.5px;
-    padding: 14px 0 2px;
+    padding: 0 0 2px;
     font-family: 'HelveticaNeue', helvetica, 'AppleSDGothicNeo-Regular', 'Apple SD Gothic Neo', sans-serif;
     font-size: 12px;
     line-height: 14px;
@@ -9940,12 +9965,12 @@ select {
 }
 .review_contents.write {
     overflow-y: auto;
-    position: absolute;
-    top: 102px;
+    position: relative;
+    top: 44px;
     left: 0;
     right: 0;
     bottom: 43px;
-    padding: 18px 13px 35px;
+    padding: 18px 13px 0;
     background-color: #fff;
     font: 0px/0 a;
 }
@@ -9979,7 +10004,7 @@ select {
     display: block;
     width: 100%;
     height: 100%;
-    border: none;
+   /* border: none; */
     font-family: 'HelveticaNeue', helvetica, 'AppleSDGothicNeo-Regular', 'Apple SD Gothic Neo', sans-serif;
     font-size: 14px;
     color: #777;
@@ -10000,7 +10025,7 @@ select {
     font-size: 14px;
 }
 .review_contents .review_textarea:focus {
-    border: none;
+  /*  border: none;*/
     outline: none;
 }
 .review_contents .review_txt {
@@ -10052,20 +10077,21 @@ select {
     font-size: 13px;
 }
 .review_photos {
+    padding-top: 10px;
     padding-bottom: 20px;
     background-color: #fff;
 }
 .review_photos .item_preview_thumbs {
     padding-top: 0;
-    padding-left: 15px;
+    padding-left: 0;
 }
 .review_photos .item_preview_thumbs .lst_thumb .item {
     width: auto;
-    height: 160px;
+  /*  height: 80px; */
 }
 .review_photos .item_preview_thumbs .lst_thumb .item .item_thumb {
     width: auto;
-    height: 160px;
+/*    height: 80px; */
 }
 .section_review_list {
     padding: 18px 0 19px;
@@ -10134,7 +10160,7 @@ select {
     margin-top: 22px;
 }
 .review_write_footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     max-width: 414px;
     width: 100%;
@@ -10201,7 +10227,7 @@ select {
     float: left;
 }
 .write_act .review_rating {
-    position: absolute;
+    /*position: relative;*/
     top: 0;
     left: 43px;
     background-color: #fff;
@@ -10942,8 +10968,8 @@ select {
     position: relative;
     overflow: hidden;
     display: table-cell;
-    background-image: url('/img/bg/bg_card_hm.png');
-    background-size: 4px 54px;
+    background-image: url('/img/bg/bg_card_hm.gif');
+    background-size: auto 54px;
     background-repeat: repeat-x;
     width: 100%;
     height: 54px;
@@ -10976,6 +11002,7 @@ select {
 .section_my .wrap_mylist .list_cards .card .card_body {
     display: table-row;
 }
+/*
 .section_my .wrap_mylist .list_cards .card .card_body .left {
     overflow: hidden;
     display: table-cell;
@@ -10986,6 +11013,7 @@ select {
     height: 100%;
     vertical-align: top;
 }
+*/
 .section_my .wrap_mylist .list_cards .card .card_body .middle {
     overflow: hidden;
     display: table-cell;
@@ -11022,7 +11050,6 @@ select {
 }
 .section_my .wrap_mylist .list_cards .card .card_body .middle .card_detail .detail .item .item_tit {
     position: absolute;
-    left: -1px;
     font-family: 'Helveticaneue-light', helvetica, 'AppleSDGothicNeo-Light', 'Apple SD Gothic Neo', sans-serif;
     font-size: 16px;
     color: #999;
@@ -11056,6 +11083,7 @@ select {
     float: right;
     font-size: 16px;
 }
+/*
 .section_my .wrap_mylist .list_cards .card .card_body .right {
     overflow: hidden;
     display: table-cell;
@@ -11066,6 +11094,7 @@ select {
     height: 100%;
     vertical-align: top;
 }
+*/
 .section_my .wrap_mylist .list_cards .card .card_footer {
     display: table-row;
 }
@@ -11102,27 +11131,31 @@ select {
 .section_my .wrap_mylist .list_cards .card.confirmed .card_header {
     display: table-row;
 }
+/*
 .section_my .wrap_mylist .list_cards .card.confirmed .card_header .left {
     background-image: url('/img/bg/bg_card2_hl.png');
 }
 .section_my .wrap_mylist .list_cards .card.confirmed .card_header .middle {
-    background-image: url('/img/bg/bg_card2_hm.png');
+    background-image: url('/img/bg/bg_card2_hm.gif');
 }
 .section_my .wrap_mylist .list_cards .card.confirmed .card_header .right {
     background-image: url('/img/bg/bg_card2_hr.png');
 }
+*/
 .section_my .wrap_mylist .list_cards .card.used .card_header {
     display: table-row;
 }
+/*
 .section_my .wrap_mylist .list_cards .card.used .card_header .left {
     background-image: url('/img/bg/bg_card3_hl.png');
 }
 .section_my .wrap_mylist .list_cards .card.used .card_header .middle {
-    background-image: url('/img/bg/bg_card3_hm.png');
+    background-image: url('/img/bg/bg_card3_hm.gif');
 }
 .section_my .wrap_mylist .list_cards .card.used .card_header .right {
     background-image: url('/img/bg/bg_card3_hr.png');
 }
+*/
 .section_my .btn_more {
     margin: 0 5px;
     padding-top: 11px;
@@ -11177,7 +11210,7 @@ select {
     overflow: hidden;
     position: relative;
     display: inline-block;
-    width: 84.4%;
+    width: 100%;
     height: 177px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -12261,6 +12294,7 @@ body.biz10 .section_item_details .item_details {
 }
 .talk .wrap_booking_inquiries .bk_ct2 .bk_result_area .nodata_bk_mnt {
     font-size: 15px;
+    font-weight: bold;
     line-height: 1.4;
     color: #999;
 }

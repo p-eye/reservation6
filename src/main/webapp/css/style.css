@@ -473,7 +473,7 @@ hr {
 .spr_book2.ico_plus3 {
     width: 40px;
     height: 40px;
-    background-position: -168px -305px
+    background-position: -168px -705px
 }
 
 .spr_book2.ico_plus3.disabled {
@@ -542,7 +542,7 @@ hr {
 .spr_book2.ico_arr6_lt {
     width: 11px;
 	height: 20px;
-    background-position:-151px -50px;
+    background-position: -150px -50px;
 }
 .spr_book2.ico_arr6_rt {
 	width: 11px;
@@ -587,7 +587,27 @@ input:checked[type=checkbox],input[type=checkbox] {
 
 input[type=checkbox].chk_agree {
     position: absolute;
-    left: -9999px
+    width: 26px;
+    height: 26px;
+    top: 7px;
+    background-image: url(../img/spr_book2.png);
+    background-size: 330px 400px;
+    background-position: -47px -673px;
+}
+
+
+input[type="checkbox"].chk_custom:checked,
+input[type="radio"].rating_input:checked,
+input[type="checkbox"].chk_agree:checked {
+
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    top: 7px;
+    background-image: url(../img/spr_book2.png);
+    background-size: 330px 400px;
+    background-position: -75px -673px;
+
 }
 
 input[type=checkbox].chk_agree+.label {
@@ -597,6 +617,7 @@ input[type=checkbox].chk_agree+.label {
     line-height: 20px
 }
 
+/*
 input[type=checkbox].chk_agree:focus+.label:before {
     outline: #000 dotted 1px;
     outline: -webkit-focus-ring-color auto 5px
@@ -624,6 +645,7 @@ input[type=checkbox].chk_agree:checked+.label:before {
     background-position: -75px -273px;
     background-color: transparent
 }
+*/
 
 input[type=text],input[type=email],input[type=tel] {
     -webkit-appearance: none;
@@ -1145,8 +1167,8 @@ button {
   position: relative;
   display: inline-block;
   margin-right: 5px;
-  width: auto;
-  height: 80px;
+  width: auto; 
+/*  height: 80px; */
 }
 .item_preview_thumbs .lst_thumb .item .anchor {
   position: relative;
@@ -1241,7 +1263,7 @@ button {
     position: relative;
 }
     
-
+/*
 .form_horizontal .inline_form .inline_control.tel_wrap .warning_msg {
     position: relative;
     position: absolute;
@@ -1255,6 +1277,7 @@ button {
     color: red;
     padding-left: 10px;
 }
+*/
 
 
 .container_visual {
@@ -1269,7 +1292,7 @@ button {
     position: relative;
     display: block;
     word-wrap: normal;
-    cursor: pointer;
+    /* cursor: pointer; */
     -webkit-box-sizing: border-box;
     moz-box-sizing: border-box;
     box-sizing: border-box
@@ -1288,7 +1311,8 @@ button {
     position: relative;
     display: inline-block;
     white-space: normal;
-    vertical-align: top
+    vertical-align: top;
+    width: 100%
 }
 
 .group_visual .visual_img .item .img_bg:before,.group_visual .visual_img .item .visual_txt {
@@ -1980,12 +2004,14 @@ button {
     word-break: keep-all
 }
 
+/*
 .section_booking_agreement .agreement .chk_txt_label::before {
     position: absolute;
     top: 50%;
     left: 0;
     margin-top: -14px
 }
+*/
 
 .section_booking_agreement .agreement:last-child {
     border-bottom-width: 0
@@ -2049,9 +2075,9 @@ button {
 
 .section_booking_agreement .agreement .btn_agreement {
     position: absolute;
-    top: 0;
+    top: 14px;
     right: 21.5px;
-    padding: 11px 0 2px;
+    padding: 0 0 2px;
     font-size: 15px;
     color: #989898;
     line-height: 15px
@@ -2546,6 +2572,7 @@ button {
 .section_review_list .short_review_area .review_info .grade {
     font-family: HelveticaNeue-Medium;
     font-size: 15px;
+    font-weight: bold;
     color: #000
 }
 
@@ -2833,7 +2860,7 @@ button {
 
 .section_my .wrap_mylist .list_cards .card .card_body .middle .card_detail .detail .item .item_dsc {
     display: table-cell;
-    width: 100%;
+    width: 87%;
     padding-top: 3px;
     padding-bottom: 2px;
     line-height: 20px;
@@ -2985,7 +3012,7 @@ button {
     overflow: hidden;
     position: relative;
     display: inline-block;
-    width: 84.4%;
+    width: 100%;
     height: 177px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -3636,10 +3663,11 @@ button {
   background-position: 0 -92px;
   cursor: pointer;
 }
-.write_act .review_rating .rating .rating_rdo:checked + .span,
+/*.write_act .review_rating .rating .rating_rdo:checked + .span,
 .write_act .review_rating .rating .rating_rdo.checked + .span {
   background-position: -37px -92px;
-}
+}*/
+
 .write_act .review_rating .rating .star_rank {
   display: inline-block;
   height: 26px;
@@ -3725,15 +3753,15 @@ button {
 }
 .review_photos .item_preview_thumbs {
   padding-top: 0;
-  padding-left: 15px;
+  padding-left: 0;
 }
 .review_photos .item_preview_thumbs .lst_thumb .item {
   width: auto;
-  height: 160px;
+ /* height: 80px; */
 }
 .review_photos .item_preview_thumbs .lst_thumb .item .item_thumb {
   width: auto;
-  height: 160px;
+/*  height: 80px; */
 }
 .review_write_footer_wrap {
   padding: 0 20px 15px;
@@ -3790,7 +3818,7 @@ button {
 }
 .review_photos_write .item_preview_thumbs .lst_thumb .item {
   width: auto;
-  height: 80px;
+ /* height: 80px; */
 }
 .review_photos_write .item_preview_thumbs .lst_thumb .item .anchor {
   position: absolute;
