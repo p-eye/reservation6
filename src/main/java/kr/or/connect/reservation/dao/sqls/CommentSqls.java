@@ -19,4 +19,10 @@ public class CommentSqls {
 			+"WHERE ri.product_id = :productId "
 			+"ORDER BY ruc.id DESC";
 	
+	public static final String CALC_AVERAGE_SCORE = 
+			"SELECT AVG(ruc.score) " 
+			+ "FROM reservation_user_comment ruc "
+			+ "INNER JOIN reservation_info ri ON ri.id =  ruc.reservation_info_id "
+			+ "WHERE ri.product_id = :productId " 
+			+ "ORDER BY ri.id DESC";
 }

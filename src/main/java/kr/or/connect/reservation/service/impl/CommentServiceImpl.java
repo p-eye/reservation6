@@ -33,6 +33,11 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
+	public double getAverageScore(int productId) {
+		return commentDao.getCommentAverageScore(productId);
+	}
+
+	@Override
 	public List<CommentImage> getCommentImageList(int reservationInfoId) {
 		return commentImageDao.getCommentImageList(reservationInfoId);
 	}

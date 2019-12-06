@@ -1,6 +1,6 @@
 package kr.or.connect.reservation.dao;
 
-import static kr.or.connect.reservation.dao.sqls.CommentSqls.SELECT_COMMENT_LIST;
+import static kr.or.connect.reservation.dao.sqls.CommentSqls.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +28,19 @@ public class CommentDao {
 		params.put("productId", productId);
 
 		return jdbc.query(SELECT_COMMENT_LIST, params, new CommentMapper());
+
+	}
+
+	public double getCommentAverageScore(int productId) {
+
+		Map<String, Integer> params = new HashMap<>();
+		params.put("productId", productId);
+		try {
+			return jdbc.queryForObject(CALC_AVERAGE_SCORE, params, Double.class);
+
+		} catch (Exception e) {
+			return 0;
+		}
 
 	}
 }

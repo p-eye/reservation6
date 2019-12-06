@@ -17,13 +17,18 @@ public class CommentDaoTest {
 
 		CommentDao commentDao = ac.getBean(CommentDao.class);
 
-		/* getCommentList*/
-		
+		/* getCommentList */
+
+		/*
 		List<Comment> commentList = commentDao.getCommentList(1);
-		
-		for(Comment comment: commentList) {
+
+		for (Comment comment : commentList) {
 			System.out.println(comment);
 		}
+
+		*/
+		/* getCommentAvg */
+		System.out.println(commentDao.getCommentAverageScore(1));
 	}
 
 }

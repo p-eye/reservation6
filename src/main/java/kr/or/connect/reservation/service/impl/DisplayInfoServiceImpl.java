@@ -52,7 +52,7 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 		displayInfoResponse.setProductImages(productService.getProductImageList(productId));
 		displayInfoResponse.setProductPrices(productService.getProductPriceList(productId));
 		displayInfoResponse.setComments(commentService.getCommentList(productId));
-		
+		displayInfoResponse.setAverageScore(commentService.getAverageScore(productId));
 		
 		return displayInfoResponse;
 		

@@ -9,8 +9,11 @@ import kr.or.connect.reservation.dto.CommentImage;
 
 @Service
 public interface CommentService {
-	
+
 	public List<Comment> getCommentList(int productId);
 
+	public double getAverageScore(int productId);
+
 	public List<CommentImage> getCommentImageList(int reservationInfoId);
+
 }
