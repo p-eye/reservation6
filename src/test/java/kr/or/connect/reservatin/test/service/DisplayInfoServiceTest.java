@@ -16,6 +16,9 @@ public class DisplayInfoServiceTest {
 
 		/* getDisplayInfo */
 		System.out.println(displayInfoService.getDisplayInfo(59));
+		
+		/* getDisplayInfoImage */
+		System.out.println(displayInfoService.getDisplayInfoImage(59));
 	}
 
 }

@@ -24,6 +24,9 @@ public class CommentServiceTest {
 		for (Comment comment : commentList) {
 			System.out.println(comment);
 		}
+		
+		/* getCommentImageList */
+		System.out.println(commentService.getCommentImageList(2));
 	}
 
 }
