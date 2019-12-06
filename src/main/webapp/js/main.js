@@ -129,16 +129,20 @@ document.addEventListener("DOMContentLoaded", function() {
       );
     },
 
+    setProductTotalCount: function(productData) {
+      document.querySelector(".section_event_lst span").innerText =
+        productData.totalCount + "개";
+    },
+
     setProductData: function(productData, start) {
+      //총 개수 세팅
+      Product.prototype.setProductTotalCount(productData);
+
       //받아오는 데이터 수
       const itemCount = productData.items.length;
 
       //카테고리 탭 바뀌면 상품목록 초기화
       if (start === PRODUCT_DEFAULT_START) Product.prototype.initProductData();
-
-      //총 개수 세팅
-      let countSpan = document.querySelector(".event_lst_txt span");
-      countSpan.innerHTML = productData.totalCount + "개";
 
       //좌우 위치 정하는 인덱스
       const halfIndex = parseInt((itemCount + 1) / 2);
@@ -146,13 +150,13 @@ document.addEventListener("DOMContentLoaded", function() {
       productData.items.forEach(function(item, index) {
         if (index < halfIndex) {
           addTemplate(
-            document.getElementById("itemList"),
+            document.getElementById("productList"),
             Product.prototype.eventBoxes[0],
             item
           );
         } else {
           addTemplate(
-            document.getElementById("itemList"),
+            document.getElementById("productList"),
             Product.prototype.eventBoxes[1],
             item
           );
@@ -178,13 +182,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const Category = function() {
     this.getCategoryApi();
-    // this.getCategoryId(event.target.tagName);
-    //this.changeCategoryColor(event.target.tagName);
   };
 
   Category.prototype = {
     getCategoryApi: function() {
       sendAjax("./api/categories");
+    },
+
+    setCategoryData: function(categoryData) {
+      addTemplate(
+        document.querySelector("#categoryList"),
+        document.querySelector(".event_tab_lst.tab_lst_min"),
+        categoryData
+      );
     },
 
     getCategoryId: function() {
@@ -251,10 +261,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
 
-  const setCategoryData = function(categoryData) {
-    console.log(categoryData);
-  };
-
   const setApiData = function(jsonData, url, start) {
     //url 주소로 구분
     if (url.indexOf("products") != -1) {
@@ -263,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function() {
     } else if (url.indexOf("promotions") != -1) {
       Promotion.prototype.setPromotionData(jsonData);
     } else if (url.indexOf("categories") != -1) {
-      setCategoryData(jsonData);
+      Category.prototype.setCategoryData(jsonData);
     }
   };
 
