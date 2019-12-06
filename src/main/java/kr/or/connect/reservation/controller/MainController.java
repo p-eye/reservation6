@@ -13,10 +13,15 @@ public class MainController {
 		return "detail";
 
 	}
-	
+
 	@GetMapping(path = "/review")
 	public String getReviews(@RequestParam(name = "displayInfoId", required = true) int displayInfoId, ModelMap model) {
 		return "review";
+	}
+
+	@GetMapping(path = "/reserve")
+	public String makeReservation() {
+		return "reserve";
 	}
 
 }
