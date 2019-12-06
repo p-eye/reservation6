@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-  //더보기 버튼
-  const moreBtn = document.querySelector(".more .btn");
-
   const PRODUCT_PER_PAGE = 4;
   const PRODUCT_DEFAULT_START = 0;
   const ALL_CATEGORIES = 0;
@@ -32,70 +29,69 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
 
-  const className = new ClassName();
-
   const addTemplate = function(origTemplate, templateBox, templateData) {
     const bindTemplate = Handlebars.compile(origTemplate.innerHTML);
     templateBox.innerHTML += bindTemplate(templateData);
   };
 
   const Promotion = function(promotionData) {
-    this.sliderBox = document.querySelector(".visual_img");
-    this.slideIndex = 0;
     this.setPromotionData(promotionData);
   };
 
   Promotion.prototype = {
+    sliderBox: document.querySelector(".visual_img"),
+    slideIndex: 0,
+
     setPromotionData: function(promotionData) {
       addTemplate(
         document.querySelector("#promotionList"),
-        this.sliderBox,
+        Promotion.prototype.sliderBox,
         promotionData
       );
 
-      this.createSlides(promotionData.items.length, this.sliderBox);
+      Promotion.prototype.createSlides(
+        promotionData.items.length,
+        Promotion.prototype.sliderBox
+      );
     },
 
     createSlides: function(totalPromotionCount, sliderBox) {
       const SLIDE_INTERVAL = 1500;
 
-      setInterval(
-        function() {
-          this.showSlides(totalPromotionCount, sliderBox);
-        }.bind(this),
-        SLIDE_INTERVAL
-      );
+      setInterval(function() {
+        Promotion.prototype.showSlides(totalPromotionCount, sliderBox);
+      }, SLIDE_INTERVAL);
     },
 
     showSlides: function(totalPromotionCount, sliderBox) {
       sliderBox.style.transition = "0.3s";
-      this.slideIndex++;
+      Promotion.prototype.slideIndex++;
 
-      sliderBox.addEventListener(
-        "transitionend",
-        function() {
-          if (this.slideIndex >= totalPromotionCount) {
-            this.slideIndex = 0;
-            sliderBox.style.transition = "none";
-            sliderBox.style.transform = "translate(0%)";
-          }
-        }.bind(this)
-      );
+      sliderBox.addEventListener("transitionend", function() {
+        if (Promotion.prototype.slideIndex >= totalPromotionCount) {
+          Promotion.prototype.slideIndex = 0;
+          sliderBox.style.transition = "none";
+          sliderBox.style.transform = "translate(0%)";
+        }
+      });
 
-      sliderBox.style.transform = "translate(-" + 100 * this.slideIndex + "%)";
+      sliderBox.style.transform =
+        "translate(-" + 100 * Promotion.prototype.slideIndex + "%)";
     }
   };
 
   const MoreBtn = function() {
-    //더보기버튼
-    this.moreBtn = document.querySelector(".more .btn");
-
     this.registerEvent();
   };
 
   MoreBtn.prototype = {
+    moreBtn: document.querySelector(".more .btn"),
+
     registerEvent: function() {
-      this.moreBtn.addEventListener("click", this.clickMoreBtn);
+      MoreBtn.prototype.moreBtn.addEventListener(
+        "click",
+        MoreBtn.prototype.clickMoreBtn
+      );
     },
 
     clickMoreBtn: function() {
@@ -106,18 +102,15 @@ document.addEventListener("DOMContentLoaded", function() {
     },
 
     hideMoreBtn: function() {
-      className.addClass(moreBtn, "hide");
+      ClassName.prototype.addClass(MoreBtn.prototype.moreBtn, "hide");
     },
 
     showMoreBtn: function() {
-      className.removeClass(moreBtn, "hide");
+      ClassName.prototype.removeClass(MoreBtn.prototype.moreBtn, "hide");
     }
   };
 
   const Product = function(productData, start) {
-    //본문 좌우 박스
-    this.eventBoxes = document.querySelectorAll(".lst_event_box");
-
     //받아오는 데이터 수
     this.itemCount = productData.items.length;
 
@@ -125,9 +118,12 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   Product.prototype = {
+    //본문 좌우 박스
+    eventBoxes: document.querySelectorAll(".lst_event_box"),
+
     setProductData: function(productData, start) {
       //카테고리 탭 바뀌면 상품목록 초기화
-      if (start === 0) this.initProductData();
+      if (start === PRODUCT_DEFAULT_START) Product.prototype.initProductData();
 
       //총 개수 세팅
       let countSpan = document.querySelector(".event_lst_txt span");
@@ -136,23 +132,21 @@ document.addEventListener("DOMContentLoaded", function() {
       //좌우 위치 정하는 인덱스
       const halfIndex = parseInt((this.itemCount + 1) / 2);
 
-      productData.items.forEach(
-        function(item, index) {
-          if (index < halfIndex) {
-            addTemplate(
-              document.getElementById("itemList"),
-              this.eventBoxes[0],
-              item
-            );
-          } else {
-            addTemplate(
-              document.getElementById("itemList"),
-              this.eventBoxes[1],
-              item
-            );
-          }
-        }.bind(this)
-      );
+      productData.items.forEach(function(item, index) {
+        if (index < halfIndex) {
+          addTemplate(
+            document.getElementById("itemList"),
+            Product.prototype.eventBoxes[0],
+            item
+          );
+        } else {
+          addTemplate(
+            document.getElementById("itemList"),
+            Product.prototype.eventBoxes[1],
+            item
+          );
+        }
+      });
 
       // 가져온 데이터가 4개 미만 OR 아이템 리스트 = 총 개수가 되면 더보기버튼 사라짐
       if (
@@ -165,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
 
     initProductData: function() {
-      this.eventBoxes.forEach(function(eventBox) {
+      Product.prototype.eventBoxes.forEach(function(eventBox) {
         eventBox.innerHTML = "";
       });
     }
@@ -198,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       //전체 카테고리 active 클래스 제거
       categories.forEach(function(category) {
-        className.removeClass(category.firstElementChild, "active");
+        ClassName.prototype.removeClass(category.firstElementChild, "active");
       });
 
       //클릭한 카테고리에만 active클래스 추가 (target case 나눠서)
@@ -210,18 +204,19 @@ document.addEventListener("DOMContentLoaded", function() {
         targetAnchor = event.target;
       }
 
-      className.addClass(targetAnchor, "active");
+      ClassName.prototype.addClass(targetAnchor, "active");
     }
   };
 
   const Tab = function() {
-    this.tabUl = document.querySelector(".event_tab_lst");
     this.registerEvent();
   };
 
   Tab.prototype = {
+    tabUl: document.querySelector(".event_tab_lst"),
+
     registerEvent: function() {
-      this.tabUl.addEventListener("click", this.clickTabBtn);
+      Tab.prototype.tabUl.addEventListener("click", Tab.prototype.clickTabBtn);
     },
 
     clickTabBtn: function() {
@@ -238,13 +233,19 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
 
+  const setCategoryData = function(categoryData) {
+    console.log(categoryData);
+  };
+
   const setApiData = function(jsonData, url, start) {
     //url 주소로 구분
     if (url.indexOf("products") != -1) {
       new Product(jsonData, start);
       new MoreBtn();
-    } else {
+    } else if (url.indexOf("promotions") != -1) {
       new Promotion(jsonData);
+    } else if (url.indexOf("categories") != -1) {
+      setCategoryData(jsonData);
     }
   };
 
@@ -271,10 +272,16 @@ document.addEventListener("DOMContentLoaded", function() {
     );
   };
 
+  const getCategoryApi = function() {
+    sendAjax("./api/categories");
+  };
+
   const initJS = function() {
     new Tab();
+
     getProductApi(ALL_CATEGORIES, PRODUCT_DEFAULT_START);
     getPromotionApi();
+    getCategoryApi();
   };
 
   initJS();
