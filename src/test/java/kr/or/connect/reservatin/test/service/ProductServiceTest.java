@@ -7,6 +7,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import kr.or.connect.reservation.config.ApplicationConfig;
 import kr.or.connect.reservation.dto.Product;
+import kr.or.connect.reservation.dto.ProductImage;
+import kr.or.connect.reservation.dto.ProductPrice;
 import kr.or.connect.reservation.dto.ProductResponse;
 import kr.or.connect.reservation.service.ProductService;
 
@@ -33,6 +35,21 @@ public class ProductServiceTest {
 		/*getProductResponseByCategoryId */
 		 System.out.println(productService.getProductResponseByCategoryId(1, 0));
 		 System.out.println(productService.getProductResponseByCategoryId(0, 0));
+		 
+		/* getProductPriceList */
+		List<ProductPrice> productPriceList = productService.getProductPriceList(38);
+
+		for (ProductPrice productPrice : productPriceList) {
+			System.out.println(productPrice);
+		}
+		
+		/* getProductImageList */
+		List<ProductImage> productImageList = productService.getProductImageList(38);
+
+		for (ProductImage productImage : productImageList) {
+			System.out.println(productImage);
+		}
+
 	}
 
 }

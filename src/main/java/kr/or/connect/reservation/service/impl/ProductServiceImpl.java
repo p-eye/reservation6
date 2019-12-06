@@ -7,8 +7,12 @@ import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dao.CategoryDao;
 import kr.or.connect.reservation.dao.ProductDao;
+import kr.or.connect.reservation.dao.ProductImageDao;
+import kr.or.connect.reservation.dao.ProductPriceDao;
 import kr.or.connect.reservation.dto.Category;
 import kr.or.connect.reservation.dto.Product;
+import kr.or.connect.reservation.dto.ProductImage;
+import kr.or.connect.reservation.dto.ProductPrice;
 import kr.or.connect.reservation.dto.ProductResponse;
 import kr.or.connect.reservation.service.ProductService;
 
@@ -16,10 +20,16 @@ import kr.or.connect.reservation.service.ProductService;
 public class ProductServiceImpl implements ProductService {
 
 	@Autowired
+	private CategoryDao categoryDao;
+
+	@Autowired
 	private ProductDao productDao;
 
 	@Autowired
-	private CategoryDao categoryDao;
+	private ProductPriceDao productPriceDao;
+
+	@Autowired
+	private ProductImageDao productImageDao;
 
 	@Override
 	public List<Product> getProductListByCategoryId(int categoryId, int start) {
@@ -48,8 +58,18 @@ public class ProductServiceImpl implements ProductService {
 			int totalCount = categoryDao.getCategoryList().get(categoryId - 1).getDisplayInfoCount();
 			productResponse.setTotalCount(totalCount);
 		}
-		
+
 		return productResponse;
+	}
+
+	@Override
+	public List<ProductPrice> getProductPriceList(int productId) {
+		return productPriceDao.getProductPriceList(productId);
+	}
+
+	@Override
+	public List<ProductImage> getProductImageList(int productId) {
+		return productImageDao.getProductImageList(productId);
 	}
 
 }
