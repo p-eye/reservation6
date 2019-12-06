@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dto.DisplayInfo;
 import kr.or.connect.reservation.dto.DisplayInfoImage;
+import kr.or.connect.reservation.dto.DisplayInfoResponse;
 
 @Service
 public interface DisplayInfoService {
@@ -12,5 +13,5 @@ public interface DisplayInfoService {
 	
 	public DisplayInfoImage getDisplayInfoImage(int displayInfoId);
 	
-
+	public DisplayInfoResponse getDisplayInfoResponse(int displayInfoId);
 }

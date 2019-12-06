@@ -15,10 +15,14 @@ public class DisplayInfoServiceTest {
 		DisplayInfoService displayInfoService = ac.getBean(DisplayInfoService.class);
 
 		/* getDisplayInfo */
-		System.out.println(displayInfoService.getDisplayInfo(59));
+		//System.out.println(displayInfoService.getDisplayInfo(59));
 		
 		/* getDisplayInfoImage */
-		System.out.println(displayInfoService.getDisplayInfoImage(59));
+		//System.out.println(displayInfoService.getDisplayInfoImage(59));
+		
+		/*getDisplayInfoResponse */
+		System.out.println(displayInfoService.getDisplayInfoResponse(27));
+		
 	}
 
 }

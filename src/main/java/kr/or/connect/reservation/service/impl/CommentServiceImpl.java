@@ -16,14 +16,20 @@ public class CommentServiceImpl implements CommentService {
 
 	@Autowired
 	private CommentDao commentDao;
-	
+
 	@Autowired
 	private CommentImageDao commentImageDao;
 
-
 	@Override
 	public List<Comment> getCommentList(int productId) {
-		return commentDao.getCommentList(productId);
+		List<Comment> commentList = commentDao.getCommentList(productId);
+
+		for (Comment comment : commentList) {
+			int reservationInfoId = comment.getReservationInfoId();
+			comment.setCommentImages(getCommentImageList(reservationInfoId));
+		}
+
+		return commentList;
 	}
 
 	@Override
@@ -31,5 +37,4 @@ public class CommentServiceImpl implements CommentService {
 		return commentImageDao.getCommentImageList(reservationInfoId);
 	}
 
-	
 }
