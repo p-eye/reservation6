@@ -2562,7 +2562,7 @@ select {
     left: 0;
     width: 9px;
     height: 11px;
-    background-image: url('../img/spr_book2.png?1512221500');
+    background-image: url('../img/spr_book2.png');
     background-size: 330px 300px;
     background-repeat: no-repeat;
     background-position: -299px -26px;
@@ -3734,7 +3734,7 @@ select {
     right: 71.5px;
     width: 12px;
     height: 7.5px;
-    background-image: url('../img/spr_book2.png?1602251400');
+    background-image: url('../img/spr_book2.png');
     background-size: 330px 300px;
     background-position: -296px -62px;
 }
@@ -4417,7 +4417,7 @@ select {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url('../img/spr_book2.png?1512221500');
+    background-image: url('../img/spr_book2.png');
     background-size: 330px 300px;
     vertical-align: top;
     width: 11px;
@@ -6331,7 +6331,7 @@ select {
     display: inline-block;
     width: 11px;
     height: 20px;
-    background-image: url('../img/spr_book2.png?1512221500');
+    background-image: url('../img/spr_book2.png');
     background-size: 330px 300px;
     background-repeat: no-repeat;
     background-position: -138px -55px;
@@ -10785,7 +10785,7 @@ select {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url('../img/spr_book2.png?1512221500');
+    background-image: url('../img/spr_book2.png');
     background-size: 330px 300px;
     vertical-align: top;
     text-indent: 100%;

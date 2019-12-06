@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Naver booking Icons";
-    //src: url('/../img/fonts/Naver-booking-Icons.woff') format('woff');
+    //src: url('../font/Naver-booking-Icons.woff') format('woff');
     font-weight: 400;
     font-style: normal
 }
@@ -126,7 +126,7 @@
 }
 @font-face {
     font-family: "Naver Icons";
-    //src: url('/../img/fonts/Naver-Icons.woff') format('woff');
+    //src: url('../font/Naver-Icons.woff') format('woff');
     font-weight: 400;
     font-style: normal
 }
@@ -827,13 +827,13 @@
     font-family: NanumGothicWebR;
     font-style: normal;
     font-weight: 400;
-    src: url('/../img/fonts/NanumGothicRegular.woff') format('woff')
+    src: url('../font/NanumGothicRegular.woff') format('woff')
 }
 @font-face {
     font-family: NanumGothicWebB;
     font-style: normal;
     font-weight: 400;
-    src: url('/../img/fonts/NanumGothicBold.woff') format('woff')
+    src: url('../font/NanumGothicBold.woff') format('woff')
 }
 @charset "utf-8";
 body,
@@ -1533,7 +1533,7 @@ hr {
     background-position: 0 -288px
 }
 .spr_book {
-    //background-image: url(../img/spr_book.ada46c4e031284d4b513fda5c38b5187.png);
+    //background-image: url(../img/spr_book.png);
     background-size: 400px 400px
 }
 .spr_book.ico_nessasary {
@@ -2789,7 +2789,7 @@ select {
     left: 0;
     width: 9px;
     height: 11px;
-    background-image: url(.../img/spr_book2.png);
+    background-image: url(../img/spr_book2.png);
     background-size: 330px 400px;
     background-repeat: no-repeat;
     background-position: -299px -26px;
