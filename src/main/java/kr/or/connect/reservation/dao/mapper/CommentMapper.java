@@ -24,7 +24,7 @@ public class CommentMapper implements RowMapper<Comment> {
 		comment.setReservationEmail(rs.getString(8));
 		comment.setReservationDate(rs.getString(9));
 		comment.setCreateDate(rs.getString(10));
-		comment.setCreateDate(rs.getString(11));
+		comment.setModifyDate(rs.getString(11));
 
 		return comment;
 
