@@ -29,18 +29,22 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
 
-  const addTemplate = function(origTemplate, templateBox, templateData) {
-    const bindTemplate = Handlebars.compile(origTemplate.innerHTML);
+  const addTemplate = function(rawTemplate, templateBox, templateData) {
+    const bindTemplate = Handlebars.compile(rawTemplate.innerHTML);
     templateBox.innerHTML += bindTemplate(templateData);
   };
 
-  const Promotion = function(promotionData) {
-    this.setPromotionData(promotionData);
+  const Promotion = function() {
+    this.getPromotionApi();
   };
 
   Promotion.prototype = {
     sliderBox: document.querySelector(".visual_img"),
     slideIndex: 0,
+
+    getPromotionApi: function() {
+      sendAjax("./api/promotions");
+    },
 
     setPromotionData: function(promotionData) {
       addTemplate(
@@ -98,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
       //더보기 버튼 누를 때마다 startProductIndex +4
       startProductIndex += PRODUCT_PER_PAGE;
 
-      getProductApi(categoryId, startProductIndex);
+      new Product(categoryId, startProductIndex);
     },
 
     hideMoreBtn: function() {
@@ -110,18 +114,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
 
-  const Product = function(productData, start) {
-    //받아오는 데이터 수
-    this.itemCount = productData.items.length;
-
-    this.setProductData(productData, start);
+  const Product = function(categoryId, start) {
+    this.getProductApi(categoryId, start);
   };
 
   Product.prototype = {
     //본문 좌우 박스
     eventBoxes: document.querySelectorAll(".lst_event_box"),
 
+    getProductApi: function(categoryId, start) {
+      sendAjax(
+        "./api/products?categoryId=" + categoryId + "&start=" + start,
+        start
+      );
+    },
+
     setProductData: function(productData, start) {
+      //받아오는 데이터 수
+      const itemCount = productData.items.length;
+
       //카테고리 탭 바뀌면 상품목록 초기화
       if (start === PRODUCT_DEFAULT_START) Product.prototype.initProductData();
 
@@ -130,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
       countSpan.innerHTML = productData.totalCount + "개";
 
       //좌우 위치 정하는 인덱스
-      const halfIndex = parseInt((this.itemCount + 1) / 2);
+      const halfIndex = parseInt((itemCount + 1) / 2);
 
       productData.items.forEach(function(item, index) {
         if (index < halfIndex) {
@@ -150,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // 가져온 데이터가 4개 미만 OR 아이템 리스트 = 총 개수가 되면 더보기버튼 사라짐
       if (
-        this.itemCount < PRODUCT_PER_PAGE ||
+        itemCount < PRODUCT_PER_PAGE ||
         document.querySelectorAll(".wrap_event_box li").length ===
           productData.totalCount
       ) {
@@ -166,12 +177,18 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   const Category = function() {
-    this.getCategoryId(event.target.tagName);
-    this.changeCategoryColor(event.target.tagName);
+    this.getCategoryApi();
+    // this.getCategoryId(event.target.tagName);
+    //this.changeCategoryColor(event.target.tagName);
   };
 
   Category.prototype = {
-    getCategoryId: function(clickedTag) {
+    getCategoryApi: function() {
+      sendAjax("./api/categories");
+    },
+
+    getCategoryId: function() {
+      const clickedTag = event.target.tagName;
       let targetSpan;
 
       if (clickedTag === "SPAN") {
@@ -184,7 +201,8 @@ document.addEventListener("DOMContentLoaded", function() {
         "data-category"
       );
 
-      getProductApi(categoryId, PRODUCT_DEFAULT_START);
+      new Product(categoryId, PRODUCT_DEFAULT_START);
+      Category.prototype.changeCategoryColor(clickedTag);
     },
 
     changeCategoryColor: function(clickedTag) {
@@ -229,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function() {
       //startNum 초기화
       startProductIndex = PRODUCT_DEFAULT_START;
 
-      new Category();
+      Category.prototype.getCategoryId();
     }
   };
 
@@ -240,10 +258,10 @@ document.addEventListener("DOMContentLoaded", function() {
   const setApiData = function(jsonData, url, start) {
     //url 주소로 구분
     if (url.indexOf("products") != -1) {
-      new Product(jsonData, start);
+      Product.prototype.setProductData(jsonData, start);
       new MoreBtn();
     } else if (url.indexOf("promotions") != -1) {
-      new Promotion(jsonData);
+      Promotion.prototype.setPromotionData(jsonData);
     } else if (url.indexOf("categories") != -1) {
       setCategoryData(jsonData);
     }
@@ -261,27 +279,12 @@ document.addEventListener("DOMContentLoaded", function() {
     oReq.send();
   };
 
-  const getPromotionApi = function() {
-    sendAjax("./api/promotions");
-  };
-
-  const getProductApi = function(categoryId, start) {
-    sendAjax(
-      "./api/products?categoryId=" + categoryId + "&start=" + start,
-      start
-    );
-  };
-
-  const getCategoryApi = function() {
-    sendAjax("./api/categories");
-  };
-
   const initJS = function() {
     new Tab();
 
-    getProductApi(ALL_CATEGORIES, PRODUCT_DEFAULT_START);
-    getPromotionApi();
-    getCategoryApi();
+    new Product(ALL_CATEGORIES, PRODUCT_DEFAULT_START);
+    new Promotion();
+    new Category();
   };
 
   initJS();
