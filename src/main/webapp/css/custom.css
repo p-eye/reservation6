@@ -1,0 +1,39 @@
+@charset "UTF-8";
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}
+ng\:form {
+  display: block;
+}
+.ng-animate-shim {
+  visibility: hidden;
+}
+.ng-anchor {
+  position: absolute;
+}
+
+.container_visual,
+.img_thumb {
+  height: 414px;
+}
+
+.checked {
+  background-position: -75px, -673px;
+}
+
+.form-error-msg {
+  background-color: rgb(255, 232, 232);
+  border: 1px solid red;
+  color: red;
+  display: block;
+  width: 384px;
+  margin-bottom: 10px;
+  padding: 5px;
+  margin: 10px;
+}
