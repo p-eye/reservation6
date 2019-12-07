@@ -27,13 +27,17 @@ public class ReservationInfoServiceTest {
 			System.out.println(reservationInfo);
 
 		}
+		System.out.println("======================================");
 
+		
 		/* getReservationTotalPrice */
 		System.out.println(reservationInfoService.getReservationTotalPrice(4));
-
+		System.out.println("======================================");
+		
 		/* getReservationInfoResponse */
-		System.out.println(reservationInfoService.getReservationInfoResponse("kimjinsu@connect.co.kr"));
-
+		System.out.println(reservationInfoService.getReservationResponse("kimjinsu@connect.co.kr"));
+		System.out.println("======================================");
+		
 		/* getReservationPrice */
 		List<ReservationPrice> reservationPriceList = reservationInfoService.getReservationPriceList(5);
 
@@ -41,6 +45,7 @@ public class ReservationInfoServiceTest {
 			System.out.println(reservationPrice);
 
 		}
+		System.out.println("======================================");
 
 	}
 

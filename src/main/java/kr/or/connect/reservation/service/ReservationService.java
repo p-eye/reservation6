@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dto.ReservationInfo;
-import kr.or.connect.reservation.dto.ReservationInfoResponse;
+import kr.or.connect.reservation.dto.ReservationResponse;
 import kr.or.connect.reservation.dto.ReservationPrice;
 
 @Service
 public interface ReservationService {
 
-	
-	public ReservationInfoResponse getReservationInfoResponse(String reservationEmail);
+
+	public ReservationResponse getReservationResponse(String reservationEmail);
 	
 	public List<ReservationInfo> getReservationInfoList(String reservationEmail);
 	

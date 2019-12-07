@@ -2,16 +2,16 @@ package kr.or.connect.reservation.dto;
 
 import java.util.List;
 
-public class ReservationInfoResponse {
+public class ReservationResponse {
 
 	private List<ReservationInfo> reservations;
 	private int size;
 
-	public ReservationInfoResponse() {
+	public ReservationResponse() {
 		super();
 	}
 
-	public ReservationInfoResponse(List<ReservationInfo> reservations, int size) {
+	public ReservationResponse(List<ReservationInfo> reservations, int size) {
 		super();
 		this.reservations = reservations;
 		this.size = size;
@@ -35,7 +35,7 @@ public class ReservationInfoResponse {
 
 	@Override
 	public String toString() {
-		return "ReservationInfoResponse [reservations=" + reservations + ", size=" + size + "]";
+		return "ReservationResponse [reservations=" + reservations + ", size=" + size + "]";
 	}
 
 }

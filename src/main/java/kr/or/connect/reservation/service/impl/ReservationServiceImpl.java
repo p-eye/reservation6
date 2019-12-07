@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.or.connect.reservation.dao.ReservationInfoDao;
 import kr.or.connect.reservation.dao.ReservationPriceDao;
 import kr.or.connect.reservation.dto.ReservationInfo;
-import kr.or.connect.reservation.dto.ReservationInfoResponse;
+import kr.or.connect.reservation.dto.ReservationResponse;
 import kr.or.connect.reservation.dto.ReservationPrice;
 import kr.or.connect.reservation.service.DisplayInfoService;
 import kr.or.connect.reservation.service.ReservationService;
@@ -26,12 +26,15 @@ public class ReservationServiceImpl implements ReservationService {
 	private DisplayInfoService displayInfoService;
 	
 	@Override
-	public ReservationInfoResponse getReservationInfoResponse(String reservationEmail) {
+	public ReservationResponse getReservationResponse(String reservationEmail) {
 		
-		ReservationInfoResponse reservationInfoResponse = new ReservationInfoResponse();
-		reservationInfoResponse.setReservations(getReservationInfoList(reservationEmail));
+		ReservationResponse reservationResponse = new ReservationResponse();
+		List<ReservationInfo> reservationInfoList = getReservationInfoList(reservationEmail);
+		
+		reservationResponse.setReservations(reservationInfoList);
+		reservationResponse.setSize(reservationInfoList.size());
 
-		return reservationInfoResponse;
+		return reservationResponse;
 	}
 
 	@Override
