@@ -1,8 +1,7 @@
 package kr.or.connect.reservation.dao;
 
-import static kr.or.connect.reservation.dao.sqls.ReservationInfoSqls.*;
+import static kr.or.connect.reservation.dao.sqls.ReservationInfoSqls.SELECT_RESERVATION_INFO_LIST;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +13,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import kr.or.connect.reservation.dao.mapper.CategoryMapper;
-import kr.or.connect.reservation.dto.Category;
 import kr.or.connect.reservation.dto.ReservationInfo;
 
 @Repository
