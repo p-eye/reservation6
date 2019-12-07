@@ -25,6 +25,9 @@ public class ReservationPriceDaoTest {
 			System.out.println("==========");
 
 		}
+		
+		/*getReservationTotalPrice */
+		System.out.println(reservationPriceDao.getReservationTotalPrice(1));
 
 	}
 

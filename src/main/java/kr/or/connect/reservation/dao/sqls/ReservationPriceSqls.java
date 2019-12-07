@@ -10,4 +10,11 @@ public class ReservationPriceSqls {
 			+"FROM reservation_info_price rip "
 			+"WHERE rip.reservation_info_id = :reservationInfoId";
 
+	public static final String SELECT_RESERVATION_TOTAL_PRICE = 
+			"SELECT sum(rip.count * pp.price) "
+			+"FROM reservation_info_price rip "
+			+"INNER JOIN product_price pp "
+			+"ON pp.id = rip.product_price_id "
+			+"WHERE rip.reservation_info_id = :reservationInfoId "
+			+"GROUP BY rip.reservation_info_id";
 }

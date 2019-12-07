@@ -1,6 +1,7 @@
 package kr.or.connect.reservation.dao;
 
 import static kr.or.connect.reservation.dao.sqls.ReservationPriceSqls.SELECT_RESERVATION_PRICE_LIST;
+import static kr.or.connect.reservation.dao.sqls.ReservationPriceSqls.SELECT_RESERVATION_TOTAL_PRICE;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,5 +33,13 @@ public class ReservationPriceDao {
 
 		return jdbc.query(SELECT_RESERVATION_PRICE_LIST, params, rowMapper);
 
+	}
+
+	public int getReservationTotalPrice(int reservationInfoId) {
+
+		Map<String, Integer> params = new HashMap<>();
+		params.put("reservationInfoId", reservationInfoId);
+
+		return jdbc.queryForObject(SELECT_RESERVATION_TOTAL_PRICE, params, Integer.class);
 	}
 }

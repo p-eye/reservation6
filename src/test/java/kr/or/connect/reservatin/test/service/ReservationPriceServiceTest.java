@@ -25,6 +25,10 @@ public class ReservationPriceServiceTest {
 			System.out.println(reservationPrice);
 
 		}
+		
+		/* getReservationTotalPrice */
+		
+		System.out.println(reservationPriceService.getReservationTotalPrice(4));
 	}
 
 }

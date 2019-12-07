@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dao.ReservationPriceDao;
-import kr.or.connect.reservation.dto.ReservationInfo;
 import kr.or.connect.reservation.dto.ReservationPrice;
 import kr.or.connect.reservation.service.ReservationPriceService;
 
@@ -21,4 +20,10 @@ public class ReservationPriceServiceImpl implements ReservationPriceService {
 		return reservationPriceDao.getReservationPriceList(reservationInfoId);
 	}
 
+	@Override
+	public int getReservationTotalPrice(int reservationInfoId) {
+		return reservationPriceDao.getReservationTotalPrice(reservationInfoId);
+	}
+
+	
 }

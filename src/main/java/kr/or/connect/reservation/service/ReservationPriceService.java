@@ -11,5 +11,7 @@ public interface ReservationPriceService {
 
 	
 	public List<ReservationPrice> getReservationPriceList(int reservationInfoId);
+	
+	public int getReservationTotalPrice(int reservationInfoId);
 
 }
