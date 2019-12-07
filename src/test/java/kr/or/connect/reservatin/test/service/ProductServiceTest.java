@@ -9,7 +9,7 @@ import kr.or.connect.reservation.config.ApplicationConfig;
 import kr.or.connect.reservation.dto.Product;
 import kr.or.connect.reservation.dto.ProductImage;
 import kr.or.connect.reservation.dto.ProductPrice;
-import kr.or.connect.reservation.dto.ProductResponse;
+import kr.or.connect.reservation.dto.response.ProductResponse;
 import kr.or.connect.reservation.service.ProductService;
 
 public class ProductServiceTest {

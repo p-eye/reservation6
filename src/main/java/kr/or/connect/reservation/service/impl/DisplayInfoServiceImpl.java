@@ -7,7 +7,7 @@ import kr.or.connect.reservation.dao.DisplayInfoDao;
 import kr.or.connect.reservation.dao.DisplayInfoImageDao;
 import kr.or.connect.reservation.dto.DisplayInfo;
 import kr.or.connect.reservation.dto.DisplayInfoImage;
-import kr.or.connect.reservation.dto.DisplayInfoResponse;
+import kr.or.connect.reservation.dto.response.DisplayInfoResponse;
 import kr.or.connect.reservation.service.CommentService;
 import kr.or.connect.reservation.service.DisplayInfoService;
 import kr.or.connect.reservation.service.ProductService;

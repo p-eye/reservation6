@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dto.Promotion;
-import kr.or.connect.reservation.dto.PromotionResponse;
+import kr.or.connect.reservation.dto.response.PromotionResponse;
 
 @Service
 public interface PromotionService {

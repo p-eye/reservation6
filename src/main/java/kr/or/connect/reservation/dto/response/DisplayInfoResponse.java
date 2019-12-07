@@ -1,6 +1,12 @@
-package kr.or.connect.reservation.dto;
+package kr.or.connect.reservation.dto.response;
 
 import java.util.List;
+
+import kr.or.connect.reservation.dto.Comment;
+import kr.or.connect.reservation.dto.DisplayInfo;
+import kr.or.connect.reservation.dto.DisplayInfoImage;
+import kr.or.connect.reservation.dto.ProductImage;
+import kr.or.connect.reservation.dto.ProductPrice;
 
 public class DisplayInfoResponse {
 

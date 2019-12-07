@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.or.connect.reservation.dto.ReservationResponse;
+import kr.or.connect.reservation.dto.response.ReservationResponse;
 import kr.or.connect.reservation.service.ReservationService;
 
 @RestController

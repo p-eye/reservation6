@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dao.PromotionDao;
 import kr.or.connect.reservation.dto.Promotion;
-import kr.or.connect.reservation.dto.PromotionResponse;
+import kr.or.connect.reservation.dto.response.PromotionResponse;
 import kr.or.connect.reservation.service.PromotionService;
 
 @Service

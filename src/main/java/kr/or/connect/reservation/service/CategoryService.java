@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dto.Category;
-import kr.or.connect.reservation.dto.CategoryResponse;
+import kr.or.connect.reservation.dto.response.CategoryResponse;
 
 @Service
 public interface CategoryService {

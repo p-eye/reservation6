@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import kr.or.connect.reservation.dao.ReservationInfoDao;
 import kr.or.connect.reservation.dao.ReservationPriceDao;
 import kr.or.connect.reservation.dto.ReservationInfo;
-import kr.or.connect.reservation.dto.ReservationResponse;
 import kr.or.connect.reservation.dto.ReservationPrice;
+import kr.or.connect.reservation.dto.response.ReservationResponse;
 import kr.or.connect.reservation.service.DisplayInfoService;
 import kr.or.connect.reservation.service.ReservationService;
 

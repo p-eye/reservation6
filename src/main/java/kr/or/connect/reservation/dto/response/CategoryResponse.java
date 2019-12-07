@@ -1,6 +1,8 @@
-package kr.or.connect.reservation.dto;
+package kr.or.connect.reservation.dto.response;
 
 import java.util.List;
+
+import kr.or.connect.reservation.dto.Category;
 
 public class CategoryResponse {
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dao.CategoryDao;
 import kr.or.connect.reservation.dto.Category;
-import kr.or.connect.reservation.dto.CategoryResponse;
+import kr.or.connect.reservation.dto.response.CategoryResponse;
 import kr.or.connect.reservation.service.CategoryService;
 
 @Service
