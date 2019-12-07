@@ -8,7 +8,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import kr.or.connect.reservation.config.ApplicationConfig;
 import kr.or.connect.reservation.dto.Comment;
 import kr.or.connect.reservation.dto.ReservationInfo;
-import kr.or.connect.reservation.service.ReservationInfoService;
+import kr.or.connect.reservation.dto.ReservationPrice;
+import kr.or.connect.reservation.service.ReservationService;
 
 public class ReservationInfoServiceTest {
 
@@ -16,10 +17,9 @@ public class ReservationInfoServiceTest {
 		// TODO Auto-generated method stub
 		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 
-		ReservationInfoService reservationInfoService = ac.getBean(ReservationInfoService.class);
+		ReservationService reservationInfoService = ac.getBean(ReservationService.class);
 
 		/* getReservationInfoService */
-
 		List<ReservationInfo> reservationInfoList = reservationInfoService
 				.getReservationInfoList("kimjinsu@connect.co.kr");
 
@@ -27,6 +27,21 @@ public class ReservationInfoServiceTest {
 			System.out.println(reservationInfo);
 
 		}
+
+		/* getReservationTotalPrice */
+		System.out.println(reservationInfoService.getReservationTotalPrice(4));
+
+		/* getReservationInfoResponse */
+		System.out.println(reservationInfoService.getReservationInfoResponse("kimjinsu@connect.co.kr"));
+
+		/* getReservationPrice */
+		List<ReservationPrice> reservationPriceList = reservationInfoService.getReservationPriceList(5);
+
+		for (ReservationPrice reservationPrice : reservationPriceList) {
+			System.out.println(reservationPrice);
+
+		}
+
 	}
 
 }

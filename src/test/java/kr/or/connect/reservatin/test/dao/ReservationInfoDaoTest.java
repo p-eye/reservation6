@@ -18,14 +18,16 @@ public class ReservationInfoDaoTest {
 		ReservationInfoDao reservationInfoDao = ac.getBean(ReservationInfoDao.class);
 
 		/* getResrvationInfoList */
-		List<ReservationInfo> reservationInfoList = reservationInfoDao
-				.getReservationInfoList("kimjinsu@connect.co.kr");
+		List<ReservationInfo> reservationInfoList = reservationInfoDao.getReservationInfoList("kimjinsu@connect.co.kr");
 
 		for (ReservationInfo reservationInfo : reservationInfoList) {
 			System.out.println(reservationInfo);
 			System.out.println("==========");
 
 		}
+
+		/* getReservationTotalPrice */
+		System.out.println(reservationInfoDao.getReservationTotalPrice(1));
 
 	}
 

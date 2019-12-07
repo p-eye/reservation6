@@ -35,11 +35,4 @@ public class ReservationPriceDao {
 
 	}
 
-	public int getReservationTotalPrice(int reservationInfoId) {
-
-		Map<String, Integer> params = new HashMap<>();
-		params.put("reservationInfoId", reservationInfoId);
-
-		return jdbc.queryForObject(SELECT_RESERVATION_TOTAL_PRICE, params, Integer.class);
-	}
 }
