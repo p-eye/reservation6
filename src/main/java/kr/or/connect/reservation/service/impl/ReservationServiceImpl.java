@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dao.ReservationInfoDao;
 import kr.or.connect.reservation.dao.ReservationPriceDao;
+import kr.or.connect.reservation.dao.ReservationResponseDao;
 import kr.or.connect.reservation.dto.ReservationInfo;
 import kr.or.connect.reservation.dto.ReservationParam;
 import kr.or.connect.reservation.dto.ReservationPrice;
 import kr.or.connect.reservation.dto.response.ReservationInfoResponse;
+import kr.or.connect.reservation.dto.response.ReservationResponse;
 import kr.or.connect.reservation.service.DisplayInfoService;
 import kr.or.connect.reservation.service.ReservationService;
 
@@ -25,6 +27,9 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired
 	private DisplayInfoService displayInfoService;
+	
+	@Autowired
+	private ReservationResponseDao reservationResponseDao;
 
 	@Override
 	public ReservationInfoResponse getReservationInfoResponse(String reservationEmail) {
@@ -81,6 +86,11 @@ public class ReservationServiceImpl implements ReservationService {
 			reservationPriceDao.insertReservationPrice(reservationPrice);
 		}
 		
+	}
+	
+	@Override
+	public ReservationResponse getReservationResponse(int reservationInfoId) {
+		return reservationResponseDao.getReservationResponse(reservationInfoId);
 	}
 
 }

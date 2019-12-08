@@ -17,10 +17,10 @@ public class ReservationInfoServiceTest {
 		// TODO Auto-generated method stub
 		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 
-		ReservationService reservationInfoService = ac.getBean(ReservationService.class);
+		ReservationService reservationService = ac.getBean(ReservationService.class);
 
 		/* getReservationInfoService */
-		List<ReservationInfo> reservationInfoList = reservationInfoService
+		List<ReservationInfo> reservationInfoList = reservationService
 				.getReservationInfoList("kimjinsu@connect.co.kr");
 
 		for (ReservationInfo reservationInfo : reservationInfoList) {
@@ -31,15 +31,15 @@ public class ReservationInfoServiceTest {
 
 		
 		/* getReservationTotalPrice */
-		System.out.println(reservationInfoService.getReservationTotalPrice(4));
+		System.out.println(reservationService.getReservationTotalPrice(4));
 		System.out.println("======================================");
 		
 		/* getReservationInfoResponse */
-		System.out.println(reservationInfoService.getReservationResponse("kimjinsu@connect.co.kr"));
+		System.out.println(reservationService.getReservationInfoResponse("kimjinsu@connect.co.kr"));
 		System.out.println("======================================");
 		
 		/* getReservationPrice */
-		List<ReservationPrice> reservationPriceList = reservationInfoService.getReservationPriceList(5);
+		List<ReservationPrice> reservationPriceList = reservationService.getReservationPriceList(5);
 
 		for (ReservationPrice reservationPrice : reservationPriceList) {
 			System.out.println(reservationPrice);
@@ -47,6 +47,9 @@ public class ReservationInfoServiceTest {
 		}
 		System.out.println("======================================");
 
+		/*getReservationResponse */
+		System.out.println(reservationService.getReservationResponse(3));
+		System.out.println("======================================");
 	}
 
 }

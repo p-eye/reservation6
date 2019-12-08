@@ -8,6 +8,7 @@ import kr.or.connect.reservation.dto.ReservationInfo;
 import kr.or.connect.reservation.dto.ReservationParam;
 import kr.or.connect.reservation.dto.ReservationPrice;
 import kr.or.connect.reservation.dto.response.ReservationInfoResponse;
+import kr.or.connect.reservation.dto.response.ReservationResponse;
 
 @Service
 public interface ReservationService {
@@ -22,5 +23,7 @@ public interface ReservationService {
 	public List<ReservationPrice> getReservationPriceList(int reservationInfoId);
 
 	public int insertReservationInfo(ReservationParam reservationParam);
+
+	public ReservationResponse getReservationResponse(int reservationInfoId);
 
 }
