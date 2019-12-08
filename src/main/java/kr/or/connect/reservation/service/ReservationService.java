@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dto.ReservationInfo;
+import kr.or.connect.reservation.dto.ReservationParam;
 import kr.or.connect.reservation.dto.ReservationPrice;
 import kr.or.connect.reservation.dto.response.ReservationResponse;
 
@@ -19,5 +20,7 @@ public interface ReservationService {
 	public int getReservationTotalPrice(int reservationInfoId);
 	
 	public List<ReservationPrice> getReservationPriceList(int reservationInfoId);
+
+	public int insertReservationInfo(ReservationParam reservationParam);
 
 }

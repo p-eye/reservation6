@@ -42,7 +42,8 @@ public class ReservationApiController {
 	@PostMapping(path = "")
 	public ReservationResponse addReservationInfo(@RequestBody ReservationParam reservationParam) {
 		System.out.println(reservationParam);
-		reservationInfoDao.insertReservationInfo(reservationParam);
+		reservationService.insertReservationInfo(reservationParam);
+		
 		
 		
 		return null;

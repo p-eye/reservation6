@@ -1,7 +1,6 @@
 package kr.or.connect.reservation.dao;
 
 import static kr.or.connect.reservation.dao.sqls.ReservationPriceSqls.SELECT_RESERVATION_PRICE_LIST;
-import static kr.or.connect.reservation.dao.sqls.ReservationPriceSqls.SELECT_RESERVATION_TOTAL_PRICE;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +10,10 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import kr.or.connect.reservation.dto.ReservationPrice;
@@ -21,9 +23,12 @@ public class ReservationPriceDao {
 
 	private NamedParameterJdbcTemplate jdbc;
 	private RowMapper<ReservationPrice> rowMapper = BeanPropertyRowMapper.newInstance(ReservationPrice.class);
+	private SimpleJdbcInsert insertAction;
 
 	public ReservationPriceDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+		this.insertAction = new SimpleJdbcInsert(dataSource).withTableName("reservation_info_price")
+				.usingGeneratedKeyColumns("id");
 	}
 
 	public List<ReservationPrice> getReservationPriceList(int reservationInfoId) {
@@ -33,6 +38,11 @@ public class ReservationPriceDao {
 
 		return jdbc.query(SELECT_RESERVATION_PRICE_LIST, params, rowMapper);
 
+	}
+	
+	public void insertReservationPrice(ReservationPrice reservationPrice) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(reservationPrice);
+		insertAction.execute(params);
 	}
 
 }

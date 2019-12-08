@@ -19,19 +19,19 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired
 	private ReservationInfoDao reservationInfoDao;
-	
+
 	@Autowired
 	private ReservationPriceDao reservationPriceDao;
 
 	@Autowired
 	private DisplayInfoService displayInfoService;
-	
+
 	@Override
 	public ReservationResponse getReservationResponse(String reservationEmail) {
-		
+
 		ReservationResponse reservationResponse = new ReservationResponse();
 		List<ReservationInfo> reservationInfoList = getReservationInfoList(reservationEmail);
-		
+
 		reservationResponse.setReservations(reservationInfoList);
 		reservationResponse.setSize(reservationInfoList.size());
 
@@ -56,16 +56,30 @@ public class ReservationServiceImpl implements ReservationService {
 	public int getReservationTotalPrice(int reservationInfoId) {
 		return reservationInfoDao.getReservationTotalPrice(reservationInfoId);
 	}
-	
+
 	@Override
 	public List<ReservationPrice> getReservationPriceList(int reservationInfoId) {
 		return reservationPriceDao.getReservationPriceList(reservationInfoId);
 	}
-	
 
-	public int addReservationInfo(ReservationParam reservationParam) {
+	@Override
+	public int insertReservationInfo(ReservationParam reservationParam) {
 
+		int reservationInfoId = reservationInfoDao.insertReservationInfo(reservationParam);
+		insertReservationPrice(reservationParam, reservationInfoId);
+
+		
 		return 0;
+
+	}
+	
+	public void insertReservationPrice(ReservationParam reservationParam, int reservationInfoId) {
+		List<ReservationPrice> reservationPriceList = reservationParam.getPrices();
+		
+		for(ReservationPrice reservationPrice : reservationPriceList) {
+			reservationPrice.setReservationInfoId(reservationInfoId);
+			reservationPriceDao.insertReservationPrice(reservationPrice);
+		}
 		
 	}
 
