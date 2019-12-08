@@ -1,5 +1,6 @@
 package kr.or.connect.reservation.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ReservationParam {
@@ -11,13 +12,18 @@ public class ReservationParam {
 	private String reservationName;
 	private String reservationTel;
 	private String reservationDate;
+	private boolean cancelFlag;
+	private LocalDateTime createDate;
+	private LocalDateTime modifyDate;
 
 	public ReservationParam() {
-		super();
+		createDate = LocalDateTime.now();
+		modifyDate = LocalDateTime.now();
 	}
 
 	public ReservationParam(int displayInfoId, List<ReservationPrice> prices, int productId, String reservationEmail,
-			String reservationName, String reservationTel, String reservationDate) {
+			String reservationName, String reservationTel, String reservationDate, boolean cancelFlag,
+			LocalDateTime createDate, LocalDateTime modifyDate) {
 		super();
 		this.displayInfoId = displayInfoId;
 		this.prices = prices;
@@ -26,6 +32,9 @@ public class ReservationParam {
 		this.reservationName = reservationName;
 		this.reservationTel = reservationTel;
 		this.reservationDate = reservationDate;
+		this.cancelFlag = cancelFlag;
+		this.createDate = createDate;
+		this.modifyDate = modifyDate;
 	}
 
 	public int getDisplayInfoId() {
@@ -84,11 +93,36 @@ public class ReservationParam {
 		this.reservationDate = reservationDate;
 	}
 
+	public boolean isCancelFlag() {
+		return cancelFlag;
+	}
+
+	public void setCancelFlag(boolean cancelFlag) {
+		this.cancelFlag = cancelFlag;
+	}
+
+	public LocalDateTime getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
+	}
+
+	public LocalDateTime getModifyDate() {
+		return modifyDate;
+	}
+
+	public void setModifyDate(LocalDateTime modifyDate) {
+		this.modifyDate = modifyDate;
+	}
+
 	@Override
 	public String toString() {
 		return "ReservationParam [displayInfoId=" + displayInfoId + ", prices=" + prices + ", productId=" + productId
 				+ ", reservationEmail=" + reservationEmail + ", reservationName=" + reservationName
-				+ ", reservationTel=" + reservationTel + ", reservationDate=" + reservationDate + "]";
+				+ ", reservationTel=" + reservationTel + ", reservationDate=" + reservationDate + ", cancelFlag="
+				+ cancelFlag + ", createDate=" + createDate + ", modifyDate=" + modifyDate + "]";
 	}
 
 }

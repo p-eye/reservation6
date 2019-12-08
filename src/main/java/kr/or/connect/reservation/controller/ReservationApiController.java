@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.or.connect.reservation.dao.ReservationInfoDao;
 import kr.or.connect.reservation.dto.ReservationParam;
 import kr.or.connect.reservation.dto.response.ReservationResponse;
+import kr.or.connect.reservation.service.ProductService;
 import kr.or.connect.reservation.service.ReservationService;
 
 @RestController
@@ -19,7 +21,12 @@ import kr.or.connect.reservation.service.ReservationService;
 
 public class ReservationApiController {
 
-	private final ReservationService reservationService;
+
+	@Autowired
+	public ReservationService reservationService;
+	
+	@Autowired
+	public ReservationInfoDao reservationInfoDao;
 
 	@Autowired
 	public ReservationApiController(ReservationService reservationService) {
@@ -35,7 +42,9 @@ public class ReservationApiController {
 	@PostMapping(path = "")
 	public ReservationResponse addReservationInfo(@RequestBody ReservationParam reservationParam) {
 		System.out.println(reservationParam);
-
+		reservationInfoDao.insertReservationInfo(reservationParam);
+		
+		
 		return null;
 	}
 
