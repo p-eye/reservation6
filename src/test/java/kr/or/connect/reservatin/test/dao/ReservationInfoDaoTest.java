@@ -29,6 +29,9 @@ public class ReservationInfoDaoTest {
 		/* getReservationTotalPrice */
 		System.out.println(reservationInfoDao.getReservationTotalPrice(1));
 
+		/* cancelReservationInfo */
+		System.out.println(reservationInfoDao.cancelReservationInfo(10));
+		System.out.println("==========");
 	}
 
 }

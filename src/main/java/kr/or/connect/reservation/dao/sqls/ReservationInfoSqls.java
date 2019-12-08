@@ -16,4 +16,10 @@ public class ReservationInfoSqls {
 			+"FROM reservation_info ri "
 			+"WHERE ri.reservation_email = :reservationEmail";
 
+	public static final String CANCEL_RESERVATION = 
+			"UPDATE reservation_info ri " 
+			+ "SET ri.cancel_flag = 1, "
+			+ "ri.modify_date = :modifyDate "
+			+ "WHERE ri.id = :reservationInfoId";
+	
 }

@@ -28,5 +28,7 @@ public interface ReservationService {
 	public void insertReservationPrice(ReservationParam reservationParam, int reservationInfoId);
 
 	public ReservationResponse getReservationResponse(int reservationInfoId);
+	
+	public ReservationResponse cancelReservationInfo(int reservationInfoId);
 
 }

@@ -1,17 +1,21 @@
 package kr.or.connect.reservation.dao;
 
+import static kr.or.connect.reservation.dao.sqls.ReservationInfoSqls.CANCEL_RESERVATION;
 import static kr.or.connect.reservation.dao.sqls.ReservationInfoSqls.SELECT_RESERVATION_INFO_LIST;
 import static kr.or.connect.reservation.dao.sqls.ReservationPriceSqls.SELECT_RESERVATION_TOTAL_PRICE;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -53,5 +57,16 @@ public class ReservationInfoDao {
 	public int insertReservationInfo(ReservationParam reservationParam) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(reservationParam);
 		return insertAction.executeAndReturnKey(params).intValue();
+	}
+	
+	
+	public int cancelReservationInfo(int reservationInfoId) {
+		try {
+			SqlParameterSource params = new MapSqlParameterSource().addValue("reservationInfoId", reservationInfoId)
+					.addValue("modifyDate", new Date());
+			return jdbc.update(CANCEL_RESERVATION, params);
+		} catch (EmptyResultDataAccessException e) { // select 했는데 해당 값이 없을 때 0 리턴
+			return 0;
+		}
 	}
 }
