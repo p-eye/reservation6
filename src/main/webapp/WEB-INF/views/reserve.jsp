@@ -123,6 +123,7 @@
 								</div>
 
 								<div class="hidden_form"></div>
+							</form>
 						</div>
 					</div>
 					<div class="section_booking_agreement">
@@ -183,7 +184,6 @@
 						</button>
 					</div>
 				</div>
-				</form>
 			</div>
 		</div>
 	</div>
@@ -251,8 +251,6 @@
           </div>
         </div>
       {{/each}}
-    </script>
-	<script type="rv-template" id="hidden-form-input">
     </script>
 </body>
 </html>
