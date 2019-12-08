@@ -24,7 +24,7 @@ public class MainController {
 		return "reserve";
 	}
 
-	@GetMapping(path = "/bookinglogin")
+	@GetMapping(path = "/bookingloginForm")
 	public String getBookinglogin() {
 		return "bookinglogin";
 	}

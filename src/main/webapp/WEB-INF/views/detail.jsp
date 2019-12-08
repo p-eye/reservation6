@@ -26,7 +26,7 @@
 						class="spr_bi ico_bk_logo">예약</span>
 					</a>
 				</h1>
-				<a href="./bookinglogin" class="btn_my"> <span title="예약확인">예약확인</span>
+				<a href="./bookingloginForm" class="btn_my"> <span title="예약확인">예약확인</span>
 				</a>
 			</header>
 		</div>
