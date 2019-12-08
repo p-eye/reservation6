@@ -46,7 +46,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			HttpSession httpSession = request.getSession();
 			httpSession.setAttribute(LOGIN, reservationInfo);
 			response.sendRedirect(
-					"/reservation6/myreservation?reservationEmail=" + reservationInfo.getReservationEmail());
+					"./myreservation?reservationEmail=" + reservationInfo.getReservationEmail());
 
 		}
 

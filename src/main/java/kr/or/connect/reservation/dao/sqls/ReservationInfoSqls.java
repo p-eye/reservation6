@@ -7,7 +7,7 @@ public class ReservationInfoSqls {
 			+"ri.product_id, "
 			+"ri.display_info_id, "
 			+"ri.reservation_name, "
-	 		+"ri.reservation_tel AS reservation_telephone, "
+	 		+"ri.reservation_tel, "
 			+"ri.reservation_email, "
 			+"ri.cancel_flag, "
 			+"ri.reservation_date, "

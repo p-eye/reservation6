@@ -6,7 +6,7 @@ public class ReservationInfo {
 	private int productId;
 	private int displayInfoId;
 	private String reservationName;
-	private String reservationTelephone;
+	private String reservationTel;
 	private String reservationEmail;
 	private boolean cancelYn;
 	private String reservationDate;
@@ -20,14 +20,14 @@ public class ReservationInfo {
 	}
 
 	public ReservationInfo(int reservationInfoId, int productId, int displayInfoId, String reservationName,
-			String reservationTelephone, String reservationEmail, boolean cancelYn, String reservationDate,
+			String reservationTel, String reservationEmail, boolean cancelYn, String reservationDate,
 			String createDate, String modifyDate, DisplayInfo displayInfo, int totalPrice) {
 		super();
 		this.reservationInfoId = reservationInfoId;
 		this.productId = productId;
 		this.displayInfoId = displayInfoId;
 		this.reservationName = reservationName;
-		this.reservationTelephone = reservationTelephone;
+		this.reservationTel = reservationTel;
 		this.reservationEmail = reservationEmail;
 		this.cancelYn = cancelYn;
 		this.reservationDate = reservationDate;
@@ -69,12 +69,12 @@ public class ReservationInfo {
 		this.reservationName = reservationName;
 	}
 
-	public String getReservationTelephone() {
-		return reservationTelephone;
+	public String getReservationTel() {
+		return reservationTel;
 	}
 
-	public void setReservationTelephone(String reservationTelephone) {
-		this.reservationTelephone = reservationTelephone;
+	public void setReservationTel(String reservationTel) {
+		this.reservationTel = reservationTel;
 	}
 
 	public String getReservationEmail() {
@@ -137,7 +137,7 @@ public class ReservationInfo {
 	public String toString() {
 		return "ReservationInfo [reservationInfoId=" + reservationInfoId + ", productId=" + productId
 				+ ", displayInfoId=" + displayInfoId + ", reservationName=" + reservationName
-				+ ", reservationTelephone=" + reservationTelephone + ", reservationEmail=" + reservationEmail
+				+ ", reservationTel=" + reservationTel + ", reservationEmail=" + reservationEmail
 				+ ", cancelYn=" + cancelYn + ", reservationDate=" + reservationDate + ", createDate=" + createDate
 				+ ", modifyDate=" + modifyDate + ", displayInfo=" + displayInfo + ", totalPrice=" + totalPrice + "]";
 	}
