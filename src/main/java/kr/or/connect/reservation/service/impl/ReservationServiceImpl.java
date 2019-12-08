@@ -10,7 +10,7 @@ import kr.or.connect.reservation.dao.ReservationPriceDao;
 import kr.or.connect.reservation.dto.ReservationInfo;
 import kr.or.connect.reservation.dto.ReservationParam;
 import kr.or.connect.reservation.dto.ReservationPrice;
-import kr.or.connect.reservation.dto.response.ReservationResponse;
+import kr.or.connect.reservation.dto.response.ReservationInfoResponse;
 import kr.or.connect.reservation.service.DisplayInfoService;
 import kr.or.connect.reservation.service.ReservationService;
 
@@ -27,9 +27,9 @@ public class ReservationServiceImpl implements ReservationService {
 	private DisplayInfoService displayInfoService;
 
 	@Override
-	public ReservationResponse getReservationResponse(String reservationEmail) {
+	public ReservationInfoResponse getReservationInfoResponse(String reservationEmail) {
 
-		ReservationResponse reservationResponse = new ReservationResponse();
+		ReservationInfoResponse reservationResponse = new ReservationInfoResponse();
 		List<ReservationInfo> reservationInfoList = getReservationInfoList(reservationEmail);
 
 		reservationResponse.setReservations(reservationInfoList);

@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 import kr.or.connect.reservation.dto.ReservationInfo;
 import kr.or.connect.reservation.dto.ReservationParam;
 import kr.or.connect.reservation.dto.ReservationPrice;
-import kr.or.connect.reservation.dto.response.ReservationResponse;
+import kr.or.connect.reservation.dto.response.ReservationInfoResponse;
 
 @Service
 public interface ReservationService {
 
 
-	public ReservationResponse getReservationResponse(String reservationEmail);
+	public ReservationInfoResponse getReservationInfoResponse(String reservationEmail);
 	
 	public List<ReservationInfo> getReservationInfoList(String reservationEmail);
 	

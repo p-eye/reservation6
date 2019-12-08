@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.or.connect.reservation.dao.ReservationInfoDao;
 import kr.or.connect.reservation.dto.ReservationParam;
+import kr.or.connect.reservation.dto.response.ReservationInfoResponse;
 import kr.or.connect.reservation.dto.response.ReservationResponse;
-import kr.or.connect.reservation.service.ProductService;
 import kr.or.connect.reservation.service.ReservationService;
 
 @RestController
@@ -34,9 +34,9 @@ public class ReservationApiController {
 	}
 
 	@GetMapping(path = "")
-	public ReservationResponse getReservationResponse(
+	public ReservationInfoResponse getReservationInfoResponse(
 			@RequestParam(name = "reservationEmail", defaultValue = "") String reservationEmail) {
-		return reservationService.getReservationResponse(reservationEmail);
+		return reservationService.getReservationInfoResponse(reservationEmail);
 	}
 
 	@PostMapping(path = "")
