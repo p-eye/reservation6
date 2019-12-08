@@ -39,26 +39,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			ModelAndView modelAndView) throws Exception {
 
 		ModelMap modelMap = modelAndView.getModelMap();
-		
+
 		ReservationInfo reservationInfo = (ReservationInfo) modelMap.get("reservationInfo");
 
-		
 		if (reservationInfo != null) {
 			HttpSession httpSession = request.getSession();
-			/*
-			String reservationName = reservationInfo.getReservationName();
-			String reservationTel = reservationInfo.getReservationTel();
-			*/
-			String reservationEmail = reservationInfo.getReservationEmail();
-			
 			httpSession.setAttribute(LOGIN, reservationInfo);
-			/*
-			httpSession.setAttribute("reservationName", reservationName);
-			httpSession.setAttribute("reservationTel", reservationTel);
-			httpSession.setAttribute("reservationEmail", reservationEmail);
-			*/
-			response.sendRedirect("/reservation6/myreservation?reservationEmail="+reservationEmail);
-	
+			response.sendRedirect(
+					"/reservation6/myreservation?reservationEmail=" + reservationInfo.getReservationEmail());
+
 		}
 
 		logger.debug("{} 가종료되었습니다. {} 를 view로 사용합니다.", handler.toString(), modelAndView.getViewName());
