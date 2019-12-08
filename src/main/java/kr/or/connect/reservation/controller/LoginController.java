@@ -19,7 +19,7 @@ public class LoginController {
 	@Autowired
 	private ReservationService reservationService;
 
-	@PostMapping(path = "/bookinglogin")
+	@PostMapping(path = "/bookingloginPost")
 	public void getMyReservation(@RequestParam String reservationEmail, Model model) {
 
 		List<ReservationInfo> reservationInfoList = reservationService.getReservationInfoList(reservationEmail);
