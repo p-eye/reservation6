@@ -49,8 +49,9 @@ public class ReservationServiceImpl implements ReservationService {
 
 		// Each ReservationInfo
 		for (ReservationInfo reservationInfo : reservationInfoList) {
-			reservationInfo.setDisplayInfo(displayInfoService.getDisplayInfo(reservationInfo.getDisplayInfoId()));
-			reservationInfo.setTotalPrice(getReservationTotalPrice(reservationInfo.getReservationInfoId()));
+			int displayInfoId = reservationInfo.getDisplayInfoId();
+			reservationInfo.setDisplayInfo(displayInfoService.getDisplayInfo(displayInfoId));
+			reservationInfo.setTotalPrice(getReservationTotalPrice(displayInfoId));
 		}
 
 		return reservationInfoList;
@@ -73,7 +74,6 @@ public class ReservationServiceImpl implements ReservationService {
 		insertReservationPrice(reservationParam, reservationInfoId);
 
 		return getReservationResponse(reservationInfoId);
-
 	}
 
 	@Override
@@ -89,7 +89,6 @@ public class ReservationServiceImpl implements ReservationService {
 			reservationPrice.setReservationInfoId(reservationInfoId);
 			reservationPriceDao.insertReservationPrice(reservationPrice);
 		}
-
 	}
 
 	@Override
