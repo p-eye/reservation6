@@ -3,10 +3,13 @@ package kr.or.connect.reservation.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.or.connect.reservation.dto.ReservationParam;
 import kr.or.connect.reservation.dto.response.ReservationResponse;
 import kr.or.connect.reservation.service.ReservationService;
 
@@ -27,6 +30,13 @@ public class ReservationApiController {
 	public ReservationResponse getReservationResponse(
 			@RequestParam(name = "reservationEmail", defaultValue = "") String reservationEmail) {
 		return reservationService.getReservationResponse(reservationEmail);
+	}
+
+	@PostMapping(path = "")
+	public ReservationResponse addReservationInfo(@RequestBody ReservationParam reservationParam) {
+		System.out.println(reservationParam);
+
+		return null;
 	}
 
 }

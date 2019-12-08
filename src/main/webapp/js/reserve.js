@@ -444,7 +444,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sendReservationInputJSON: function(reservationObj) {
       let oReq = new XMLHttpRequest();
 
-      oReq.open("POST", "http://localhost:8080/reservation6/api/reservations");
+      oReq.open("POST", "./api/reservations");
       oReq.setRequestHeader("Content-Type", "application/json");
       oReq.addEventListener("load", function() {
         if (oReq.status === 200) {
@@ -454,8 +454,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
 
-      console.log(reservationObj);
-      //   oReq.send(JSON.stringify(reservationObj));
+      oReq.send(JSON.stringify(reservationObj));
     }
   };
 
