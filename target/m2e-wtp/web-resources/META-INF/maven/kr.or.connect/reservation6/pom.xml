@@ -18,6 +18,13 @@
 	</properties>
 	<dependencies>
 
+		<!-- JSTL -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
 		<!-- Jackson Module -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
