@@ -33,8 +33,8 @@ public class ProductServiceTest {
 		
 		
 		/*getProductResponseByCategoryId */
-		 System.out.println(productService.getProductResponseByCategoryId(1, 0));
-		 System.out.println(productService.getProductResponseByCategoryId(0, 0));
+		 System.out.println(productService.getProductResponse(1, 0));
+		 System.out.println(productService.getProductResponse(0, 0));
 		 
 		/* getProductPriceList */
 		List<ProductPrice> productPriceList = productService.getProductPriceList(38);

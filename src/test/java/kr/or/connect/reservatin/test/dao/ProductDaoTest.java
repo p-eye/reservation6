@@ -18,7 +18,7 @@ public class ProductDaoTest {
 		ProductDao productDao = ac.getBean(ProductDao.class);
 
 		/* getProductListByCategoryId */
-		List<Product> productList = productDao.getProductListByCategoryId(2, 4, 4);
+		List<Product> productList = productDao.getProductListByCategory(2, 4, 4);
 
 		for (Product product : productList) {
 			System.out.println(product);

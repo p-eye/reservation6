@@ -23,15 +23,6 @@ public class ProductDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public List<Product> getProductListByCategoryId(int categoryId, int start, int limit) {
-		Map<String, Integer> params = new HashMap<>();
-		params.put("categoryId", categoryId);
-		params.put("start", start);
-		params.put("limit", limit);
-
-		return jdbc.query(SELECT_PRODUCTS_BY_CATEGORY, params, new ProductMapper());
-	}
-
 	public List<Product> getProductListAll(int start, int limit) {
 		Map<String, Integer> params = new HashMap<>();
 		params.put("start", start);
@@ -40,4 +31,14 @@ public class ProductDao {
 		return jdbc.query(SELECT_PRODUCTS_ALL, params, new ProductMapper());
 
 	}
+
+	public List<Product> getProductListByCategory(int categoryId, int start, int limit) {
+		Map<String, Integer> params = new HashMap<>();
+		params.put("categoryId", categoryId);
+		params.put("start", start);
+		params.put("limit", limit);
+
+		return jdbc.query(SELECT_PRODUCTS_BY_CATEGORY, params, new ProductMapper());
+	}
+
 }

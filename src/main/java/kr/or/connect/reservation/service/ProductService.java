@@ -15,12 +15,14 @@ public interface ProductService {
 	public final int PRODUCT_PER_PAGE = 4;
 	public final int TOTAL_CATEGORIES = 0;
 
-	public List<Product> getProductListByCategoryId(int categoryId, int start);
+	public ProductResponse getProductResponse(int categoryId, int start);
 
-	public ProductResponse getProductResponseByCategoryId(int categoryId, int start);
+	public List<Product> getProductList(int categoryId, int start);
+
+	public int getProductListTotalCount(int categoryId);
 
 	public List<ProductPrice> getProductPriceList(int productId);
-	
+
 	public List<ProductImage> getProductImageList(int productId);
 
 }

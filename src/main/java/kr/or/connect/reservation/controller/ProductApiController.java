@@ -27,7 +27,7 @@ public class ProductApiController {
 			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
 			@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
 
-		return productService.getProductResponseByCategoryId(categoryId, start);
+		return productService.getProductResponse(categoryId, start);
 	}
 	
 	@GetMapping(path = "/{displayInfoId}")

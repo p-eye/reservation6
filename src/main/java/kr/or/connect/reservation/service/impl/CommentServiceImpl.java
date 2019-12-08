@@ -24,6 +24,7 @@ public class CommentServiceImpl implements CommentService {
 	public List<Comment> getCommentList(int productId) {
 		List<Comment> commentList = commentDao.getCommentList(productId);
 
+		//Each Comment
 		for (Comment comment : commentList) {
 			int reservationInfoId = comment.getReservationInfoId();
 			comment.setCommentImages(getCommentImageList(reservationInfoId));

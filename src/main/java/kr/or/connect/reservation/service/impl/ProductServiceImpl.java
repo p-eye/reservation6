@@ -32,34 +32,39 @@ public class ProductServiceImpl implements ProductService {
 	private ProductImageDao productImageDao;
 
 	@Override
-	public List<Product> getProductListByCategoryId(int categoryId, int start) {
+	public ProductResponse getProductResponse(int categoryId, int start) {
 
-		if (categoryId == TOTAL_CATEGORIES) {
-			return productDao.getProductListAll(start, PRODUCT_PER_PAGE);
-		} else {
-			return productDao.getProductListByCategoryId(categoryId, start, PRODUCT_PER_PAGE);
-		}
+		ProductResponse productResponse = new ProductResponse();
+
+		productResponse.setItems(getProductList(categoryId, start));
+		productResponse.setTotalCount(getProductListTotalCount(categoryId));
+
+		return productResponse;
 	}
 
 	@Override
-	public ProductResponse getProductResponseByCategoryId(int categoryId, int start) {
-
-		ProductResponse productResponse = new ProductResponse();
-		productResponse.setItems(getProductListByCategoryId(categoryId, start));
-
+	public List<Product> getProductList(int categoryId, int start) {
 		if (categoryId == TOTAL_CATEGORIES) {
-			int totalCount = 0;
+			return productDao.getProductListAll(start, PRODUCT_PER_PAGE);
+		} else {
+			return productDao.getProductListByCategory(categoryId, start, PRODUCT_PER_PAGE);
+		}
+
+	}
+
+	@Override
+	public int getProductListTotalCount(int categoryId) {
+
+		int totalCount = 0;
+		if (categoryId == TOTAL_CATEGORIES) {
 			for (Category category : categoryDao.getCategoryList()) {
 				totalCount += category.getDisplayInfoCount();
 			}
-			productResponse.setTotalCount(totalCount);
-
 		} else {
-			int totalCount = categoryDao.getCategoryList().get(categoryId - 1).getDisplayInfoCount();
-			productResponse.setTotalCount(totalCount);
+			totalCount = categoryDao.getCategoryList().get(categoryId - 1).getDisplayInfoCount();
 		}
 
-		return productResponse;
+		return totalCount;
 	}
 
 	@Override
