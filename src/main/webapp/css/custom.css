@@ -27,13 +27,6 @@ ng\:form {
   background-position: -75px, -673px;
 }
 
-.form-error-msg {
-  background-color: rgb(255, 232, 232);
-  border: 1px solid red;
-  color: red;
-  display: block;
-  width: 384px;
-  margin-bottom: 10px;
-  padding: 5px;
-  margin: 10px;
+.warning_msg {
+	color: red;
 }

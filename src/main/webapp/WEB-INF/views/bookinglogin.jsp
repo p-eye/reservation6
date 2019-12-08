@@ -1,31 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <!-- saved from url=(0042)https://m.booking.naver.com/booked/confirm -->
 <html lang="ko" class="no-js">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <style type="text/css">
-      @charset "UTF-8";
-      [ng\:cloak],
-      [ng-cloak],
-      [data-ng-cloak],
-      [x-ng-cloak],
-      .ng-cloak,
-      .x-ng-cloak,
-      .ng-hide:not(.ng-hide-animate) {
-        display: none !important;
-      }
-      ng\:form {
-        display: block;
-      }
-      .ng-animate-shim {
-        visibility: hidden;
-      }
-      .ng-anchor {
-        position: absolute;
-      }
-    </style>
     <!--<base href="/">-->
     <base href="." />
     <!--[if IE]>
@@ -54,9 +34,10 @@
       content="telephone=no, address=no, email=no"
     />
     <title translate="CM-NBOOKING">네이버 예약</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/bookinglogin.css" />
-    <link rel="stylesheet" href="../css/reservation.css" />
+    <link href="./css/style.css" rel="stylesheet" />
+    <link href="./css/bookinglogin.css" rel="stylesheet" />
+    <link href="./css/reservation.css" rel="stylesheet" />
+    <link href="./css/custom.css" rel="stylesheet" />
   </head>
   <body class="biz  ko">
     <app>
@@ -65,7 +46,7 @@
           <i class="fn fn-info1" aria-hidden="true"></i>
           <span class="_toast_alert_text"></span>
         </p>
-        <a href="./mainpage.html" class="top_info_close" data-tst_alt_close="0">
+        <a href="./" class="top_info_close" data-tst_alt_close="0">
           <i class="fn fn-close" aria-hidden="true"></i>
           <span class="sr_only" translate="CM-CLOSE">닫기</span>
         </a>
@@ -75,17 +56,18 @@
         <booked-confirm>
           <div class="booking_login">
             <h1 class="login_header">
-              <a href="./mainpage.html" class="nbooking_logo spr_bi txt_logo">
+              <a href="./" class="nbooking_logo spr_bi txt_logo">
                 <span translate="CM-NBOOKING">네이버 예약</span>
               </a>
             </h1>
             <!---->
             <div>
               <form
+                method="post"
                 name="confirm_form"
                 class="ng-pristine ng-valid"
                 id="form1"
-                action="./myreservation.html"
+                action="./bookinglogin"
               >
                 <h2 class="login_header_sub border_bottom">
                   <span translate="CM-NON_MEMBER_BK_CONFIRMATION"
@@ -103,12 +85,14 @@
                     type="text"
                     class="login_input ng-pristine ng-untouched ng-valid ng-empty"
                     id="resrv_id"
-                    name="resrv_email"
+                    name="reservationEmail"
                     aria-invalid="false"
                     placeholder="crong@naver.com"
                     title="예매자이메일"
                   />
+                  <div class="warning_msg"></div>
                 </div>
+
                 <button type="submit" form="form1" class="login_btn confirm">
                   <span translate="CM-MY_BOOKING_CHECK">내 예약 확인</span>
                 </button>
@@ -239,5 +223,6 @@
         </div>
       </translater-modal>
     </app>
+    <script src="./js/bookinglogin.js"></script>
   </body>
 </html>
