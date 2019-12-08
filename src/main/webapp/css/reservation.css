@@ -268,7 +268,7 @@ hr {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url('../img/spr_book.png?1602251400');
+    background-image: url('../img/spr_book.png');
     background-size: 400px 400px;
     vertical-align: top;
     text-indent: 100%;
@@ -432,7 +432,7 @@ hr {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url('../img/spr_book.png?1602181400');
+    background-image: url('../img/spr_book.png');
     background-size: 400px 400px;
     vertical-align: top;
     float: left;
@@ -467,7 +467,7 @@ hr {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url('../img/spr_book.png?1602181400');
+    background-image: url('../img/spr_book.png');
     background-size: 400px 400px;
     vertical-align: top;
     float: left;
@@ -1762,7 +1762,7 @@ select {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url('../img/spr_book.png?1602181400');
+    background-image: url('../img/spr_book.png');
     background-size: 400px 400px;
     vertical-align: top;
     text-indent: 100%;
@@ -1921,7 +1921,7 @@ select {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url('../img/spr_book.png?1602181400');
+    background-image: url('../img/spr_book.png');
     background-size: 400px 400px;
     vertical-align: top;
     text-indent: 100%;
@@ -2859,7 +2859,7 @@ select {
     width: 8px;
     height: 15px;
     background-repeat: no-repeat;
-    background-image: url('../img/spr_book.png?1602181400');
+    background-image: url('../img/spr_book.png');
     background-size: 400px 400px;
 }
 .calendar .tit_calendar .calendar-btn.calendar-btn-prev-mon {
@@ -3090,7 +3090,7 @@ select {
     width: 8px;
     height: 15px;
     background-repeat: no-repeat;
-    background-image: url('../img/spr_book.png?1602181400');
+    background-image: url('../img/spr_book.png');
     background-size: 400px 400px;
 }
 .light_calendar .calendar .tit_calendar .calendar-btn.calendar-btn-prev-mon {
@@ -8315,13 +8315,13 @@ select {
 .section_confirm .confirm_item_top:before {
     bottom: 0;
     left: 0;
-    background-image: url('../img/bg/bg_confirm_check_bottom_left.png');
+    background-image: url('../img/bg_confirm_check_bottom_left.png');
     background-position: 0 0;
 }
 .section_confirm .confirm_item_top:after {
     bottom: 0;
     right: 0;
-    background-image: url('../img/bg/bg_confirm_check_bottom_right.png');
+    background-image: url('../img/bg_confirm_check_bottom_right.png');
     background-position: 100% 0;
 }
 .section_confirm .confirm_item_top .common_bottom_buttongroup {
@@ -9194,25 +9194,25 @@ select {
     padding-bottom: 0;
 }
 .section_confirm.default .confirm_item_top .item_top_inside_left {
-    background-image: url('../img/bg/bg_confirm_check_left.png');
+    background-image: url('../img/bg_confirm_check_left.png');
 }
 .section_confirm.default .confirm_item_top .item_top_inside_left .item_top_inside_right {
-    background-image: url('../img/bg/bg_confirm_check_right.png');
+    background-image: url('../img/bg_confirm_check_right.png');
 }
 .section_confirm.default .confirm_item_top .item_top_inside_left .item_top_inside_right .confirm_title {
-    background-image: url('../img/bg/bg_confirm_check_center.png');
+    background-image: url('../img/bg_confirm_check_center.png');
 }
 .section_confirm.okay .confirm_item_top .confirm_btn_share {
     display: block;
 }
 .section_confirm.okay .confirm_item_top .item_top_inside_left {
-    background-image: url('../img/bg/bg_confirm_check_green_left.png');
+    background-image: url('../img/bg_confirm_check_green_left.png');
 }
 .section_confirm.okay .confirm_item_top .item_top_inside_left .item_top_inside_right {
-    background-image: url('../img/bg/bg_confirm_check_green_right.png');
+    background-image: url('../img/bg_confirm_check_green_right.png');
 }
 .section_confirm.okay .confirm_item_top .item_top_inside_left .item_top_inside_right .confirm_title {
-    background-image: url('../img/bg/bg_confirm_check_green_center.png');
+    background-image: url('../img/bg_confirm_check_green_center.png');
 }
 .section_confirm.okay .confirm_item_top .item_top_inside_left .item_top_inside_right .confirm_title > span {
     position: relative;
@@ -9228,25 +9228,25 @@ select {
     padding-right: 35px;
 }
 .section_confirm.cancel .confirm_item_top .item_top_inside_left {
-    background-image: url('../img/bg/bg_confirm_check_gray_left.png');
+    background-image: url('../img/bg_confirm_check_gray_left.png');
 }
 .section_confirm.cancel .confirm_item_top .item_top_inside_left .item_top_inside_right {
-    background-image: url('../img/bg/bg_confirm_check_gray_right.png');
+    background-image: url('../img/bg_confirm_check_gray_right.png');
 }
 .section_confirm.cancel .confirm_item_top .item_top_inside_left .item_top_inside_right .confirm_title {
-    background-image: url('../img/bg/bg_confirm_check_gray_center.png');
+    background-image: url('../img/bg_confirm_check_gray_center.png');
 }
 .section_confirm.cancel .confirm_item_top .item_top_inside_left .item_top_inside_right .confirm_title .ico_clock {
     background-position: -297px -131px;
 }
 .section_confirm.used .confirm_item_top .item_top_inside_left {
-    background-image: url('../img/bg/bg_confirm_check_gray_used_left.png');
+    background-image: url('../img/bg_confirm_check_gray_used_left.png');
 }
 .section_confirm.used .confirm_item_top .item_top_inside_left .item_top_inside_right {
-    background-image: url('../img/bg/bg_confirm_check_gray_used_right.png');
+    background-image: url('../img/bg_confirm_check_gray_used_right.png');
 }
 .section_confirm.used .confirm_item_top .item_top_inside_left .item_top_inside_right .confirm_title {
-    background-image: url('../img/bg/bg_confirm_check_gray_used_center.png');
+    background-image: url('../img/bg_confirm_check_gray_used_center.png');
     background-size: 4px 53px;
     height: 38px;
 }
@@ -9522,7 +9522,7 @@ select {
     margin: 18.5px auto 39px;
     width: 200px;
     height: 36.5px;
-    background-image: url('../img/spr_book.png?1602251400');
+    background-image: url('../img/spr_book.png');
     background-size: 400px 400px;
     background-position: -46px -334px;
 }
@@ -10249,7 +10249,7 @@ select {
     left: 12px;
     width: 78px;
     height: 14px;
-    background-image: url('/img/spr_comment.png');
+    background-image: url('../img/spr_comment.png');
     background-repeat: no-repeat;
     background-size: 89px 100px;
     background-position: 0 -61px;
@@ -10258,7 +10258,7 @@ select {
 }
 .write_act .review_rating .bg_star > span {
     float: left;
-    background-image: url('/img/spr_comment.png');
+    background-image: url('../img/spr_comment.png');
     background-repeat: no-repeat;
     background-size: 89px 100px;
     background-position: 0 -76px;
@@ -10359,7 +10359,7 @@ select {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url('../img/spr_book.png?1602181400');
+    background-image: url('../img/spr_book.png');
     background-size: 400px 400px;
     vertical-align: top;
     width: 10px;
@@ -10434,7 +10434,7 @@ select {
     margin: 0 auto;
     width: 20px;
     height: 20px;
-    background-image: url('/img/img_loading.gif');
+    background-image: url('../img/img_loading.gif');
     background-poisition: 0 0;
     background-repeat: no-repeat;
     background-size: 20px 20px;
@@ -10443,7 +10443,7 @@ select {
 .section_review_box_wrap .grade_area .graph_mask,
 .section_review_box_wrap .grade_area .graph_value,
 .section_review_box_wrap .short_review_area .review_info .grade:before {
-    background-image: url('/img/spr_comment.png');
+    background-image: url('../img/spr_comment.png');
     background-repeat: no-repeat;
     background-size: 89px 100px;
 }
@@ -10641,7 +10641,7 @@ select {
     margin-left: 5px;
     width: 10px;
     height: 6px;
-    background-image: url('/img/spr_book.png');
+    background-image: url('../img/spr_book.png');
     background-position: -324px -212px;
     background-repeat: no-repeat;
     background-size: 400px auto;
@@ -10667,7 +10667,7 @@ select {
     margin-right: 4px;
     width: 10px;
     height: 10px;
-    background-image: url('/img/spr_book.png');
+    background-image: url('../img/spr_book.png');
     background-position: -378px -187px;
     background-repeat: no-repeat;
     background-size: 400px auto;
@@ -10957,7 +10957,7 @@ select {
 .section_my .wrap_mylist .list_cards .card .card_header .left {
     overflow: hidden;
     display: table-cell;
-    background-image: url('/img/bg/bg_card_hl.png');
+    background-image: url('../img/bg_card_hl.png');
     background-size: 12px 54px;
     background-repeat: no-repeat;
     width: 12px;
@@ -10968,7 +10968,7 @@ select {
     position: relative;
     overflow: hidden;
     display: table-cell;
-    background-image: url('/img/bg/bg_card_hm.gif');
+    background-image: url('../img/bg_card_hm.gif');
     background-size: auto 54px;
     background-repeat: repeat-x;
     width: 100%;
@@ -10992,7 +10992,7 @@ select {
 .section_my .wrap_mylist .list_cards .card .card_header .right {
     overflow: hidden;
     display: table-cell;
-    background-image: url('/img/bg/bg_card_hr.png');
+    background-image: url('../img/bg_card_hr.png');
     background-size: 12px 54px;
     background-repeat: no-repeat;
     width: 12px;
@@ -11006,7 +11006,7 @@ select {
 .section_my .wrap_mylist .list_cards .card .card_body .left {
     overflow: hidden;
     display: table-cell;
-    background-image: url('/img/bg/bg_card_bl.png');
+    background-image: url('../img/bg_card_bl.png');
     background-size: 12px 2px;
     background-repeat: repeat-y;
     width: 12px;
@@ -11087,7 +11087,7 @@ select {
 .section_my .wrap_mylist .list_cards .card .card_body .right {
     overflow: hidden;
     display: table-cell;
-    background-image: url('/img/bg/bg_card_br.png');
+    background-image: url('../img/bg_card_br.png');
     background-size: 12px 2px;
     background-repeat: repeat-y;
     width: 12px;
@@ -11101,7 +11101,7 @@ select {
 .section_my .wrap_mylist .list_cards .card .card_footer .left {
     overflow: hidden;
     display: table-cell;
-    background-image: url('/img/bg/bg_card_fl.png');
+    background-image: url('../img/bg_card_fl.png');
     background-size: 12px 2px;
     background-repeat: no-repeat;
     width: 12px;
@@ -11111,7 +11111,7 @@ select {
 .section_my .wrap_mylist .list_cards .card .card_footer .middle {
     overflow: hidden;
     display: table-cell;
-    background-image: url('/img/bg/bg_card_fm.png');
+    background-image: url('../img/bg_card_fm.png');
     background-size: 2px 2px;
     background-repeat: repeat-x;
     width: 100%;
@@ -11121,7 +11121,7 @@ select {
 .section_my .wrap_mylist .list_cards .card .card_footer .right {
     overflow: hidden;
     display: table-cell;
-    background-image: url('/img/bg/bg_card_fr.png');
+    background-image: url('../img/bg_card_fr.png');
     background-size: 12px 2px;
     background-repeat: no-repeat;
     width: 12px;
@@ -11133,13 +11133,13 @@ select {
 }
 /*
 .section_my .wrap_mylist .list_cards .card.confirmed .card_header .left {
-    background-image: url('/img/bg/bg_card2_hl.png');
+    background-image: url('../img/bg_card2_hl.png');
 }
 .section_my .wrap_mylist .list_cards .card.confirmed .card_header .middle {
-    background-image: url('/img/bg/bg_card2_hm.gif');
+    background-image: url('../img/bg_card2_hm.gif');
 }
 .section_my .wrap_mylist .list_cards .card.confirmed .card_header .right {
-    background-image: url('/img/bg/bg_card2_hr.png');
+    background-image: url('../img/bg_card2_hr.png');
 }
 */
 .section_my .wrap_mylist .list_cards .card.used .card_header {
@@ -11147,13 +11147,13 @@ select {
 }
 /*
 .section_my .wrap_mylist .list_cards .card.used .card_header .left {
-    background-image: url('/img/bg/bg_card3_hl.png');
+    background-image: url('../img/bg_card3_hl.png');
 }
 .section_my .wrap_mylist .list_cards .card.used .card_header .middle {
-    background-image: url('/img/bg/bg_card3_hm.gif');
+    background-image: url('../img/bg_card3_hm.gif');
 }
 .section_my .wrap_mylist .list_cards .card.used .card_header .right {
-    background-image: url('/img/bg/bg_card3_hr.png');
+    background-image: url('../img/bg_card3_hr.png');
 }
 */
 .section_my .btn_more {
@@ -11523,7 +11523,7 @@ select {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url('../img/spr_book_event.png?151216');
+    background-image: url('../img/spr_book_event.png');
     background-size: 150px 50px;
     -webkit-background-size: 150px 50px;
     vertical-align: top;
@@ -11902,12 +11902,12 @@ select {
     margin-right: 8px;
     width: 25px !important;
     height: 25px !important;
-    background-image: url('../img/spr_book.png?1512221500');
+    background-image: url('../img/spr_book.png');
     background-size: 400px 400px;
     background-position: -80px -302px;
 }
 .adminbooking_login .login_form .agreement input[type="checkbox"].chk_agree:checked + label::before {
-    background-image: url('../img/spr_book.png?1512221500');
+    background-image: url('../img/spr_book.png');
     background-size: 400px 400px;
     background-position: -107px -302px;
 }
@@ -12587,7 +12587,7 @@ body.biz10 .section_item_details .item_details {
     display: inline-block;
     overflow: hidden;
     position: relative;
-    background: url(../img/spr_book_talk.png?1602041400) no-repeat;
+    background: url(../img/spr_book_talk.png) no-repeat;
     background-size: 150px 100px;
     line-height: 999px !important;
     vertical-align: top;

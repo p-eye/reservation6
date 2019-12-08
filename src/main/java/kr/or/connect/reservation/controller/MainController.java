@@ -29,5 +29,11 @@ public class MainController {
 		return "bookinglogin";
 	}
 	
+	@GetMapping(path = "/myreservation")
+	public String getMyReservation(@RequestParam(name = "reservationEmail", required = true) String reservationEmail) {
+		return "/myreservation";
+	}
+
+	
 	
 }

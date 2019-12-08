@@ -1363,7 +1363,7 @@ hr {
 .spr_icons {
     width: 30px;
     height: 30px;
-    //background-image: url(../../img/spr_icons.629bfb7d82c6c1d00d86af55a6ead979.png);
+    //background-image: url(../img/spr_icons.png);
     background-size: 200px 320px;
     font-size: 0
 }
@@ -1913,7 +1913,7 @@ hr {
     background-position: -72px -120px
 }
 .spr_home {
-    background-image: url('.../img/spr_home.png');
+    background-image: url('../img/spr_home.png');
     background-size: 220px 120px;
     font-size: 0
 }
@@ -1968,7 +1968,7 @@ hr {
     background-position: -98px 0
 }
 .spr_green_ticket {
-    background-image: url('.../img/spr_green_ticket.png');
+    background-image: url('../img/spr_green_ticket.png');
     background-size: 230px 70px
 }
 .spr_green_ticket.ico_green_ticket {
@@ -4152,7 +4152,7 @@ select {
     height: 6px;
     display: inline-block;
     color: transparent;
-    background-image: url(.../img/spr_book.ada46c4e031284d4b513fda5c38b5187.png);
+    background-image: url(../img/spr_book.png);
     vertical-align: top;
     pointer-events: none
 }
@@ -4342,7 +4342,7 @@ select {
     height: 6px;
     display: inline-block;
     color: transparent;
-    background-image: url(.../img/spr_book.ada46c4e031284d4b513fda5c38b5187.png);
+    background-image: url(../img/spr_book.png);
     vertical-align: top
 }
 .form_vertical input[type=search],
@@ -4847,7 +4847,7 @@ select {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url(.../img/spr_book2.9951b6760ed19190feefaf8e9c5bed2e.png);
+    background-image: url(../img/spr_book2.png);
     background-size: 330px 400px;
     vertical-align: top;
     width: 11px;
@@ -4978,7 +4978,7 @@ select {
     text-align: center;
     font-size: 11px;
     line-height: 14px;
-    background-image: url(.../img/bg_hotdeal_b.a05dc50fbbfd2545a64f9e063336c52f.png);
+    background-image: url(../img/bg_hotdeal_b.png);
     background-position: 50% 0;
     background-size: 82.5px 55.5px;
     letter-spacing: -.3px
@@ -4990,7 +4990,7 @@ select {
     left: -6.5px;
     height: 55.5px;
     width: 6.5px;
-    background-image: url(.../img/bg_hotdeal_b_l.970ca19a9676cd9486677df5d62d1d54.png);
+    background-image: url(../img/bg_hotdeal_b_l.png);
     background-size: 6.5px 55.5px
 }
 .txt_hotdeal_b .deal_txt {
@@ -5011,7 +5011,7 @@ select {
     left: -3px;
     padding: 11px 5px 0 7px;
     height: 16px;
-    background-image: url(.../img/bg_hotdeal.ea6a2014fcdc9152905d134fa276b216.png);
+    background-image: url(../img/bg_hotdeal.png);
     background-size: 140px 27px;
     background-position: 0 0;
     font-size: 11px;
@@ -5029,7 +5029,7 @@ select {
     right: -12px;
     height: 22px;
     width: 12px;
-    background-image: url(.../img/bg_hotdeal_r.82301f59673d421dc232662488691e85.png);
+    background-image: url(../img/bg_hotdeal_r.png);
     background-size: 12px 22px
 }
 .txt_hotdeal_s {
@@ -7335,7 +7335,7 @@ select {
     width: 26px!important;
     height: 26px!important;
     background-position: -75px -273px;
-    background-image: url(.../img/spr_book2.9951b6760ed19190feefaf8e9c5bed2e.png);
+    background-image: url(../img/spr_book2.png);
     background-size: 330px 400px;
     vertical-align: -8.5px
 }
@@ -9855,13 +9855,13 @@ select {
 .page_confirm .confirm_item_top:before {
     bottom: 0;
     left: 0;
-    background-image: url(../img/bg_confirm_check_bottom_left.2721e008b11cd8a4072d8d9d44e51ca6.png);
+    background-image: url(../img/bg_confirm_check_bottom_left.png);
     background-position: 0 0
 }
 .page_confirm .confirm_item_top:after {
     bottom: 0;
     right: 0;
-    background-image: url(../img/bg_confirm_check_bottom_right.629a72198f210cea3dde8629a98e5505.png);
+    background-image: url(../img/bg_confirm_check_bottom_right.png);
     background-position: 100% 0
 }
 .page_confirm .confirm_item_top .common_bottom_buttongroup.para {
@@ -11120,7 +11120,7 @@ select {
     margin: 18.5px auto 39px;
     width: 200px;
     height: 37px;
-    background-image: url(../img/spr_book.ada46c4e031284d4b513fda5c38b5187.png);
+    background-image: url(../img/spr_book.png);
     background-size: 400px 400px;
     background-position: -46px -334px
 }
@@ -12042,7 +12042,7 @@ select {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url(../img/spr_book.ada46c4e031284d4b513fda5c38b5187.png);
+    background-image: url(../img/spr_book.png);
     background-size: 400px 400px;
     vertical-align: top;
     width: 10px;
@@ -12130,7 +12130,7 @@ select {
     margin: 0 auto;
     width: 20px;
     height: 20px;
-    background-image: url(../img/img_loading.71ac53aaa560b4609fdc27e4ce5a4284.gif);
+    background-image: url(../img/img_loading.gif);
     background-poisition: 0 0;
     background-repeat: no-repeat;
     background-size: 20px 20px;
@@ -12364,7 +12364,7 @@ select {
     margin-right: 4px;
     width: 10px;
     height: 10px;
-    background-image: url(../img/spr_book.ada46c4e031284d4b513fda5c38b5187.png);
+    background-image: url(../img/spr_book.png);
     background-position: -378px -187px;
     background-repeat: no-repeat;
     background-size: 400px auto;
@@ -12448,7 +12448,7 @@ select {
     overflow: hidden;
     display: inline-block;
     color: transparent;
-    background-image: url(../img/spr_book2.9951b6760ed19190feefaf8e9c5bed2e.png);
+    background-image: url(../img/spr_book2.png);
     background-size: 330px 400px;
     vertical-align: top;
     text-indent: 100%;
@@ -12637,7 +12637,7 @@ select {
 .section_my .wrap_mylist .list_cards .card .card_header .left {
     overflow: hidden;
     display: table-cell;
-    background-image: url(../img/bg_card_hl.a7ffb87998b587ca23a71c27005968e3.png);
+    background-image: url(../img/bg_card_hl.png);
     background-size: 12px 54px;
     background-repeat: no-repeat;
     width: 12px;
@@ -13748,12 +13748,12 @@ select {
     margin-right: 8px;
     width: 25px!important;
     height: 25px!important;
-    background-image: url(../img/spr_book.ada46c4e031284d4b513fda5c38b5187.png);
+    background-image: url(../img/spr_book.png);
     background-size: 400px 400px;
     background-position: -80px -302px
 }
 .adminbooking_login .login_form .agreement input[type=checkbox].chk_agree:checked+.label:before {
-    background-image: url(../img/spr_book.ada46c4e031284d4b513fda5c38b5187.png);
+    background-image: url(../img/spr_book.png);
     background-size: 400px 400px;
     background-position: -107px -302px
 }
@@ -14492,7 +14492,7 @@ body.en .subscribe_banner .subscribe_strapline {
     display: inline-block;
     overflow: hidden;
     position: relative;
-    background: url(../img/spr_book_talk.6e4db4cf24d358808e7ca10001b01f5f.png) no-repeat;
+    background: url(../img/spr_book_talk.png) no-repeat;
     background-size: 150px 100px;
     line-height: 999px!important;
     vertical-align: top;
@@ -14579,7 +14579,7 @@ body.en .subscribe_banner .subscribe_strapline {
     margin: 18.5px auto 39px;
     width: 200px;
     height: 37px;
-    background-image: url(../img/bg_michelin_state.862fe2f8f38895b5f841199b5806aabb.png);
+    background-image: url(../img/bg_michelin_state.png);
     background-size: 200px 37px;
     background-position: 0 0;
     background-repeat: no-repeat
@@ -14655,7 +14655,7 @@ body.en .subscribe_banner .subscribe_strapline {
 .michelin_wrapper .michelin_bottom {
     padding: 38px 0;
     background-color: #fbfbfb;
-    background-image: url(../img/bg_michelin.12542ef76cd4ac237e5c6a8954fb9882.gif);
+    background-image: url(../img/bg_michelin.gif);
     background-size: 10px 7px;
     background-position: 0 0;
     background-repeat: repeat-x
