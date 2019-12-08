@@ -13,16 +13,19 @@ import kr.or.connect.reservation.dto.response.ReservationResponse;
 @Service
 public interface ReservationService {
 
-
 	public ReservationInfoResponse getReservationInfoResponse(String reservationEmail);
-	
+
 	public List<ReservationInfo> getReservationInfoList(String reservationEmail);
-	
+
 	public int getReservationTotalPrice(int reservationInfoId);
-	
+
 	public List<ReservationPrice> getReservationPriceList(int reservationInfoId);
 
 	public int insertReservationInfo(ReservationParam reservationParam);
+
+	public ReservationResponse insertReservationInfoAndPrice(ReservationParam reservationParam);
+
+	public void insertReservationPrice(ReservationParam reservationParam, int reservationInfoId);
 
 	public ReservationResponse getReservationResponse(int reservationInfoId);
 

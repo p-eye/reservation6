@@ -6,12 +6,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import kr.or.connect.reservation.config.ApplicationConfig;
-import kr.or.connect.reservation.dto.Comment;
 import kr.or.connect.reservation.dto.ReservationInfo;
 import kr.or.connect.reservation.dto.ReservationPrice;
 import kr.or.connect.reservation.service.ReservationService;
 
-public class ReservationInfoServiceTest {
+public class ReservationServiceTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -20,8 +19,7 @@ public class ReservationInfoServiceTest {
 		ReservationService reservationService = ac.getBean(ReservationService.class);
 
 		/* getReservationInfoService */
-		List<ReservationInfo> reservationInfoList = reservationService
-				.getReservationInfoList("kimjinsu@connect.co.kr");
+		List<ReservationInfo> reservationInfoList = reservationService.getReservationInfoList("kimjinsu@connect.co.kr");
 
 		for (ReservationInfo reservationInfo : reservationInfoList) {
 			System.out.println(reservationInfo);
@@ -29,15 +27,14 @@ public class ReservationInfoServiceTest {
 		}
 		System.out.println("======================================");
 
-		
 		/* getReservationTotalPrice */
 		System.out.println(reservationService.getReservationTotalPrice(4));
 		System.out.println("======================================");
-		
+
 		/* getReservationInfoResponse */
 		System.out.println(reservationService.getReservationInfoResponse("kimjinsu@connect.co.kr"));
 		System.out.println("======================================");
-		
+
 		/* getReservationPrice */
 		List<ReservationPrice> reservationPriceList = reservationService.getReservationPriceList(5);
 
@@ -47,7 +44,7 @@ public class ReservationInfoServiceTest {
 		}
 		System.out.println("======================================");
 
-		/*getReservationResponse */
+		/* getReservationResponse */
 		System.out.println(reservationService.getReservationResponse(3));
 		System.out.println("======================================");
 	}

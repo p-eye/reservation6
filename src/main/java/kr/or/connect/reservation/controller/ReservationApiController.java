@@ -21,10 +21,9 @@ import kr.or.connect.reservation.service.ReservationService;
 
 public class ReservationApiController {
 
-
 	@Autowired
 	public ReservationService reservationService;
-	
+
 	@Autowired
 	public ReservationInfoDao reservationInfoDao;
 
@@ -41,12 +40,8 @@ public class ReservationApiController {
 
 	@PostMapping(path = "")
 	public ReservationResponse addReservationInfo(@RequestBody ReservationParam reservationParam) {
-		System.out.println(reservationParam);
-		reservationService.insertReservationInfo(reservationParam);
-		
-		
-		
-		return null;
+		return reservationService.insertReservationInfoAndPrice(reservationParam);
+
 	}
 
 }

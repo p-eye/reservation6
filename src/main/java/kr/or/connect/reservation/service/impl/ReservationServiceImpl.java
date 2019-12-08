@@ -27,20 +27,20 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired
 	private DisplayInfoService displayInfoService;
-	
+
 	@Autowired
 	private ReservationResponseDao reservationResponseDao;
 
 	@Override
 	public ReservationInfoResponse getReservationInfoResponse(String reservationEmail) {
 
-		ReservationInfoResponse reservationResponse = new ReservationInfoResponse();
+		ReservationInfoResponse reservationInfoResponse = new ReservationInfoResponse();
 		List<ReservationInfo> reservationInfoList = getReservationInfoList(reservationEmail);
 
-		reservationResponse.setReservations(reservationInfoList);
-		reservationResponse.setSize(reservationInfoList.size());
+		reservationInfoResponse.setReservations(reservationInfoList);
+		reservationInfoResponse.setSize(reservationInfoList.size());
 
-		return reservationResponse;
+		return reservationInfoResponse;
 	}
 
 	@Override
@@ -66,31 +66,38 @@ public class ReservationServiceImpl implements ReservationService {
 	public List<ReservationPrice> getReservationPriceList(int reservationInfoId) {
 		return reservationPriceDao.getReservationPriceList(reservationInfoId);
 	}
+	
+	@Override
+	public ReservationResponse insertReservationInfoAndPrice(ReservationParam reservationParam) {
+		int reservationInfoId = insertReservationInfo(reservationParam);
+		insertReservationPrice(reservationParam, reservationInfoId);
+
+		return getReservationResponse(reservationInfoId);
+
+	}
 
 	@Override
 	public int insertReservationInfo(ReservationParam reservationParam) {
-
-		int reservationInfoId = reservationInfoDao.insertReservationInfo(reservationParam);
-		insertReservationPrice(reservationParam, reservationInfoId);
-
-		
-		return 0;
-
+		return reservationInfoDao.insertReservationInfo(reservationParam);
 	}
-	
+
+	@Override
 	public void insertReservationPrice(ReservationParam reservationParam, int reservationInfoId) {
 		List<ReservationPrice> reservationPriceList = reservationParam.getPrices();
-		
-		for(ReservationPrice reservationPrice : reservationPriceList) {
+
+		for (ReservationPrice reservationPrice : reservationPriceList) {
 			reservationPrice.setReservationInfoId(reservationInfoId);
 			reservationPriceDao.insertReservationPrice(reservationPrice);
 		}
-		
+
 	}
-	
+
 	@Override
 	public ReservationResponse getReservationResponse(int reservationInfoId) {
-		return reservationResponseDao.getReservationResponse(reservationInfoId);
+		ReservationResponse reservationResponse = reservationResponseDao.getReservationResponse(reservationInfoId);
+		reservationResponse.setPrices(getReservationPriceList(reservationInfoId));
+
+		return reservationResponse;
 	}
 
 }
