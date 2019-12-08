@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else if (now >= reservationDate) {
           addTemplate(
             document.getElementById("reserv-confirm"),
-            document.querySelector(".card.used"),
+            document.querySelector(".card.used.complete"),
             reservation
           );
           completedCountSummary += 1;
@@ -95,14 +95,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     initializeReservationAll: function() {
       const plannedList = document.querySelectorAll(".card.confirmed article");
-      const completedList = document.querySelectorAll(".card.used article");
+      const completedList = document.querySelectorAll(".card.used.complete article");
       const canceledList = document.querySelectorAll(
         ".card.used.cancel article"
       );
 
       ReservationInfo.prototype.initializeReservation(plannedList);
       ReservationInfo.prototype.initializeReservation(completedList);
-      //  ReservationInfo.prototype.initializeReservation(canceledList);
+      ReservationInfo.prototype.initializeReservation(canceledList);
     },
 
     initializeReservation: function(reservationList) {

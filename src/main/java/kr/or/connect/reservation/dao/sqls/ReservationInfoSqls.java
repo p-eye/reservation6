@@ -9,7 +9,7 @@ public class ReservationInfoSqls {
 			+"ri.reservation_name, "
 	 		+"ri.reservation_tel, "
 			+"ri.reservation_email, "
-			+"ri.cancel_flag, "
+			+"ri.cancel_flag AS cancel_yn, "
 			+"ri.reservation_date, "
 			+"ri.create_date, "
 			+"ri.modify_date "

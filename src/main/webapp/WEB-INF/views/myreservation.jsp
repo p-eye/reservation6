@@ -134,7 +134,7 @@
 								</div>
 							</div>
 						</li>
-						<li class="card used">
+						<li class="card used complete">
 							<div class="link_booking_details">
 								<div class="card_header">
 									<div class="left"></div>

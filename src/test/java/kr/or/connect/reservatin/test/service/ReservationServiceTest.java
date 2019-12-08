@@ -18,7 +18,7 @@ public class ReservationServiceTest {
 
 		ReservationService reservationService = ac.getBean(ReservationService.class);
 
-		/* getReservationInfoService */
+		/* getReservationInfo */
 		List<ReservationInfo> reservationInfoList = reservationService.getReservationInfoList("kimjinsu@connect.co.kr");
 
 		for (ReservationInfo reservationInfo : reservationInfoList) {
@@ -28,7 +28,7 @@ public class ReservationServiceTest {
 		System.out.println("======================================");
 
 		/* getReservationTotalPrice */
-		System.out.println(reservationService.getReservationTotalPrice(4));
+		System.out.println(reservationService.getReservationTotalPrice(24));
 		System.out.println("======================================");
 
 		/* getReservationInfoResponse */
