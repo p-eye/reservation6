@@ -90,7 +90,7 @@
                     placeholder="crong@naver.com"
                     title="예매자이메일"
                   />
-                  <div class="warning_msg"></div>
+                  <div class="warning_msg">${errorMsg}</div>
                 </div>
 
                 <button type="submit" form="form1" class="login_btn confirm">
