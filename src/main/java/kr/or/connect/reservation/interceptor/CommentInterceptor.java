@@ -24,39 +24,17 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 
 		HttpSession httpSession = request.getSession();
 
-		if (httpSession.getAttribute(LOGIN) != null) {
-			// 기존의 로그인 정보 제거
-			httpSession.removeAttribute(LOGIN);
+		if (httpSession.getAttribute(LOGIN) == null) {
+			logger.info("no user is logged");
+			httpSession.setAttribute("noUser", "noUser");
 		}
 
-		logger.debug("{} 를 호출했습니다.", handler.toString());
+		else {
+			httpSession.removeAttribute("noUser");
+
+		}
+
+//		logger.debug("{} 를 호출했습니다.", handler.toString());
 		return true;
-	}
-
-	// 컨트롤러메서드 실행후
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-
-		ModelMap modelMap = modelAndView.getModelMap();
-
-		ReservationInfo reservationInfo = (ReservationInfo) modelMap.get("reservationInfo");
-
-		if (reservationInfo != null) {
-			HttpSession httpSession = request.getSession();
-			httpSession.setAttribute(LOGIN, reservationInfo);
-			response.sendRedirect(
-					"./myreservation?reservationEmail=" + reservationInfo.getReservationEmail());
-
-		}
-
-		logger.debug("{} 가종료되었습니다. {} 를 view로 사용합니다.", handler.toString(), modelAndView.getViewName());
-
-	}
-
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		super.afterCompletion(request, response, handler, ex);
 	}
 }
