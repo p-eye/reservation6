@@ -34,6 +34,10 @@ public class MainController {
 		return "/myreservation";
 	}
 
-	
+
+	@GetMapping(path = "/reviewWrite")
+	public String getReviewWrite() {
+		return "/reviewWrite";
+	}
 	
 }

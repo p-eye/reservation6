@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import kr.or.connect.reservation.interceptor.CommentInterceptor;
 import kr.or.connect.reservation.interceptor.LoginInterceptor;
 
 @Configuration
@@ -50,6 +51,8 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/bookinglogin");
+		registry.addInterceptor(new CommentInterceptor()).addPathPatterns("/reviewWrite");
+		
 
 	}
 }
