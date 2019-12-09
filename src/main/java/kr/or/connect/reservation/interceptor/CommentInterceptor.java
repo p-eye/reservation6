@@ -28,15 +28,16 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 			httpSession.setAttribute("noUser", "noUser");
 			saveDestination(request);
 			response.sendRedirect("./bookingloginForm");
+			return false;
 		}
 
 		else {
 			httpSession.removeAttribute("noUser");
-
+			logger.debug("{} 를 호출했습니다.", handler.toString());
+			return true;
 		}
 
-//		logger.debug("{} 를 호출했습니다.", handler.toString());
-		return true;
+
 	}
 
 	private void saveDestination(HttpServletRequest request) {
