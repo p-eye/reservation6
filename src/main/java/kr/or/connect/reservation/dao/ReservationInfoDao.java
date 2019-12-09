@@ -69,22 +69,6 @@ public class ReservationInfoDao {
 		}
 	}
 
-	public ReservationInfo matchReservationInfo(int reservationInfoId, int productId) {
-		try {
-			Map<String, Integer> params = new HashMap<>();
-			params.put("reservationInfoId", reservationInfoId);
-			params.put("productId", productId);
-			String sql = "SELECT ri.id AS reservation_info_id, " + "ri.product_id, " + "ri.display_info_id, "
-					+ "ri.reservation_name, " + "ri.reservation_tel, " + "ri.reservation_email, "
-					+ "ri.reservation_date, " + "ri.cancel_flag, " + "ri.create_date, " + "ri.modify_date "
-					+ "FROM reservation_info ri " + "WHERE ri.id = :reservationInfoId "
-					+ "AND ri.product_id = :productId";
 
-			return jdbc.queryForObject(sql, params, rowMapper);
-		} catch (EmptyResultDataAccessException e) {
-			return null;
-		}
-
-	}
 
 }

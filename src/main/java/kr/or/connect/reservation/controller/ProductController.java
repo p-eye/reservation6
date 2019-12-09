@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class MainController {
+public class ProductController {
 
 
 	@GetMapping(path = "/detail")
@@ -22,16 +22,6 @@ public class MainController {
 	@GetMapping(path = "/reserve")
 	public String makeReservation() {
 		return "reserve";
-	}
-
-	@GetMapping(path = "/bookingloginForm")
-	public String getBookinglogin() {
-		return "bookinglogin";
-	}
-
-	@GetMapping(path = "/myreservation")
-	public String getMyReservation(@RequestParam(name = "reservationEmail", required = true) String reservationEmail) {
-		return "/myreservation";
 	}
 
 }

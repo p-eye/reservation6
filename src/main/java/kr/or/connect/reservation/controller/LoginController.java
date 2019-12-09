@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -15,9 +16,14 @@ import kr.or.connect.reservation.service.ReservationService;
 @Controller
 @CrossOrigin
 public class LoginController {
-	
+
 	@Autowired
 	private ReservationService reservationService;
+
+	@GetMapping(path = "/bookingloginForm")
+	public String getBookinglogin() {
+		return "bookinglogin";
+	}
 
 	@PostMapping(path = "/bookinglogin")
 	public void getMyReservation(@RequestParam String reservationEmail, Model model) {
@@ -32,4 +38,10 @@ public class LoginController {
 		}
 
 	}
+
+	@GetMapping(path = "/myreservation")
+	public String getMyReservation(@RequestParam(name = "reservationEmail", required = true) String reservationEmail) {
+		return "/myreservation";
+	}
+
 }

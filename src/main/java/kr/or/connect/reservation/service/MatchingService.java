@@ -9,5 +9,5 @@ public interface MatchingService {
 	
 	public int matchReservationInfo(int reservationInfoId, int productId);
 	
-	
+	public int matchReservationInfo(int reservationInfoId, String reservationEmail);
 }
