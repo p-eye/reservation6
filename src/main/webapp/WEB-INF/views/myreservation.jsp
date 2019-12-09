@@ -265,7 +265,7 @@
                   {{else}}
                     {{#if (isCompleted reservationDate)}}
                       <div class="booking_cancel">
-                        <a href="./reviewWrite">
+                        <a href="reviewWrite?productId={{displayInfo.productId}}">
                           <button class="btn">
                             <span>예매자 리뷰 남기기</span>
                           </button>

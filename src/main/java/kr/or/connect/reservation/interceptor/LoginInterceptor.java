@@ -42,12 +42,20 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 		ReservationInfo reservationInfo = (ReservationInfo) modelMap.get("reservationInfo");
 
+
 		if (reservationInfo != null) {
 			HttpSession httpSession = request.getSession();
 			httpSession.setAttribute(LOGIN, reservationInfo);
+			String loginReferer = (String) httpSession.getAttribute("loginReferer");
+			if(loginReferer.contains("reviewWrite")) {
+			
+				response.sendRedirect(loginReferer);
+			}
+			
+			else {
 			response.sendRedirect(
 					"./myreservation?reservationEmail=" + reservationInfo.getReservationEmail());
-
+			}
 		}
 
 		logger.debug("{} 가종료되었습니다. {} 를 view로 사용합니다.", handler.toString(), modelAndView.getViewName());

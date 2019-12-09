@@ -36,7 +36,7 @@ public class MainController {
 
 
 	@GetMapping(path = "/reviewWrite")
-	public String getReviewWrite() {
+	public String getReviewWrite(@RequestParam(name = "productId", required = true) int productId) {
 		return "/reviewWrite";
 	}
 	

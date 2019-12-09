@@ -6,8 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import kr.or.connect.reservation.dto.ReservationInfo;
@@ -23,8 +21,10 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 
 		HttpSession httpSession = request.getSession();
+		ReservationInfo reservationInfo = (ReservationInfo) httpSession.getAttribute(LOGIN);
+		
 
-		if (httpSession.getAttribute(LOGIN) == null) {
+		if (reservationInfo == null) {
 			logger.info("no user is logged");
 			httpSession.setAttribute("noUser", "noUser");
 		}
