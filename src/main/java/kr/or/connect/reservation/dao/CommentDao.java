@@ -50,7 +50,7 @@ public class CommentDao {
 
 	}
 
-	public CommentTable getComment(int reservationInfoId, int productId) {
+	public CommentTable matchComment(int reservationInfoId, int productId) {
 		try {
 			Map<String, Integer> params = new HashMap<>();
 			params.put("reservationInfoId", reservationInfoId);

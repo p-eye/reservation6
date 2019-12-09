@@ -32,7 +32,6 @@ public class ReservationPriceDao {
 	}
 
 	public List<ReservationPrice> getReservationPriceList(int reservationInfoId) {
-
 		Map<String, Integer> params = new HashMap<>();
 		params.put("reservationInfoId", reservationInfoId);
 

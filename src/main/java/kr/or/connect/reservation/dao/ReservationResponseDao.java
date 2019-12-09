@@ -28,6 +28,7 @@ public class ReservationResponseDao {
 	public ReservationResponse getReservationResponse(int reservationInfoId) {
 		Map<String, Integer> params = new HashMap<>();
 		params.put("reservationInfoId", reservationInfoId);
+		
 		return jdbc.queryForObject(SELECT_RESERVATION, params, rowMapper);
 	}
 

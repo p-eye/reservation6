@@ -1,5 +1,7 @@
 package kr.or.connect.reservation.dao;
 
+import static kr.or.connect.reservation.dao.sqls.DisplayInfoImageSqls.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,27 +21,13 @@ public class DisplayInfoImageDao {
 	public DisplayInfoImageDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
-	
+
 	public DisplayInfoImage getDisplayInfoImage(int displayInfoId) {
 		Map<String, Integer> params = new HashMap<>();
 		params.put("displayInfoId", displayInfoId);
-		String sql = "SELECT dii.id, "
-				+"dii.display_info_id,  "
-				+"dii.file_id, "
-				+"fi.file_name, "
-				+"fi.save_file_name, "
-				+"fi.content_type, "
-				+"fi.delete_flag, "
-				+"fi.create_date, "
-				+"fi.modify_date "
-				+"FROM display_info_image dii "
-				+"INNER JOIN file_info fi "
-				+"ON fi.id = dii.file_id "
-				+"WHERE dii.display_info_id = :displayInfoId";
-		
-		return jdbc.queryForObject(sql, params, new DisplayInfoImageMapper());
+
+		return jdbc.queryForObject(SELECT_DISPLAY_INFO_IMAGE, params, new DisplayInfoImageMapper());
 
 	}
-
 
 }

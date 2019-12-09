@@ -26,6 +26,7 @@ public class ProductImageDao {
 	public List<ProductImage> getProductImageList(int productId) {
 		Map<String, Integer> params = new HashMap<>();
 		params.put("productId", productId);
+		
 		return jdbc.query(SELECT_PRODUCT_IMAGE_LIST, params, new ProductImageMapper());
 
 	}
