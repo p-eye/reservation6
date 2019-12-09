@@ -18,6 +18,7 @@ public class ReservationInfoDaoTest {
 		ReservationInfoDao reservationInfoDao = ac.getBean(ReservationInfoDao.class);
 
 		/* getResrvationInfoList */
+		/*
 		List<ReservationInfo> reservationInfoList = reservationInfoDao.getReservationInfoList("kimjinsu@connect.co.kr");
 
 		for (ReservationInfo reservationInfo : reservationInfoList) {
@@ -25,13 +26,31 @@ public class ReservationInfoDaoTest {
 			System.out.println("==========");
 
 		}
-
+		*/
+		
+		
 		/* getReservationTotalPrice */
+		/*
 		System.out.println(reservationInfoDao.getReservationTotalPrice(1));
-
+		System.out.println("==========");
+		*/
+		
+		
 		/* cancelReservationInfo */
+		/*
 		System.out.println(reservationInfoDao.cancelReservationInfo(10));
 		System.out.println("==========");
+		*/
+		
+		
+		/*mathReservationInfo */
+		/*
+		System.out.println(reservationInfoDao.matchReservationInfo(35, "kimjinsu@connect.co.kr"));
+		System.out.println("==========");
+		*/
+		
+		/*matchReservatinInfo*/
+		System.out.println(reservationInfoDao.matchReservationInfo(1,2));
 	}
 
 }

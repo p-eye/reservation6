@@ -30,7 +30,7 @@ public class ReservationInfoDao {
 	private NamedParameterJdbcTemplate jdbc;
 	private RowMapper<ReservationInfo> rowMapper = BeanPropertyRowMapper.newInstance(ReservationInfo.class);
 	private SimpleJdbcInsert insertAction;
-	
+
 	public ReservationInfoDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 		this.insertAction = new SimpleJdbcInsert(dataSource).withTableName("reservation_info")
@@ -53,13 +53,12 @@ public class ReservationInfoDao {
 
 		return jdbc.queryForObject(SELECT_RESERVATION_TOTAL_PRICE, params, Integer.class);
 	}
-	
+
 	public int insertReservationInfo(ReservationParam reservationParam) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(reservationParam);
 		return insertAction.executeAndReturnKey(params).intValue();
 	}
-	
-	
+
 	public int cancelReservationInfo(int reservationInfoId) {
 		try {
 			SqlParameterSource params = new MapSqlParameterSource().addValue("reservationInfoId", reservationInfoId)
@@ -69,4 +68,43 @@ public class ReservationInfoDao {
 			return 0;
 		}
 	}
+
+	public List<ReservationInfo> matchReservationInfo(int productId, String reservationEmail) {
+		try {
+			System.out.println("22222");
+			Map<String, Object> params = new HashMap<>();
+			params.put("productId", productId);
+			params.put("reservationEmail", reservationEmail);
+			String sql = "SELECT ri.id AS reservation_info_id, " + "ri.product_id, " + "ri.display_info_id, "
+					+ "ri.reservation_name, " + "ri.reservation_tel, " + "ri.reservation_email, "
+					+ "ri.reservation_date, " + "ri.cancel_flag, " + "ri.create_date, " + "ri.modify_date "
+					+ "FROM reservation_info ri " + "WHERE ri.product_id = :productId "
+					+ "AND ri.reservation_email = :reservationEmail";
+
+			return jdbc.query(sql, params, rowMapper);
+		} catch (EmptyResultDataAccessException e) { // select 했는데 해당 값이 없을 때 0 리턴
+			System.out.println("2222333333!");
+			return null;
+		}
+
+	}
+
+	public ReservationInfo matchReservationInfo(int reservationInfoId, int productId) {
+		try {
+			Map<String, Integer> params = new HashMap<>();
+			params.put("reservationInfoId", reservationInfoId);
+			params.put("productId", productId);
+			String sql = "SELECT ri.id AS reservation_info_id, " + "ri.product_id, " + "ri.display_info_id, "
+					+ "ri.reservation_name, " + "ri.reservation_tel, " + "ri.reservation_email, "
+					+ "ri.reservation_date, " + "ri.cancel_flag, " + "ri.create_date, " + "ri.modify_date "
+					+ "FROM reservation_info ri " + "WHERE ri.id = :reservationInfoId "
+					+ "AND ri.product_id = :productId";
+
+			return jdbc.queryForObject(sql, params, rowMapper);
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		}
+
+	}
+
 }

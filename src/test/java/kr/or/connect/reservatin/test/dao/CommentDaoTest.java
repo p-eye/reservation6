@@ -29,6 +29,10 @@ public class CommentDaoTest {
 		*/
 		/* getCommentAvg */
 		System.out.println(commentDao.getCommentAverageScore(1));
+		
+		
+		/*getCommentTable*/
+		System.out.println(commentDao.getComment(1,1));
 	}
 
 }

@@ -107,6 +107,20 @@ public class ReservationServiceImpl implements ReservationService {
 		reservationInfoDao.cancelReservationInfo(reservationInfoId);
 		return getReservationResponse(reservationInfoId);
 	}
+	
+	@Override
+	public int matchReservationInfo(int productId, String reservationEmail){
+		System.out.println("1111!");
+		List<ReservationInfo> reservationInfoList = reservationInfoDao.matchReservationInfo(productId, reservationEmail);
+		System.out.println("444444");
+		if (reservationInfoList.size() == 0 ) {
+			System.out.println("55555!");
+			return 0;
+		}
+		System.out.println("666666677777");
+		return 1;
+		 
+	}
 
 	
 }
