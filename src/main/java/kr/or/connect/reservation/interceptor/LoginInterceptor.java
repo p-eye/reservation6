@@ -51,84 +51,93 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 		ReservationInfo reservationInfo = (ReservationInfo) modelMap.get("reservationInfo");
 
-		
-		logger.debug("{} 가종료되었습니다. {} 를 view로 사용합니다.", handler.toString(), modelAndView.getViewName());
-		
 		if (reservationInfo != null) {
+			logger.info("new login success");
 			HttpSession httpSession = request.getSession();
 			httpSession.setAttribute(LOGIN, reservationInfo);
-			String loginReferer = (String) httpSession.getAttribute("loginReferer");
-			if(loginReferer.contains("reviewWrite")) {
-			
-				response.sendRedirect(loginReferer);
-			}
-			
-			else {
-			response.sendRedirect(
-					"./myreservation?reservationEmail=" + reservationInfo.getReservationEmail());
-			}
-		}
 
-		
+			String reservationEmail = reservationInfo.getReservationEmail();
+			System.out.println(reservationEmail);
+			
+			Object destination = httpSession.getAttribute("destination");
+			
+			
+			if (destination != null) {
+				System.out.println("aaa");
+				response.sendRedirect((String) destination);
+				
+			} else {
+				System.out.println("bbb");
+				response.sendRedirect( "./myreservation?reservationEmail=" + reservationEmail);
+			}
+
+			// String loginReferer = (String) httpSession.getAttribute("loginReferer");
+			// System.out.println(loginReferer);
+
+			/*
+			 * // 코멘트 화면에서 로그인했을때 if(loginReferer.contains("reviewWrite")) {
+			 * 
+			 * response.sendRedirect(loginReferer); }
+			 * 
+			 * else { // 정상루트로그인 response.sendRedirect( "./myreservation?reservationEmail="
+			 * + reservationInfo.getReservationEmail()); }
+			 */
+		}
+		logger.debug("{} 가종료되었습니다. {} 를 view로 사용합니다.", handler.toString(), modelAndView.getViewName());
+
 		/*
-		
-		if (reservationInfo != null) {
-
-		
-			System.out.println("111111111111111");
-			HttpSession httpSession = request.getSession();
-			httpSession.setAttribute(LOGIN, reservationInfo);
-			String loginReferer = (String) httpSession.getAttribute("loginReferer");
-
-			if (loginReferer.contains("productId")) {
-				System.out.println("22222");
-				String reservationEmail = reservationInfo.getReservationEmail();
-
-
-					MultiValueMap<String, String> parameters = UriComponentsBuilder.fromUriString(loginReferer).build()
-							.getQueryParams();
-
-					int productId = Integer.parseInt(parameters.get("productId").get(0));
-
-					System.out.println(reservationEmail);
-					System.out.println(productId);
-					if(reservationEmail !=null) {
-					System.out.println(reservationService.getReservationInfoList(reservationEmail));}
-					try {
-					int isMatchedReservationInfo = reservationService.matchReservationInfo(productId, reservationEmail); // 왜 여기서 널이 뜰까
-					
-
-					if (isMatchedReservationInfo != 0) {
- 
-						System.out.println("33333");
-						response.sendRedirect(loginReferer);
-
-					}
-
-					else {
-
-						System.out.println("44444");
-						System.out.println("예매정보를 찾을 수 없습니다");
-						response.sendRedirect("./");
-
-					}
-
-				} catch (Exception e) {
-
-				}
-			}
-
-			else {
-
-				System.out.println("555555");
-				response.sendRedirect("./myreservation?reservationEmail=" + reservationInfo.getReservationEmail());
-			}
-		}
-
-		System.out.println("66666");
-		logger.debug("{} 가종료되었습니다. {} 를 view로 사용합니다.", handler.toString(), modelAndView.getViewName());
-
-*/
+		 * 
+		 * if (reservationInfo != null) {
+		 * 
+		 * 
+		 * System.out.println("111111111111111"); HttpSession httpSession =
+		 * request.getSession(); httpSession.setAttribute(LOGIN, reservationInfo);
+		 * String loginReferer = (String) httpSession.getAttribute("loginReferer");
+		 * 
+		 * if (loginReferer.contains("productId")) { System.out.println("22222"); String
+		 * reservationEmail = reservationInfo.getReservationEmail();
+		 * 
+		 * 
+		 * MultiValueMap<String, String> parameters =
+		 * UriComponentsBuilder.fromUriString(loginReferer).build() .getQueryParams();
+		 * 
+		 * int productId = Integer.parseInt(parameters.get("productId").get(0));
+		 * 
+		 * System.out.println(reservationEmail); System.out.println(productId);
+		 * if(reservationEmail !=null) {
+		 * System.out.println(reservationService.getReservationInfoList(reservationEmail
+		 * ));} try { int isMatchedReservationInfo =
+		 * reservationService.matchReservationInfo(productId, reservationEmail); // 왜
+		 * 여기서 널이 뜰까
+		 * 
+		 * 
+		 * if (isMatchedReservationInfo != 0) {
+		 * 
+		 * System.out.println("33333"); response.sendRedirect(loginReferer);
+		 * 
+		 * }
+		 * 
+		 * else {
+		 * 
+		 * System.out.println("44444"); System.out.println("예매정보를 찾을 수 없습니다");
+		 * response.sendRedirect("./");
+		 * 
+		 * }
+		 * 
+		 * } catch (Exception e) {
+		 * 
+		 * } }
+		 * 
+		 * else {
+		 * 
+		 * System.out.println("555555");
+		 * response.sendRedirect("./myreservation?reservationEmail=" +
+		 * reservationInfo.getReservationEmail()); } }
+		 * 
+		 * System.out.println("66666"); logger.debug("{} 가종료되었습니다. {} 를 view로 사용합니다.",
+		 * handler.toString(), modelAndView.getViewName());
+		 * 
+		 */
 	}
 
 	@Override

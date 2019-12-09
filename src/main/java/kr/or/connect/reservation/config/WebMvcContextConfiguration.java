@@ -13,7 +13,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import kr.or.connect.reservation.interceptor.CommentInterceptor;
 import kr.or.connect.reservation.interceptor.LoginInterceptor;
-import kr.or.connect.reservation.interceptor.TestInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -52,9 +51,7 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/bookinglogin");
-		registry.addInterceptor(new CommentInterceptor()).addPathPatterns("/reviewWrite");
-		registry.addInterceptor(new TestInterceptor()).addPathPatterns("/bookingloginForm");
-		
+		registry.addInterceptor(new CommentInterceptor()).addPathPatterns("/reviewWrite");		
 
 	}
 }

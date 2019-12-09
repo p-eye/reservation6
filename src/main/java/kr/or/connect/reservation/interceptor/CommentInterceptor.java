@@ -22,11 +22,12 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 
 		HttpSession httpSession = request.getSession();
 		ReservationInfo reservationInfo = (ReservationInfo) httpSession.getAttribute(LOGIN);
-		
 
 		if (reservationInfo == null) {
 			logger.info("no user is logged");
 			httpSession.setAttribute("noUser", "noUser");
+			saveDestination(request);
+			response.sendRedirect("./bookingloginForm");
 		}
 
 		else {
@@ -37,4 +38,22 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 //		logger.debug("{} 를 호출했습니다.", handler.toString());
 		return true;
 	}
+
+	private void saveDestination(HttpServletRequest request) {
+
+		String uri = request.getRequestURI();
+		String query = request.getQueryString();
+		if (query == null || query.equals("null")) {
+			query = "";
+		} else {
+			query = "?" + query;
+		}
+
+		if (request.getMethod().contentEquals("GET")) {
+			logger.info("destination: " + (uri + query));
+			request.getSession().setAttribute("destination", uri + query);
+		}
+
+	}
+
 }
