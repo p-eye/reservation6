@@ -1,4 +1,4 @@
-package kr.or.connect.reservation.controller;
+package kr.or.connect.reservation.controller.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
