@@ -11,7 +11,13 @@
 
 	<script>
 		alert("${errorMsg}");
+
+		<c:if test="${empty currentURI }">
 		location.href = './';
+		</c:if>
+		<c:if test="${not empty currentURI }">
+		location.href = '${currentURI}';
+		</c:if>
 	</script>
 </body>
 </html>

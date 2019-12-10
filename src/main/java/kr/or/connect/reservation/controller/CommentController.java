@@ -41,13 +41,19 @@ public class CommentController {
 			model.addAttribute("errorMsg", "예매 정보를 찾을 수 없습니다");
 			return "alert";
 
+			
+		}
+		
 		// 타겟 예매 기록에 이미 리뷰를 등록했을 때
-		} else if (matchingService.matchComment(reservationInfoId, productId) != IS_NOT_MATCHED) {
+		if (matchingService.matchComment(reservationInfoId, productId) != IS_NOT_MATCHED) {
+			System.out.println(request.getHeader("referer"));
+			httpSession.setAttribute("currentURI", request.getHeader("referer"));
 			model.addAttribute("errorMsg", "이미 리뷰를 작성하셨습니다");
 			return "alert";
 
-		} else
-			return "reviewWrite";
+		}
+		
+		return "reviewWrite";
 
 	}
 

@@ -54,8 +54,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 			if (destination != null) {
 				
-				// destination 있을 때 = commet 페이지에서 넘어왔을 때
+				/* destination 세션 있을 때 = commet 페이지에서 넘어왔을 때
+				 * 그 페이지로 redirect 후 destination 세션 삭제
+				 */
 				response.sendRedirect((String) destination);
+				httpSession.removeAttribute("destination");
 
 			} else {
 				
