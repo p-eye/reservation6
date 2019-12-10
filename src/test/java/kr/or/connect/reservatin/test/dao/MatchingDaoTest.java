@@ -4,21 +4,22 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import kr.or.connect.reservation.config.ApplicationConfig;
-import kr.or.connect.reservation.dao.CommentImageDao;
+import kr.or.connect.reservation.dao.MatchingDao;
 
-public class CommentImageDaoTest {
+public class MatchingDaoTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 
-		CommentImageDao commentImageDao = ac.getBean(CommentImageDao.class);
+		MatchingDao matchingDao = ac.getBean(MatchingDao.class);
 
-		/* getCommentImageList*/
-		System.out.println(commentImageDao.getCommentImageList(2));
-	
-		/* get CommentImage */
-		System.out.println(commentImageDao.getCommentImage(3));
+		/* matchComment */
+		System.out.println(matchingDao.matchComment(3, 3));
+		
+		
+		/*matchReservatinInfo*/
+		System.out.println(matchingDao.matchReservationInfo(1,2));
 
 	}
 

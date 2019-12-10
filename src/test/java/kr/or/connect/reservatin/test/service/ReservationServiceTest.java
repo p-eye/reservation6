@@ -49,8 +49,7 @@ public class ReservationServiceTest {
 		System.out.println("======================================");
 		
 		
-		/*matchReservationInfo*/
-		System.out.println(reservationService.matchReservationInfo(1, "kimjinsu@connect.co.kr"));
+
 	}
 
 }

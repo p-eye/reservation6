@@ -9,6 +9,8 @@ import kr.or.connect.reservation.dao.CommentDao;
 import kr.or.connect.reservation.dao.CommentImageDao;
 import kr.or.connect.reservation.dto.Comment;
 import kr.or.connect.reservation.dto.CommentImage;
+import kr.or.connect.reservation.dto.CommentParam;
+import kr.or.connect.reservation.dto.CommentResponse;
 import kr.or.connect.reservation.service.CommentService;
 
 @Service
@@ -41,6 +43,27 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public List<CommentImage> getCommentImageList(int reservationInfoId) {
 		return commentImageDao.getCommentImageList(reservationInfoId);
+	}
+	
+	@Override
+	public CommentResponse getCommentResponse(int commentId) {
+		return commentDao.getCommentResponse(commentId);
+	}
+	
+	@Override
+	public CommentImage getCommentImage(int commentId) {
+		return commentImageDao.getCommentImage(commentId);
+	}
+	
+	@Override
+	public CommentResponse insertCommentAndImage(CommentParam commentParam) {
+		///insert~~~
+		int commentId = commentDao.insertComment(commentParam);
+		
+		
+		CommentResponse commentResponse = commentDao.getCommentResponse(commentId);
+	//	commentResponse.setCommentImage(commentImage);
+		return commentResponse;
 	}
 
 }

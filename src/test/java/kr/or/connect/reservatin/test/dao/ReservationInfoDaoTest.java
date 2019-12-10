@@ -49,8 +49,7 @@ public class ReservationInfoDaoTest {
 		System.out.println("==========");
 		*/
 		
-		/*matchReservatinInfo*/
-		System.out.println(reservationInfoDao.matchReservationInfo(1,2));
+
 	}
 
 }

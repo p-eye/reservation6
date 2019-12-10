@@ -1,13 +1,10 @@
 package kr.or.connect.reservatin.test.dao;
 
-import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import kr.or.connect.reservation.config.ApplicationConfig;
 import kr.or.connect.reservation.dao.CommentDao;
-import kr.or.connect.reservation.dto.Comment;
 
 public class CommentDaoTest {
 
@@ -30,9 +27,8 @@ public class CommentDaoTest {
 		/* getCommentAvg */
 		System.out.println(commentDao.getCommentAverageScore(1));
 		
-		
-		/*getCommentTable*/
-		System.out.println(commentDao.getComment(1,1));
+		/* getCommentResponse */
+		System.out.println(commentDao.getCommentResponse(3));
 	}
 
 }

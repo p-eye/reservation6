@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.or.connect.reservation.dao.ReservationInfoDao;
+import kr.or.connect.reservation.dto.CommentParam;
+import kr.or.connect.reservation.dto.CommentResponse;
 import kr.or.connect.reservation.dto.ReservationParam;
 import kr.or.connect.reservation.dto.response.ReservationInfoResponse;
 import kr.or.connect.reservation.dto.response.ReservationResponse;
+import kr.or.connect.reservation.service.CommentService;
 import kr.or.connect.reservation.service.ReservationService;
 
 @RestController
@@ -27,13 +29,9 @@ public class ReservationApiController {
 	public ReservationService reservationService;
 
 	@Autowired
-	public ReservationInfoDao reservationInfoDao;
+	public CommentService commentService;
 
-	@Autowired
-	public ReservationApiController(ReservationService reservationService) {
-		this.reservationService = reservationService;
-	}
-
+	
 	@GetMapping(path = "")
 	public ReservationInfoResponse getReservationInfoResponse(
 			@RequestParam(name = "reservationEmail", defaultValue = "") String reservationEmail) {
@@ -51,4 +49,9 @@ public class ReservationApiController {
 		return reservationService.cancelReservationInfo(reservationInfoId);
 	}
 
+	@PostMapping(path="/{reservationInfoId}/comments")
+	public CommentResponse addCommentAndImage(@PathVariable int reservationInfoId, CommentParam commentParam) {
+		return commentService.insertCommentAndImage(commentParam);
+		
+	}
 }
