@@ -1,5 +1,8 @@
 package kr.or.connect.reservation.controller.api;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.connect.reservation.dto.CommentParam;
 import kr.or.connect.reservation.dto.CommentResponse;
@@ -31,7 +35,6 @@ public class ReservationApiController {
 	@Autowired
 	public CommentService commentService;
 
-	
 	@GetMapping(path = "")
 	public ReservationInfoResponse getReservationInfoResponse(
 			@RequestParam(name = "reservationEmail", defaultValue = "") String reservationEmail) {
@@ -43,15 +46,60 @@ public class ReservationApiController {
 		return reservationService.insertReservationInfoAndPrice(reservationParam);
 
 	}
-	
+
 	@PutMapping(path = "/{reservationInfoId}")
 	public ReservationResponse cancelReservation(@PathVariable int reservationInfoId) {
 		return reservationService.cancelReservationInfo(reservationInfoId);
 	}
 
-	@PostMapping(path="/{reservationInfoId}/comments")
-	public CommentResponse addCommentAndImage(@PathVariable int reservationInfoId, CommentParam commentParam) {
-		return commentService.insertCommentAndImage(commentParam);
+	public static final String FILE_PATH = "img_comment/";
+
+	@PostMapping(path = "/{reservationInfoId}/comments")
+	public CommentResponse insertCommentAndImage(@PathVariable int reservationInfoId, 
+			CommentParam commentParam,
+			MultipartFile commentImageFile) {
+	
+
+
 		
+		System.out.println(commentParam);
+		System.out.println(commentImageFile);
+		/*
+		 * System.out.println("파일 이름 : " + attachedImage.getOriginalFilename());
+		 * System.out.println("파일 크기 : " + attachedImage.getSize()); String filePath =
+		 * "c:/tmp/";
+		 */
+		/*
+		 * File file = new File(filePath+ attachedImage.getOriginalFilename());
+		 * 
+		 * try {
+		 * 
+		 * attachedImage.transferTo(file); } }
+		 */
+
+		// uploadCommentImageFile(attachedImage);
+
+		// return commentService.insertCommentAndFile(comment, attachedImage);
+		return commentService.insertCommentAndImage(commentParam, commentImageFile);
+
 	}
+
+	public void uploadCommentImageFile(MultipartFile attachedImage) {
+
+		try (
+
+				FileOutputStream fos = new FileOutputStream(
+						"c:/tmp/" + FILE_PATH + attachedImage.getOriginalFilename());
+				InputStream is = attachedImage.getInputStream();) {
+			int readCount = 0;
+			byte[] buffer = new byte[1024];
+			while ((readCount = is.read(buffer)) != -1) {
+				fos.write(buffer, 0, readCount);
+			}
+		} catch (Exception ex) {
+			throw new RuntimeException("file Save Error");
+		}
+
+	}
+
 }

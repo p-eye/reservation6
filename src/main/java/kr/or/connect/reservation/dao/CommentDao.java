@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.connect.reservation.dao.mapper.CommentMapper;
 import kr.or.connect.reservation.dto.Comment;
+import kr.or.connect.reservation.dto.CommentImage;
 import kr.or.connect.reservation.dto.CommentParam;
 import kr.or.connect.reservation.dto.CommentResponse;
 
@@ -82,5 +83,6 @@ public class CommentDao {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(commentParam);
 		return insertAction.executeAndReturnKey(params).intValue();
 	}
+
 		
 }

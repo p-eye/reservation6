@@ -8,7 +8,7 @@ public class CommentResponse {
 	private int score;
 	private String comment;
 	private String createDate;
-	private String modyfiDate;
+	private String modifyDate;
 	private CommentImage commentImage;
 
 	public CommentResponse() {
@@ -16,7 +16,7 @@ public class CommentResponse {
 	}
 
 	public CommentResponse(int commentId, int productId, int reservationInfoId, int score, String comment,
-			String createDate, String modyfiDate, CommentImage commentImage) {
+			String createDate, String modifyDate, CommentImage commentImage) {
 		super();
 		this.commentId = commentId;
 		this.productId = productId;
@@ -24,7 +24,7 @@ public class CommentResponse {
 		this.score = score;
 		this.comment = comment;
 		this.createDate = createDate;
-		this.modyfiDate = modyfiDate;
+		this.modifyDate = modifyDate;
 		this.commentImage = commentImage;
 	}
 
@@ -76,12 +76,12 @@ public class CommentResponse {
 		this.createDate = createDate;
 	}
 
-	public String getModyfiDate() {
-		return modyfiDate;
+	public String getModifyDate() {
+		return modifyDate;
 	}
 
-	public void setModyfiDate(String modyfiDate) {
-		this.modyfiDate = modyfiDate;
+	public void setModifyDate(String modifyDate) {
+		this.modifyDate = modifyDate;
 	}
 
 	public CommentImage getCommentImage() {
@@ -96,7 +96,7 @@ public class CommentResponse {
 	public String toString() {
 		return "CommentResponse [commentId=" + commentId + ", productId=" + productId + ", reservationInfoId="
 				+ reservationInfoId + ", score=" + score + ", comment=" + comment + ", createDate=" + createDate
-				+ ", modyfiDate=" + modyfiDate + ", commentImage=" + commentImage + "]";
+				+ ", modifyDate=" + modifyDate + ", commentImage=" + commentImage + "]";
 	}
 
 }

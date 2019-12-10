@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.connect.reservation.dao.CommentDao;
 import kr.or.connect.reservation.dao.CommentImageDao;
+import kr.or.connect.reservation.dao.FileDao;
 import kr.or.connect.reservation.dto.Comment;
 import kr.or.connect.reservation.dto.CommentImage;
 import kr.or.connect.reservation.dto.CommentParam;
@@ -21,6 +23,9 @@ public class CommentServiceImpl implements CommentService {
 
 	@Autowired
 	private CommentImageDao commentImageDao;
+	
+	@Autowired
+	private FileDao fileDao;
 
 	@Override
 	public List<Comment> getCommentList(int productId) {
@@ -56,14 +61,50 @@ public class CommentServiceImpl implements CommentService {
 	}
 	
 	@Override
-	public CommentResponse insertCommentAndImage(CommentParam commentParam) {
+	public CommentResponse insertCommentAndImage(CommentParam commentParam, MultipartFile commentImageFile) {
 		///insert~~~
-		int commentId = commentDao.insertComment(commentParam);
+		int commentId = insertComment(commentParam);
 		
+		int fileId = insertFile(commentImageFile, commentId);
 		
-		CommentResponse commentResponse = commentDao.getCommentResponse(commentId);
-	//	commentResponse.setCommentImage(commentImage);
+		int reservationInfoId = commentParam.getReservationInfoId();
+		
+		int commentImageId = insertCommentImage(commentId, reservationInfoId,
+				fileId);
+
+		
+		CommentResponse commentResponse = getCommentResponse(commentId);
+		commentResponse.setCommentImage(getCommentImage(commentImageId));
+
 		return commentResponse;
 	}
 
+	public int insertComment(CommentParam commentParam) {
+		return commentDao.insertComment(commentParam);
+	}
+	
+	public int insertFile(MultipartFile commentImageFile, int commentId) {
+		CommentImage commentImage = new CommentImage();
+		
+		commentImage.setFileName(commentImageFile.getOriginalFilename());
+		commentImage.setSaveFileName(FILE_PATH + commentImageFile.getOriginalFilename());
+		commentImage.setContentType(commentImageFile.getContentType());
+		commentImage.setDeleteFlag(false);
+		commentImage.setCreateDate(commentDao.getCommentResponse(commentId).getCreateDate());
+		commentImage.setModifyDate(commentDao.getCommentResponse(commentId).getModifyDate());
+
+		return fileDao.insertFileInfo(commentImage);
+	}
+	
+	public int insertCommentImage(int reservationUserCommentId, int reservationInfoId,  int fileId) {
+
+		CommentImage commentImage = new CommentImage();
+		
+		commentImage.setReservationUserCommentId(reservationUserCommentId);
+		commentImage.setReservationInfoId(reservationInfoId);
+		commentImage.setFileId(fileId);
+
+		return commentImageDao.insertCommentImage(commentImage);
+
+	}
 }

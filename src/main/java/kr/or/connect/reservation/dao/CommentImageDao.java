@@ -10,20 +10,26 @@ import javax.sql.DataSource;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import kr.or.connect.reservation.dao.mapper.CommentImageMapper;
 import kr.or.connect.reservation.dto.CommentImage;
-import kr.or.connect.reservation.dto.CommentResponse;
 
 @Repository
 public class CommentImageDao {
 
 	private NamedParameterJdbcTemplate jdbc;
+	private SimpleJdbcInsert insertAction;
+
 
 	public CommentImageDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+		this.insertAction = new SimpleJdbcInsert(dataSource).withTableName("reservation_user_comment_image")
+				.usingGeneratedKeyColumns("id");
 	}
 
 	public List<CommentImage> getCommentImageList(int reservationInfoId) {
@@ -57,6 +63,13 @@ public class CommentImageDao {
 	} catch (EmptyResultDataAccessException e) {
 		return null;
 	}
+	}
+	
+	
+	public int insertCommentImage(CommentImage commentImage) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(commentImage);
+		System.out.println(params);
+		return insertAction.executeAndReturnKey(params).intValue();
 	}
 
 }
