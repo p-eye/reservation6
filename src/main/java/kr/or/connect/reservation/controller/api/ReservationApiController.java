@@ -64,6 +64,7 @@ public class ReservationApiController {
 		
 		System.out.println(commentParam);
 		System.out.println(commentImageFile);
+		
 		/*
 		 * System.out.println("파일 이름 : " + attachedImage.getOriginalFilename());
 		 * System.out.println("파일 크기 : " + attachedImage.getSize()); String filePath =
@@ -77,20 +78,19 @@ public class ReservationApiController {
 		 * attachedImage.transferTo(file); } }
 		 */
 
-		// uploadCommentImageFile(attachedImage);
+		 uploadCommentImageFile(commentImageFile);
 
-		// return commentService.insertCommentAndFile(comment, attachedImage);
 		return commentService.insertCommentAndImage(commentParam, commentImageFile);
 
 	}
 
-	public void uploadCommentImageFile(MultipartFile attachedImage) {
+	public void uploadCommentImageFile(MultipartFile commentImageFile) {
 
 		try (
 
 				FileOutputStream fos = new FileOutputStream(
-						"c:/tmp/" + FILE_PATH + attachedImage.getOriginalFilename());
-				InputStream is = attachedImage.getInputStream();) {
+						"c:/tmp/" + FILE_PATH + commentImageFile.getOriginalFilename());
+				InputStream is = commentImageFile.getInputStream();) {
 			int readCount = 0;
 			byte[] buffer = new byte[1024];
 			while ((readCount = is.read(buffer)) != -1) {
