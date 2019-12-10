@@ -72,6 +72,7 @@ public class MatchingDao {
 					+ "ri.reservation_date, " + "ri.cancel_flag, " + "ri.create_date, " + "ri.modify_date "
 					+ "FROM reservation_info ri " + "WHERE ri.id = :reservationInfoId "
 					+ "AND ri.reservation_email = :reservationEmail";
+			
 			return jdbc.queryForObject(sql, params, BeanPropertyRowMapper.newInstance(ReservationInfo.class));
 		} catch (EmptyResultDataAccessException e) {
 			return null;

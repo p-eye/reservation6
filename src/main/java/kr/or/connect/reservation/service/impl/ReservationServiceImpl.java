@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.connect.reservation.dao.ReservationInfoDao;
 import kr.or.connect.reservation.dao.ReservationPriceDao;
@@ -108,10 +107,6 @@ public class ReservationServiceImpl implements ReservationService {
 		return getReservationResponse(reservationInfoId);
 	}
 	
-	@Override
-	public int matchReservationInfo(int productId, String reservationEmail){
-		return 0;
-	}
 
 	
 }

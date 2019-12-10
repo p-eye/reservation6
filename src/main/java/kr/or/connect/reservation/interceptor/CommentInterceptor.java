@@ -21,13 +21,12 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 
 		HttpSession httpSession = request.getSession();
-		ReservationInfo reservationInfo = (ReservationInfo) httpSession.getAttribute(LOGIN);
 
-		if (reservationInfo == null) {
+		if (httpSession.getAttribute(LOGIN) == null) {
 			
 			// 로그인 정보 없을 때
 			logger.info("no user is logged");
-			httpSession.setAttribute("noUser", "noUser");
+	//		httpSession.setAttribute("noUser", "noUser");
 			saveDestination(request);
 			response.sendRedirect("./bookingloginForm");
 			return false;
@@ -36,7 +35,8 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 		else {
 			
 			//로그인 정보 있을 때
-			httpSession.removeAttribute("noUser");
+	//		httpSession.removeAttribute("noUser");
+			
 			logger.debug("{} 를 호출했습니다.", handler.toString());
 			return true;
 		}

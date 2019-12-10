@@ -45,6 +45,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		// 로그인 성공시
 		if (reservationInfo != null) {
 			logger.info("new login success");
+			
 			HttpSession httpSession = request.getSession();
 			httpSession.setAttribute(LOGIN, reservationInfo);
 

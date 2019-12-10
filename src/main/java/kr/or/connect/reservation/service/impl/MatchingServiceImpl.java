@@ -16,27 +16,27 @@ public class MatchingServiceImpl implements MatchingService {
 	public int matchComment(int reservationInfoId, int productId) {
 
 		if (matchingDao.matchComment(reservationInfoId, productId) == null) {
-			return 0;
+			return IS_NOT_MATCHED;
 		} else {
-			return 1;
+			return IS_MATCHED;
 		}
 	}
 
 	@Override
 	public int matchReservationInfo(int reservationInfoId, int productId) {
 		if (matchingDao.matchReservationInfo(reservationInfoId, productId) == null) {
-			return 0;
+			return IS_NOT_MATCHED;
 		} else {
-			return 1;
+			return IS_MATCHED;
 		}
 	}
 
 	@Override
 	public int matchReservationInfo(int reservationInfoId, String reservationEmail) {
 		if (matchingDao.matchReservationInfo(reservationInfoId, reservationEmail) == null) {
-			return 0;
+			return IS_NOT_MATCHED;
 		} else {
-			return 1;
+			return IS_MATCHED;
 		}
 	}
 

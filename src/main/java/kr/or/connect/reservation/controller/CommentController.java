@@ -16,7 +16,8 @@ import kr.or.connect.reservation.service.MatchingService;
 public class CommentController {
 
 	private static final String LOGIN = "login";
-	
+	private static final int IS_NOT_MATCHED = 0;
+
 	@Autowired
 	private MatchingService matchingService;
 
@@ -24,21 +25,24 @@ public class CommentController {
 	public String getReviewWrite(@RequestParam(name = "productId", required = true) int productId,
 			@RequestParam(name = "reservationInfoId", required = true) int reservationInfoId, Model model,
 			HttpServletRequest request) {
-		
+
 		HttpSession httpSession = request.getSession();
 		ReservationInfo reservationInfo = (ReservationInfo) httpSession.getAttribute(LOGIN);
 		String reservationEmail = reservationInfo.getReservationEmail();
-		
-		if(matchingService.matchReservationInfo(reservationInfoId, reservationEmail) ==0) {
+
+		// 로그인 정보와 타겟 예매기록이 다를때
+		if (matchingService.matchReservationInfo(reservationInfoId, reservationEmail) == IS_NOT_MATCHED) {
 			model.addAttribute("errorMsg", "예매 정보를 찾을 수 없습니다");
 			return "alert";
 		}
 
-		if (matchingService.matchReservationInfo(reservationInfoId, productId) == 0) {
+		// 타겟 예매 기록이 없을 때
+		if (matchingService.matchReservationInfo(reservationInfoId, productId) == IS_NOT_MATCHED) {
 			model.addAttribute("errorMsg", "예매 정보를 찾을 수 없습니다");
 			return "alert";
 
-		} else if (matchingService.matchComment(reservationInfoId, productId) != 0) {
+		// 타겟 예매 기록에 이미 리뷰를 등록했을 때
+		} else if (matchingService.matchComment(reservationInfoId, productId) != IS_NOT_MATCHED) {
 			model.addAttribute("errorMsg", "이미 리뷰를 작성하셨습니다");
 			return "alert";
 

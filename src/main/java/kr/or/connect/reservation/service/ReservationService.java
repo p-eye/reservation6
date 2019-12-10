@@ -31,6 +31,4 @@ public interface ReservationService {
 	
 	public ReservationResponse cancelReservationInfo(int reservationInfoId);
 
-	public int matchReservationInfo(int productId, String reservationEmail);
-
 }
