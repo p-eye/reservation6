@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setProductData: function(productData) {
       console.log(productData);
       const productTitle = productData.displayInfo.productDescription;
-      const productImage = "./" + productData.productImages[0].saveFileName;
+      const productImage = "./file/" + productData.productImages[0].fileInfoId;
 
       document.querySelector(".top_title .title").innerText = productTitle;
       document.querySelector(".preview_txt_tit").innerText = productTitle;

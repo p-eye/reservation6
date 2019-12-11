@@ -210,7 +210,7 @@
 	<script type="rv-template" id="productImage">
       {{#each productImages}}
          <li class="item">
-           <img alt="{{productDescription}}" class="img_thumb" src="./{{saveFileName}}">
+           <img alt="{{productDescription}}" class="img_thumb" src="./file/{{fileInfoId}}">
            <span class="img_bg"></span>
            <div class="visual_txt">
              <div class="visual_txt_inn">
@@ -236,7 +236,7 @@
                       width="90"
                       height="90"
                       class="img_vertical_top"
-                      src="../{{commentImages.0.saveFileName}}"
+                      src="./file/{{commentImages.0.fileId}}"
                       alt="리뷰이미지"
                     />
                   </a>
@@ -266,7 +266,7 @@
         <img
           class="store_map img_thumb"
           alt="map"
-          src="./{{displayInfoImage.saveFileName}}"
+          src="./file/{{displayInfoImage.fileId}}"
         />
         <span class="img_border"></span>
         <span class="btn_map">

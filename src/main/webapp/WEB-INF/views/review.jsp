@@ -93,7 +93,7 @@
                     width="90"
                     height="90"
                     class="img_vertical_top"
-                    src="./{{commentImages.0.saveFileName}}"
+                    src="./file/{{commentImages.0.fileId}}"
                     alt="리뷰이미지"
                   />
                 </a>

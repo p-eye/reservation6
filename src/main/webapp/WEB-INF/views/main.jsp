@@ -27,7 +27,8 @@
 					</a>
 				</h1>
 				<c:if test="${not empty login}">
-					<a href="./myreservation?reservationEmail=${login.reservationEmail }"
+					<a
+						href="./myreservation?reservationEmail=${login.reservationEmail }"
 						class="btn_my"> <span class="viewReservation" title="예약확인">${login.reservationEmail}</span>
 					</a>
 				</c:if>
@@ -70,6 +71,9 @@
 			</div>
 			<div class="section_event_tab">
 				<ul class="event_tab_lst tab_lst_min">
+
+
+
 				</ul>
 			</div>
 			<div class="section_event_lst">
@@ -108,7 +112,7 @@
       {{#each items}}
         <li
           class="item"
-          style="background-image: url(./{{ productImageUrl }});"
+          style="background-image: url(./file/product/{{ productId }});"
         >
           <a href="javascript:;">
             <span class="img_btm_border"></span>
@@ -125,7 +129,7 @@
         {{#if @last}}
           <li
             class="item"
-            style="background-image: url(./{{@root.items.0.productImageUrl}});"
+            style="background-image: url(./file/product/{{@root.items.0.productId}});"
           >
             <a href="javascript:;">
               <span class="img_btm_border"></span>
@@ -166,7 +170,7 @@
                   <img
                       alt="{{ productDescription }}"
                       class="img_thumb"
-                      src="./{{ productImageUrl }}"
+                      src="./file/product/{{ productId }}"
                   />
                   <span class="img_border"></span>
               </div>
