@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import kr.or.connect.reservation.dto.ReservationInfo;
-import kr.or.connect.reservation.dto.ReservationParam;
 import kr.or.connect.reservation.dto.ReservationPrice;
+import kr.or.connect.reservation.dto.param.ReservationParam;
 import kr.or.connect.reservation.dto.response.ReservationInfoResponse;
 import kr.or.connect.reservation.dto.response.ReservationResponse;
 

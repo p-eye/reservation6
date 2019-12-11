@@ -1,11 +1,12 @@
 package kr.or.connect.reservation.service;
 
 import org.springframework.stereotype.Service;
-
-import kr.or.connect.reservation.dto.CommentImage;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public interface FileService {
 	
-	public int insertFile(CommentImage commentImage);
+	public static final String FILE_PATH = "img_comment/";
+	
+	public int insertFileInfo(MultipartFile commentImageFile, int commentId);
 }

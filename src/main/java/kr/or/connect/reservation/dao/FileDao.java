@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import kr.or.connect.reservation.dto.CommentImage;
+import kr.or.connect.reservation.dto.FileInfo;
 
 @Repository
 public class FileDao {
@@ -22,9 +22,8 @@ public class FileDao {
 				.usingGeneratedKeyColumns("id");
 	}
 
-	
-	public int insertFileInfo(CommentImage commentImage) {
-		SqlParameterSource params = new BeanPropertySqlParameterSource(commentImage);
+	public int insertFileInfo(FileInfo fileInfo) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(fileInfo);
 		return insertAction.executeAndReturnKey(params).intValue();
 	}
 }

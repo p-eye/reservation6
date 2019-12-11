@@ -1,8 +1,5 @@
 package kr.or.connect.reservation.controller.api;
 
-import java.io.FileOutputStream;
-import java.io.InputStream;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import kr.or.connect.reservation.dto.CommentParam;
-import kr.or.connect.reservation.dto.CommentResponse;
-import kr.or.connect.reservation.dto.ReservationParam;
+import kr.or.connect.reservation.dto.param.CommentParam;
+import kr.or.connect.reservation.dto.param.ReservationParam;
+import kr.or.connect.reservation.dto.response.CommentResponse;
 import kr.or.connect.reservation.dto.response.ReservationInfoResponse;
 import kr.or.connect.reservation.dto.response.ReservationResponse;
 import kr.or.connect.reservation.service.CommentService;
@@ -55,16 +52,12 @@ public class ReservationApiController {
 	public static final String FILE_PATH = "img_comment/";
 
 	@PostMapping(path = "/{reservationInfoId}/comments")
-	public CommentResponse insertCommentAndImage(@PathVariable int reservationInfoId, 
-			CommentParam commentParam,
-			MultipartFile commentImageFile) {
-	
+	public CommentResponse insertCommentAndImage(@PathVariable int reservationInfoId, CommentParam commentParam,
+			@RequestParam(required = false) MultipartFile commentImageFile) {
 
-
-		
 		System.out.println(commentParam);
-		System.out.println(commentImageFile);
-		
+		System.out.println(commentImageFile.getOriginalFilename());
+
 		/*
 		 * System.out.println("파일 이름 : " + attachedImage.getOriginalFilename());
 		 * System.out.println("파일 크기 : " + attachedImage.getSize()); String filePath =
@@ -78,27 +71,7 @@ public class ReservationApiController {
 		 * attachedImage.transferTo(file); } }
 		 */
 
-		 uploadCommentImageFile(commentImageFile);
-
 		return commentService.insertCommentAndImage(commentParam, commentImageFile);
-
-	}
-
-	public void uploadCommentImageFile(MultipartFile commentImageFile) {
-
-		try (
-
-				FileOutputStream fos = new FileOutputStream(
-						"c:/tmp/" + FILE_PATH + commentImageFile.getOriginalFilename());
-				InputStream is = commentImageFile.getInputStream();) {
-			int readCount = 0;
-			byte[] buffer = new byte[1024];
-			while ((readCount = is.read(buffer)) != -1) {
-				fos.write(buffer, 0, readCount);
-			}
-		} catch (Exception ex) {
-			throw new RuntimeException("file Save Error");
-		}
 
 	}
 

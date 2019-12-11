@@ -19,9 +19,8 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.connect.reservation.dao.mapper.CommentMapper;
 import kr.or.connect.reservation.dto.Comment;
-import kr.or.connect.reservation.dto.CommentImage;
-import kr.or.connect.reservation.dto.CommentParam;
-import kr.or.connect.reservation.dto.CommentResponse;
+import kr.or.connect.reservation.dto.param.CommentParam;
+import kr.or.connect.reservation.dto.response.CommentResponse;
 
 @Repository
 public class CommentDao {

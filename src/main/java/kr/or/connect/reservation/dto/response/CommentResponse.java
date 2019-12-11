@@ -1,4 +1,6 @@
-package kr.or.connect.reservation.dto;
+package kr.or.connect.reservation.dto.response;
+
+import kr.or.connect.reservation.dto.CommentImage;
 
 public class CommentResponse {
 

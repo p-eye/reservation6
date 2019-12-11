@@ -7,13 +7,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.connect.reservation.dto.Comment;
 import kr.or.connect.reservation.dto.CommentImage;
-import kr.or.connect.reservation.dto.CommentParam;
-import kr.or.connect.reservation.dto.CommentResponse;
+import kr.or.connect.reservation.dto.param.CommentParam;
+import kr.or.connect.reservation.dto.response.CommentResponse;
 
 @Service
 public interface CommentService {
 	
-	public static final String FILE_PATH = "img_comment/";
+
 
 	public List<Comment> getCommentList(int productId);
 

@@ -66,10 +66,9 @@ public class CommentImageDao {
 	}
 	
 	
-	public int insertCommentImage(CommentImage commentImage) {
+	public void insertCommentImage(CommentImage commentImage) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(commentImage);
-		System.out.println(params);
-		return insertAction.executeAndReturnKey(params).intValue();
+		insertAction.execute(params);
 	}
 
 }

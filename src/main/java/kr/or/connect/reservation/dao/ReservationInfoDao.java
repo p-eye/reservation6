@@ -22,7 +22,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import kr.or.connect.reservation.dto.ReservationInfo;
-import kr.or.connect.reservation.dto.ReservationParam;
+import kr.or.connect.reservation.dto.param.ReservationParam;
 
 @Repository
 public class ReservationInfoDao {
