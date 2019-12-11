@@ -50,8 +50,8 @@ public class ProductDao {
 			Map<String, Integer> params = new HashMap<>();
 			params.put("productId", productId);
 			String sql = "SELECT * FROM product WHERE id = :productId";
-
 			return jdbc.queryForObject(sql, params, BeanPropertyRowMapper.newInstance(ProductTable.class));
+
 		} catch (EmptyResultDataAccessException e) {
 			return null;
 		}

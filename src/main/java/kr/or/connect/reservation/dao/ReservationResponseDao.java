@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -26,10 +27,14 @@ public class ReservationResponseDao {
 	}
 
 	public ReservationResponse getReservationResponse(int reservationInfoId) {
-		Map<String, Integer> params = new HashMap<>();
-		params.put("reservationInfoId", reservationInfoId);
-		
-		return jdbc.queryForObject(SELECT_RESERVATION, params, rowMapper);
+		try {
+			Map<String, Integer> params = new HashMap<>();
+			params.put("reservationInfoId", reservationInfoId);
+			return jdbc.queryForObject(SELECT_RESERVATION, params, rowMapper);
+			
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		}
 	}
 
 }

@@ -16,12 +16,15 @@ import kr.or.connect.reservation.service.ProductService;
 @RequestMapping(path = "/api/products")
 public class ProductApiController {
 
-	@Autowired
-	public ProductService productService;
+	private final ProductService productService;
+	private final DisplayInfoService displayInfoService;
 
 	@Autowired
-	public DisplayInfoService displayInfoService;
-	
+	public ProductApiController(ProductService productService, DisplayInfoService displayInfoService) {
+		this.productService = productService;
+		this.displayInfoService = displayInfoService;
+	}
+
 	@GetMapping(path = "")
 	public ProductResponse getProductResponse(
 			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
@@ -29,7 +32,7 @@ public class ProductApiController {
 
 		return productService.getProductResponse(categoryId, start);
 	}
-	
+
 	@GetMapping(path = "/{displayInfoId}")
 	public DisplayInfoResponse getDisplayInfo(
 			@PathVariable(name = "displayInfoId", required = true) int displayInfoId) {

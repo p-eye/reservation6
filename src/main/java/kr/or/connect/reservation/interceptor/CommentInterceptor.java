@@ -8,8 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import kr.or.connect.reservation.dto.ReservationInfo;
-
 public class CommentInterceptor extends HandlerInterceptorAdapter {
 
 	private static final String LOGIN = "login";
@@ -26,7 +24,7 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 			
 			// 로그인 정보 없을 때
 			logger.info("no user is logged");
-	//		httpSession.setAttribute("noUser", "noUser");
+
 			saveDestination(request);
 			response.sendRedirect("./bookingloginForm");
 			return false;
@@ -35,7 +33,6 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 		else {
 			
 			//로그인 정보 있을 때
-	//		httpSession.removeAttribute("noUser");
 			
 			logger.debug("{} 를 호출했습니다.", handler.toString());
 			return true;

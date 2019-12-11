@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -32,13 +33,17 @@ public class ReservationPriceDao {
 	}
 
 	public List<ReservationPrice> getReservationPriceList(int reservationInfoId) {
-		Map<String, Integer> params = new HashMap<>();
-		params.put("reservationInfoId", reservationInfoId);
-
-		return jdbc.query(SELECT_RESERVATION_PRICE_LIST, params, rowMapper);
+		try {
+			Map<String, Integer> params = new HashMap<>();
+			params.put("reservationInfoId", reservationInfoId);
+			return jdbc.query(SELECT_RESERVATION_PRICE_LIST, params, rowMapper);
+			
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		}
 
 	}
-	
+
 	public void insertReservationPrice(ReservationPrice reservationPrice) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(reservationPrice);
 		insertAction.execute(params);

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -23,10 +24,15 @@ public class DisplayInfoDao {
 	}
 
 	public DisplayInfo getDisplayInfo(int displayInfoId) {
-		Map<String, Integer> params = new HashMap<>();
-		params.put("displayInfoId", displayInfoId);
+		try {
+			Map<String, Integer> params = new HashMap<>();
+			params.put("displayInfoId", displayInfoId);
+			return jdbc.queryForObject(SELECT_DISPLAY_INFO, params, new DisplayInfoMapper());
 
-		return jdbc.queryForObject(SELECT_DISPLAY_INFO, params, new DisplayInfoMapper());
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		}
+
 	}
 
 }

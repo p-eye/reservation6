@@ -9,11 +9,9 @@ import kr.or.connect.reservation.dto.response.CategoryResponse;
 
 @Service
 public interface CategoryService {
-	
 
 	public List<Category> getCategoryList();
-	
+
 	public CategoryResponse getCategoryResponse();
-	
-	
+
 }

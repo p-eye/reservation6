@@ -20,17 +20,19 @@ import kr.or.connect.reservation.service.ProductService;
 @Service
 public class ProductServiceImpl implements ProductService {
 
+	private final CategoryDao categoryDao;
+	private final ProductDao productDao;
+	private final ProductPriceDao productPriceDao;
+	private final ProductImageDao productImageDao;
+	
 	@Autowired
-	private CategoryDao categoryDao;
-
-	@Autowired
-	private ProductDao productDao;
-
-	@Autowired
-	private ProductPriceDao productPriceDao;
-
-	@Autowired
-	private ProductImageDao productImageDao;
+	public ProductServiceImpl(CategoryDao categoryDao, ProductDao productDao, ProductPriceDao productPriceDao,
+			ProductImageDao productImageDao) {
+		this.categoryDao = categoryDao;
+		this.productDao = productDao;
+		this.productPriceDao = productPriceDao;
+		this.productImageDao = productImageDao;
+	}
 
 	@Override
 	public ProductResponse getProductResponse(int categoryId, int start) {

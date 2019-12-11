@@ -13,8 +13,12 @@ import kr.or.connect.reservation.service.PromotionService;
 @Service
 public class PromotionServiceImpl implements PromotionService {
 
+	private final PromotionDao promotionDao;
+
 	@Autowired
-	private PromotionDao promotionDao;
+	public PromotionServiceImpl(PromotionDao promotionDao) {
+		this.promotionDao = promotionDao;
+	}
 
 	@Override
 	public List<Promotion> getPromotionList() {

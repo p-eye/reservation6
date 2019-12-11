@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.connect.reservation.dao.ReservationInfoDao;
 import kr.or.connect.reservation.dao.ReservationPriceDao;
@@ -19,17 +20,21 @@ import kr.or.connect.reservation.service.ReservationService;
 @Service
 public class ReservationServiceImpl implements ReservationService {
 
-	@Autowired
-	private ReservationInfoDao reservationInfoDao;
+	private final ReservationInfoDao reservationInfoDao;
+	private final ReservationPriceDao reservationPriceDao;
+	private final ReservationResponseDao reservationResponseDao;
+	private final DisplayInfoService displayInfoService;
 
 	@Autowired
-	private ReservationPriceDao reservationPriceDao;
-
-	@Autowired
-	private DisplayInfoService displayInfoService;
-
-	@Autowired
-	private ReservationResponseDao reservationResponseDao;
+	public ReservationServiceImpl(ReservationInfoDao reservationInfoDao, ReservationPriceDao reservationPriceDao,
+			ReservationResponseDao reservationResponseDao, DisplayInfoService displayInfoService) {
+		this.reservationInfoDao = reservationInfoDao;
+		this.reservationPriceDao = reservationPriceDao;
+		this.reservationResponseDao = reservationResponseDao;
+		this.displayInfoService = displayInfoService;
+	}
+	
+	/* get */
 
 	@Override
 	public ReservationInfoResponse getReservationInfoResponse(String reservationEmail) {
@@ -51,7 +56,7 @@ public class ReservationServiceImpl implements ReservationService {
 		for (ReservationInfo reservationInfo : reservationInfoList) {
 			int displayInfoId = reservationInfo.getDisplayInfoId();
 			reservationInfo.setDisplayInfo(displayInfoService.getDisplayInfo(displayInfoId));
-			
+
 			int reservationInfoId = reservationInfo.getReservationInfoId();
 			reservationInfo.setTotalPrice(getReservationTotalPrice(reservationInfoId));
 		}
@@ -69,8 +74,12 @@ public class ReservationServiceImpl implements ReservationService {
 	public List<ReservationPrice> getReservationPriceList(int reservationInfoId) {
 		return reservationPriceDao.getReservationPriceList(reservationInfoId);
 	}
+
+	
+	/* insert */
 	
 	@Override
+	@Transactional(readOnly = false)
 	public ReservationResponse insertReservationInfoAndPrice(ReservationParam reservationParam) {
 		int reservationInfoId = insertReservationInfo(reservationParam);
 		insertReservationPrice(reservationParam, reservationInfoId);
@@ -84,6 +93,7 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
+	@Transactional
 	public void insertReservationPrice(ReservationParam reservationParam, int reservationInfoId) {
 		List<ReservationPrice> reservationPriceList = reservationParam.getPrices();
 
@@ -101,12 +111,14 @@ public class ReservationServiceImpl implements ReservationService {
 		return reservationResponse;
 	}
 
+	
+	/* update */
+	
 	@Override
+	@Transactional
 	public ReservationResponse cancelReservationInfo(int reservationInfoId) {
 		reservationInfoDao.cancelReservationInfo(reservationInfoId);
 		return getReservationResponse(reservationInfoId);
 	}
-	
 
-	
 }

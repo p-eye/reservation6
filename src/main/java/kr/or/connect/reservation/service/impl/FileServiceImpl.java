@@ -14,8 +14,12 @@ import kr.or.connect.reservation.service.FileService;
 @Service
 public class FileServiceImpl implements FileService {
 
+	private final FileDao fileDao;
+
 	@Autowired
-	private FileDao fileDao;
+	public FileServiceImpl(FileDao fileDao) {
+		this.fileDao = fileDao;
+	}
 
 	@Override
 	public int insertFileInfo(MultipartFile commentImageFile, int commentId) {
@@ -31,6 +35,7 @@ public class FileServiceImpl implements FileService {
 		return fileDao.insertFileInfo(fileInfo);
 	}
 
+	// 이런 함수도 인터페이스에서 선언하고 Override 해야 하나요?
 	public void uploadCommentImageFile(MultipartFile commentImageFile) {
 
 		try (

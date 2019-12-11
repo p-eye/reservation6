@@ -17,8 +17,13 @@ import kr.or.connect.reservation.service.ReservationService;
 @CrossOrigin
 public class LoginController {
 
+	private final ReservationService reservationService;
+
 	@Autowired
-	private ReservationService reservationService;
+	public LoginController(ReservationService reservationService) {
+		super();
+		this.reservationService = reservationService;
+	}
 
 	@GetMapping(path = "/bookingloginForm")
 	public String getBookinglogin() {

@@ -13,8 +13,12 @@ import kr.or.connect.reservation.service.ProductService;
 @RequestMapping(path = "/api/comments")
 public class CommentApiController {
 
+	private final ProductService productService;
+
 	@Autowired
-	public ProductService productService;
+	public CommentApiController(ProductService productService) {
+		this.productService = productService;
+	}
 
 	@GetMapping(path = "/{productId}")
 	public ProductTable getProduct(@PathVariable(name = "productId", required = true) int productId) {

@@ -38,20 +38,22 @@ public class ReservationInfoDao {
 	}
 
 	public List<ReservationInfo> getReservationInfoList(String reservationEmail) {
-
 		Map<String, String> params = new HashMap<>();
 		params.put("reservationEmail", reservationEmail);
 
 		return jdbc.query(SELECT_RESERVATION_INFO_LIST, params, rowMapper);
-
 	}
 
 	public int getReservationTotalPrice(int reservationInfoId) {
 
-		Map<String, Integer> params = new HashMap<>();
-		params.put("reservationInfoId", reservationInfoId);
-
-		return jdbc.queryForObject(SELECT_RESERVATION_TOTAL_PRICE, params, Integer.class);
+		try {
+			Map<String, Integer> params = new HashMap<>();
+			params.put("reservationInfoId", reservationInfoId);
+			return jdbc.queryForObject(SELECT_RESERVATION_TOTAL_PRICE, params, Integer.class);
+			
+		} catch (EmptyResultDataAccessException e) {
+			return 0;
+		}
 	}
 
 	public int insertReservationInfo(ReservationParam reservationParam) {
@@ -61,14 +63,14 @@ public class ReservationInfoDao {
 
 	public int cancelReservationInfo(int reservationInfoId) {
 		try {
-			SqlParameterSource params = new MapSqlParameterSource().addValue("reservationInfoId", reservationInfoId)
+			SqlParameterSource params = new MapSqlParameterSource()
+					.addValue("reservationInfoId", reservationInfoId)
 					.addValue("modifyDate", new Date());
 			return jdbc.update(CANCEL_RESERVATION, params);
-		} catch (EmptyResultDataAccessException e) { // select 했는데 해당 값이 없을 때 0 리턴
+			
+		} catch (EmptyResultDataAccessException e) {
 			return 0;
 		}
 	}
-
-
 
 }

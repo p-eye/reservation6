@@ -1,6 +1,6 @@
 package kr.or.connect.reservation.dao;
 
-import static kr.or.connect.reservation.dao.sqls.CommentImageSqls.SELECT_COMMENT_IMAGE_LIST;
+import static kr.or.connect.reservation.dao.sqls.CommentImageSqls.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +25,6 @@ public class CommentImageDao {
 	private NamedParameterJdbcTemplate jdbc;
 	private SimpleJdbcInsert insertAction;
 
-
 	public CommentImageDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 		this.insertAction = new SimpleJdbcInsert(dataSource).withTableName("reservation_user_comment_image")
@@ -38,34 +37,19 @@ public class CommentImageDao {
 
 		return jdbc.query(SELECT_COMMENT_IMAGE_LIST, params, new CommentImageMapper());
 	}
-	
+
 	public CommentImage getCommentImage(int commentId) {
 		try {
-		Map<String, Integer> params = new HashMap<>();
-		params.put("commentId", commentId);
-		String sql = 
-				"SELECT ruci.id AS image_id, "
-				+"ruci.reservation_info_id, "
-				+"ruci.reservation_user_comment_id, "
-				+"ruci.file_id, "
-				+"fi.file_name, "
-				+"fi.save_file_name, "
-				+"fi.content_type, "
-				+"fi.delete_flag, "
-				+"fi.create_date, "
-				+"fi.modify_date "
-				+"FROM reservation_user_comment_image ruci "
-				+"INNER JOIN file_info fi "
-				+"ON fi.id = ruci.file_id "
-				+"WHERE ruci.reservation_user_comment_id = :commentId";
-		
-		return jdbc.queryForObject(sql, params, BeanPropertyRowMapper.newInstance(CommentImage.class));
-	} catch (EmptyResultDataAccessException e) {
-		return null;
+			Map<String, Integer> params = new HashMap<>();
+			params.put("commentId", commentId);
+			return jdbc.queryForObject(SELECT_COMMENT_IMAGE, params,
+					BeanPropertyRowMapper.newInstance(CommentImage.class));
+
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		}
 	}
-	}
-	
-	
+
 	public void insertCommentImage(CommentImage commentImage) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(commentImage);
 		insertAction.execute(params);

@@ -11,8 +11,7 @@ import kr.or.connect.reservation.dto.response.PromotionResponse;
 public interface PromotionService {
 
 	public List<Promotion> getPromotionList();
-	
+
 	public PromotionResponse getPromotionResponse();
-	
 
 }

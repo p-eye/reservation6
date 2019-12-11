@@ -9,8 +9,12 @@ import kr.or.connect.reservation.service.MatchingService;
 @Service
 public class MatchingServiceImpl implements MatchingService {
 
+	private final MatchingDao matchingDao;
+
 	@Autowired
-	private MatchingDao matchingDao;
+	public MatchingServiceImpl(MatchingDao matchingDao) {
+		this.matchingDao = matchingDao;
+	}
 
 	@Override
 	public int matchComment(int reservationInfoId, int productId) {

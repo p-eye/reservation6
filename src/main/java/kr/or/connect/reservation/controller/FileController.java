@@ -13,39 +13,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.or.connect.reservation.dao.FileDao;
 import kr.or.connect.reservation.dto.FileInfo;
-import kr.or.connect.reservation.service.CommentService;
 
 @RestController
 @RequestMapping(path = "/file")
 public class FileController {
 
-	@Autowired
-	CommentService commentService;
+	private final FileDao fileDao;
 
 	@Autowired
-	FileDao fileDao;
+	public FileController(FileDao fileDao) {
+		this.fileDao = fileDao;
+	}
 
 	@GetMapping(path = "/product/{proudctId}")
-	public String getImage(@PathVariable int proudctId, HttpServletResponse response) {
+	public void getImageByProductId(@PathVariable int proudctId, HttpServletResponse response) {
 
 		FileInfo fileInfo = fileDao.getFileInfoByProductId(proudctId);
 		downloadImageFile(fileInfo, response);
 
-		return null;
 	}
 
 	@GetMapping(path = "/{fileId}")
-	public String getImageByFileId(@PathVariable int fileId, HttpServletResponse response) {
+	public void getImage(@PathVariable int fileId, HttpServletResponse response) {
 
 		FileInfo fileInfo = fileDao.getFileInfo(fileId);
 		downloadImageFile(fileInfo, response);
 
-		return null;
-
 	}
 
 	public void downloadImageFile(FileInfo fileInfo, HttpServletResponse response) {
-		
+
 		String fileName = fileInfo.getFileName();
 		String saveFileName = "c:/tmp/" + fileInfo.getSaveFileName();
 		String contentType = fileInfo.getContentType();

@@ -18,8 +18,12 @@ public class CommentController {
 	private static final String LOGIN = "login";
 	private static final int IS_NOT_MATCHED = 0;
 
+	private final MatchingService matchingService;
+
 	@Autowired
-	private MatchingService matchingService;
+	public CommentController(MatchingService matchingService) {
+		this.matchingService = matchingService;
+	}
 
 	@GetMapping(path = "/reviewWrite")
 	public String getReviewWrite(@RequestParam(name = "productId", required = true) int productId,
@@ -41,9 +45,8 @@ public class CommentController {
 			model.addAttribute("errorMsg", "예매 정보를 찾을 수 없습니다");
 			return "alert";
 
-			
 		}
-		
+
 		// 타겟 예매 기록에 이미 리뷰를 등록했을 때
 		if (matchingService.matchComment(reservationInfoId, productId) != IS_NOT_MATCHED) {
 			System.out.println(request.getHeader("referer"));
@@ -52,7 +55,7 @@ public class CommentController {
 			return "alert";
 
 		}
-		
+
 		return "reviewWrite";
 
 	}

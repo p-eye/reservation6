@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ProductController {
 
-
 	@GetMapping(path = "/detail")
 	public String getDetail(@RequestParam(name = "displayInfoId", required = true) int displayInfoId) {
 		return "detail";

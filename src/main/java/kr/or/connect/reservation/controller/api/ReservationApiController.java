@@ -26,11 +26,14 @@ import kr.or.connect.reservation.service.ReservationService;
 
 public class ReservationApiController {
 
-	@Autowired
-	public ReservationService reservationService;
+	private final ReservationService reservationService;
+	private final CommentService commentService;
 
 	@Autowired
-	public CommentService commentService;
+	public ReservationApiController(ReservationService reservationService, CommentService commentService) {
+		this.reservationService = reservationService;
+		this.commentService = commentService;
+	}
 
 	@GetMapping(path = "")
 	public ReservationInfoResponse getReservationInfoResponse(
@@ -54,22 +57,6 @@ public class ReservationApiController {
 	@PostMapping(path = "/{reservationInfoId}/comments")
 	public CommentResponse insertCommentAndImage(@PathVariable int reservationInfoId, CommentParam commentParam,
 			@RequestParam(required = false) MultipartFile commentImageFile) {
-
-		System.out.println(commentParam);
-		System.out.println(commentImageFile.getOriginalFilename());
-
-		/*
-		 * System.out.println("파일 이름 : " + attachedImage.getOriginalFilename());
-		 * System.out.println("파일 크기 : " + attachedImage.getSize()); String filePath =
-		 * "c:/tmp/";
-		 */
-		/*
-		 * File file = new File(filePath+ attachedImage.getOriginalFilename());
-		 * 
-		 * try {
-		 * 
-		 * attachedImage.transferTo(file); } }
-		 */
 
 		return commentService.insertCommentAndImage(commentParam, commentImageFile);
 

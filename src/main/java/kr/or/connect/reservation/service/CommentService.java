@@ -12,8 +12,6 @@ import kr.or.connect.reservation.dto.response.CommentResponse;
 
 @Service
 public interface CommentService {
-	
-
 
 	public List<Comment> getCommentList(int productId);
 
@@ -26,5 +24,9 @@ public interface CommentService {
 	public CommentImage getCommentImage(int commentId);
 
 	public CommentResponse insertCommentAndImage(CommentParam commentParam, MultipartFile commentImageFile);
+
+	public int insertComment(CommentParam commentParam);
+
+	public void insertCommentImage(int reservationUserCommentId, int reservationInfoId, int fileId);
 
 }

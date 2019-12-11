@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.connect.reservation.dao.CommentDao;
@@ -18,14 +19,16 @@ import kr.or.connect.reservation.service.FileService;
 @Service
 public class CommentServiceImpl implements CommentService {
 
-	@Autowired
-	private CommentDao commentDao;
+	private final CommentDao commentDao;
+	private final CommentImageDao commentImageDao;
+	private final FileService fileService;
 
 	@Autowired
-	private CommentImageDao commentImageDao;
-
-	@Autowired
-	private FileService fileService;
+	public CommentServiceImpl(CommentDao commentDao, CommentImageDao commentImageDao, FileService fileService) {
+		this.commentDao = commentDao;
+		this.commentImageDao = commentImageDao;
+		this.fileService = fileService;
+	}
 
 	/* get */
 
@@ -65,31 +68,34 @@ public class CommentServiceImpl implements CommentService {
 		return commentImageDao.getCommentImage(commentId);
 	}
 
+	
 	/* insert */
 
 	@Override
+	@Transactional
 	public CommentResponse insertCommentAndImage(CommentParam commentParam, MultipartFile commentImageFile) {
 
 		int commentId = insertComment(commentParam);
-		
-		//파일 없을 때
-		if (commentImageFile.isEmpty()) {
+
+		// 파일 없을 때
+		if (commentImageFile == null) {
 			return getCommentResponse(commentId);
 		}
 
-		//파일 있을 때
+		// 파일 있을 때
 		int fileId = fileService.insertFileInfo(commentImageFile, commentId);
 		int reservationInfoId = commentParam.getReservationInfoId();
 
 		insertCommentImage(commentId, reservationInfoId, fileId);
-
 		return getCommentResponse(commentId);
 	}
 
+	@Override
 	public int insertComment(CommentParam commentParam) {
 		return commentDao.insertComment(commentParam);
 	}
-
+	
+	@Override
 	public void insertCommentImage(int reservationUserCommentId, int reservationInfoId, int fileId) {
 
 		CommentImage commentImage = new CommentImage();

@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
+  let reservationInfoId;
+  let productId;
+
   const ClassName = function() {};
 
   ClassName.prototype = {
@@ -19,30 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
           return name !== classString;
         })
         .join(" ");
-    }
-  };
-
-  const CommentInput = function(inputData) {
-    this.createAllHiddenInput(inputData);
-  };
-
-  CommentInput.prototype = {
-    createAllHiddenInput: function(inputData) {
-      const productId = inputData.productId;
-      const reservationInfoId = inputData.reservationInfoId;
-
-      this.createHiddenInput("productId", productId);
-      this.createHiddenInput("reservationInfoId", reservationInfoId);
-    },
-
-    createHiddenInput: function(name, value) {
-      const newInput = document.createElement("input");
-      newInput.setAttribute("type", "hidden");
-      newInput.setAttribute("name", name);
-      newInput.setAttribute("id", name);
-      newInput.setAttribute("value", value);
-
-      document.querySelector(".hidden_form").appendChild(newInput);
     }
   };
 
@@ -129,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     setRatingScore: function(targetedRatingValue) {
       document.querySelector(".star_rank").innerHTML = targetedRatingValue;
+
       ClassName.prototype.removeClass(
         document.querySelector(".star_rank"),
         "gray_star"
@@ -136,27 +116,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
 
-  const ReservationInfo = function(reservationInfoId) {
-    this.getReservationInfoApi(reservationInfoId);
-  };
-
-  ReservationInfo.prototype = {
-    getReservationInfoApi: function(reservationInfoId) {
-      sendAjax("./api/reservations/" + reservationInfoId);
-    }
-  };
-
-  const Product = function(productData) {
-    this.setProductTitle(productData);
+  const Product = function(productId) {
+    this.getProductApi(productId);
   };
 
   Product.prototype = {
-    setProdudctTitle: function(productData) {}
+    getProductApi: function(productId) {
+      sendAjax("./api/comments/" + productId);
+    },
+
+    setProdudctTitle: function(productData) {
+      document.querySelector(".top_title .title").innerHTML =
+        productData.description;
+    }
   };
 
   const setApiData = function(jsonData) {
     console.log(jsonData);
-    CommentInput.prototype.createAllHiddenInput(jsonData);
+    Product.prototype.setProdudctTitle(jsonData);
+    CommentInput.prototype.createAllHiddenInput();
   };
 
   const sendAjax = function(url) {
@@ -195,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
     registerFileEvent: function() {
       CommentImage.prototype.uploadedFile.addEventListener(
         "change",
-        CommentImage.prototype.test6
+        CommentImage.prototype.checkFileType
       );
     },
 
@@ -206,16 +184,15 @@ document.addEventListener("DOMContentLoaded", function() {
       );
     },
 
-    test6: function() {
-      console.log(event.target.files[0]);
-      const uploadedImage = event.target.files[0];
-      if (!CommentImage.prototype.validImageType(uploadedImage)) {
+    checkFileType: function() {
+      const uploadedFile = event.target.files[0];
+      if (!CommentImage.prototype.validImageType(uploadedFile)) {
         console.warn("invalid image file type");
         return;
       }
 
-      const elImage = document.querySelector(".item_thumb");
-      elImage.src = window.URL.createObjectURL(uploadedImage);
+      const imgThumb = document.querySelector(".item_thumb");
+      imgThumb.src = window.URL.createObjectURL(uploadedFile);
     },
 
     validImageType: function(image) {
@@ -225,19 +202,76 @@ document.addEventListener("DOMContentLoaded", function() {
     },
 
     test7: function() {
-      console.log("test");
+      uploadedFile = CommentImage.prototype.uploadedFile;
+
+      CommentImage.prototype.uploadedFile.reset();
+      uploadedFile.value == "";
+
+      console.log(uploadedFile.files[0]);
+      //      console.log(files[0]);
+      //    files[0].select();
+      //  document.selection.clear;
     }
   };
 
   const initJS = function() {
-    const reservationInfoId = getParameterByName("reservationInfoId");
-    const productId = getParameterByName("productId");
+    reservationInfoId = getParameterByName("reservationInfoId");
+    productId = getParameterByName("productId");
 
-    new ReservationInfo(reservationInfoId);
+    new Product(productId);
     new StarScore();
     new Comment();
     new CommentImage();
     new SubmitBtn();
+    //  new ReservationInfo(reservationInfoId);
+  };
+
+  const CommentInput = function() {
+    this.createAllHiddenInput();
+  };
+
+  CommentInput.prototype = {
+    createAllHiddenInput: function() {
+      this.createHiddenInput("productId", productId);
+      this.createHiddenInput("reservationInfoId", reservationInfoId);
+    },
+
+    createHiddenInput: function(name, value) {
+      const newInput = document.createElement("input");
+      newInput.setAttribute("type", "hidden");
+      newInput.setAttribute("name", name);
+      newInput.setAttribute("id", name);
+      newInput.setAttribute("value", value);
+
+      document.querySelector(".hidden_form").appendChild(newInput);
+    }
+  };
+
+  const InputCondition = function() {};
+
+  InputCondition.prototype = {
+    isAllConditionValid: function() {
+      const isScoreChecked = InputCondition.prototype.isScoreChecked();
+      const isCommentFilled = InputCondition.prototype.isCommentFilled();
+
+      return isScoreChecked && isCommentFilled;
+    },
+
+    // 별점 점수 검사
+    isScoreChecked: function() {
+      const starScore = document.querySelector(".rating .star_rank").innerHTML;
+      return starScore >= 1 && starScore <= 5;
+    },
+
+    // 코멘트 길이 검사
+    isCommentFilled: function() {
+      const commentArea = document.querySelector(".review_textarea");
+      const commentLength = commentArea.value.length;
+
+      return commentLength >= 5 && commentLength <= 400;
+    }
+
+    // 파일 타입 검사는 파일 업로드될 때
   };
 
   const SubmitBtn = function() {
@@ -250,31 +284,52 @@ document.addEventListener("DOMContentLoaded", function() {
     registerEvent: function() {
       SubmitBtn.prototype.registerBtn.addEventListener(
         "click",
-        SubmitBtn.prototype.test8
+        SubmitBtn.prototype.clickSubmitBtn
       );
     },
 
-    test8: function() {
+    clickSubmitBtn: function() {
       event.preventDefault();
+
+      //검사
+      if (!InputCondition.prototype.isAllConditionValid()) return;
+
+      SubmitBtn.prototype.createCommentFormData();
+    },
+
+    createCommentFormData: function() {
+      // checked된 별점 모두는 form data로 전송 X
+      const ratings = document.querySelectorAll(".rating_rdo");
+
+      ratings.forEach(function(rating) {
+        rating.disabled = true;
+      });
+
+      // 최종 score만 form data로 전송
       const score = document.querySelector(".star_rank").innerHTML;
       CommentInput.prototype.createHiddenInput("score", score);
 
-      const formData = new FormData(document.querySelector("#fileForm"));
-      console.log(formData);
+      const commentFormData = new FormData(document.querySelector("#fileForm"));
+      console.log(commentFormData);
+      SubmitBtn.prototype.sendCommentForm(commentFormData);
+    },
 
-      //  document.querySelector("#fileForm").submit();
+    sendCommentForm: function(commentFormData) {
       let oReq = new XMLHttpRequest();
-      oReq.open("POST", "http://localhost:8080/reservation6/api/test");
+      oReq.open(
+        "POST",
+        "./api/reservations/" + reservationInfoId + "/comments"
+      );
       oReq.addEventListener("load", function() {
         if (oReq.status === 200) {
           alert("리뷰가 등록되었습니다");
-          document.location.href = "./main.html";
+          //  document.location.href = "./main.html";
         } else if (oReq.status !== 200) {
           alert("Request failed.  Returned status of " + oReq.status);
         }
       });
 
-      oReq.send(formData);
+      oReq.send(commentFormData);
     }
   };
 
