@@ -43,12 +43,8 @@ public class ReservationInfoDaoTest {
 		*/
 		
 		
-		/*mathReservationInfo */
-		/*
-		System.out.println(reservationInfoDao.matchReservationInfo(35, "kimjinsu@connect.co.kr"));
-		System.out.println("==========");
-		*/
-		
+		/* getReservationInfo */
+		System.out.println(reservationInfoDao.getReservationInfo(31));
 
 	}
 

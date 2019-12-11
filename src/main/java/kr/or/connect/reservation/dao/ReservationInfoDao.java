@@ -50,7 +50,7 @@ public class ReservationInfoDao {
 			Map<String, Integer> params = new HashMap<>();
 			params.put("reservationInfoId", reservationInfoId);
 			return jdbc.queryForObject(SELECT_RESERVATION_TOTAL_PRICE, params, Integer.class);
-			
+
 		} catch (EmptyResultDataAccessException e) {
 			return 0;
 		}
@@ -63,13 +63,25 @@ public class ReservationInfoDao {
 
 	public int cancelReservationInfo(int reservationInfoId) {
 		try {
-			SqlParameterSource params = new MapSqlParameterSource()
-					.addValue("reservationInfoId", reservationInfoId)
+			SqlParameterSource params = new MapSqlParameterSource().addValue("reservationInfoId", reservationInfoId)
 					.addValue("modifyDate", new Date());
 			return jdbc.update(CANCEL_RESERVATION, params);
-			
+
 		} catch (EmptyResultDataAccessException e) {
 			return 0;
+		}
+	}
+
+	public ReservationInfo getReservationInfo(int reservationInfoId) {
+
+		try {
+			Map<String, Integer> params = new HashMap<>();
+			params.put("reservationInfoId", reservationInfoId);
+			String sql = "SELECT id AS reservation_info_id, reservation_email FROM reservation_info WHERE id = :reservationInfoId ";
+			return jdbc.queryForObject(sql, params, rowMapper);
+			
+		} catch (EmptyResultDataAccessException e) {
+			return null;
 		}
 	}
 

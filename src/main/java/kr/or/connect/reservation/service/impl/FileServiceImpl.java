@@ -49,11 +49,7 @@ public class FileServiceImpl implements FileService {
 		}
 
 		/* 파일명에 현재시간 timeStamp 붙이기 */
-		String _fileName = fileName.substring(0, fileName.lastIndexOf("."));
-		String fileType = fileName.substring(fileName.lastIndexOf(".") + 1);
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss.SSS").format(System.currentTimeMillis());
-
-		String fileNameTimeStamped = _fileName + "_" + timeStamp + "." + fileType;
+		String fileNameTimeStamped = makeTimeStampedFileName(fileName);
 
 		/* 파일업로드 */
 		try (
@@ -70,6 +66,14 @@ public class FileServiceImpl implements FileService {
 		}
 
 		return fileNameTimeStamped;
+	}
+	
+	public String makeTimeStampedFileName(String fileName) {
+		String _fileName = fileName.substring(0, fileName.lastIndexOf("."));
+		String fileType = fileName.substring(fileName.lastIndexOf(".") + 1);
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss.SSS").format(System.currentTimeMillis());
+
+		return _fileName + "_" + timeStamp + "." + fileType;
 	}
 
 	public static boolean isValidFileName(String fileName) {

@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   Product.prototype = {
     getProductApi: function(productId) {
-      sendAjax("./api/comments/" + productId);
+      sendAjax("./api/comments/product/" + productId);
     },
 
     setProdudctTitle: function(productData) {
@@ -131,17 +131,36 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
 
-  const setApiData = function(jsonData) {
-    console.log(jsonData);
-    Product.prototype.setProdudctTitle(jsonData);
-    CommentInput.prototype.createAllHiddenInput();
+  const Reservation = function(reservationInfoId) {
+    this.getReservationApi(reservationInfoId);
+  };
+
+  Reservation.prototype = {
+    reservationEmail: "",
+
+    getReservationApi: function(reservationInfoId) {
+      sendAjax("./api/comments/reservation/" + reservationInfoId);
+    },
+
+    setReservationEmail: function(reservationData) {
+      Reservation.prototype.reservationEmail = reservationData.reservationEmail;
+    }
+  };
+
+  const setApiData = function(jsonData, url) {
+    if (url.indexOf("product") != -1) {
+      Product.prototype.setProdudctTitle(jsonData);
+      CommentInput.prototype.createAllHiddenInput();
+    } else {
+      Reservation.prototype.setReservationEmail(jsonData);
+    }
   };
 
   const sendAjax = function(url) {
     let oReq = new XMLHttpRequest();
     oReq.addEventListener("load", function() {
       const jsonData = JSON.parse(oReq.responseText);
-      setApiData(jsonData);
+      setApiData(jsonData, url);
     });
 
     oReq.open("GET", url);
@@ -208,7 +227,9 @@ document.addEventListener("DOMContentLoaded", function() {
       uploadedFile.value == "";
 
       console.log(uploadedFile.files[0]);
-
+      //      console.log(files[0]);
+      //    files[0].select();
+      //  document.selection.clear;
     }
   };
 
@@ -217,6 +238,7 @@ document.addEventListener("DOMContentLoaded", function() {
     productId = getParameterByName("productId");
 
     new Product(productId);
+    new Reservation(reservationInfoId);
     new StarScore();
     new Comment();
     new CommentImage();
@@ -320,7 +342,9 @@ document.addEventListener("DOMContentLoaded", function() {
       oReq.addEventListener("load", function() {
         if (oReq.status === 200) {
           alert("리뷰가 등록되었습니다");
-          document.location.href = "./";
+          document.location.href =
+            "./myreservation?reservationEmail=" +
+            Reservation.prototype.reservationEmail;
         } else if (oReq.status !== 200) {
           alert("Request failed.  Returned status of " + oReq.status);
         }

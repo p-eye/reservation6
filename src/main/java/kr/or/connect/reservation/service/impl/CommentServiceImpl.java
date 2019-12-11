@@ -81,7 +81,7 @@ public class CommentServiceImpl implements CommentService {
 		int commentId = insertComment(commentParam);
 
 		// 파일 없을 때
-		if (commentImageFile == null) {
+		if (commentImageFile == null || commentImageFile.getSize() <= 0) {
 			logger.info("no file");
 			return getCommentResponse(commentId);
 		}

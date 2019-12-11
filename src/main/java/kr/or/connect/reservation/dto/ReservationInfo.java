@@ -1,5 +1,10 @@
 package kr.or.connect.reservation.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+
+//@JsonInclude(Include.NON_DEFAULT)
 public class ReservationInfo {
 
 	private int reservationInfoId;

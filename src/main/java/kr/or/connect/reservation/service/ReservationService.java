@@ -31,4 +31,6 @@ public interface ReservationService {
 	
 	public ReservationResponse cancelReservationInfo(int reservationInfoId);
 
+	public ReservationInfo getReservationInfo(int reservationInfoId);
+
 }
