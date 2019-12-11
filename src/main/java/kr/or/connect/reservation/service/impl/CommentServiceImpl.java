@@ -77,12 +77,15 @@ public class CommentServiceImpl implements CommentService {
 
 		int commentId = insertComment(commentParam);
 
+		System.out.println(commentImageFile);
 		// 파일 없을 때
 		if (commentImageFile == null) {
+			System.out.println("no file");
 			return getCommentResponse(commentId);
 		}
 
 		// 파일 있을 때
+		System.out.println("yes file");
 		int fileId = fileService.insertFileInfo(commentImageFile, commentId);
 		int reservationInfoId = commentParam.getReservationInfoId();
 

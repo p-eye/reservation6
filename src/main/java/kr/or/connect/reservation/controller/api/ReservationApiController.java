@@ -1,5 +1,7 @@
 package kr.or.connect.reservation.controller.api;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,15 +27,18 @@ import kr.or.connect.reservation.service.ReservationService;
 @CrossOrigin
 
 public class ReservationApiController {
-
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	private final ReservationService reservationService;
 	private final CommentService commentService;
-
+	
 	@Autowired
 	public ReservationApiController(ReservationService reservationService, CommentService commentService) {
 		this.reservationService = reservationService;
 		this.commentService = commentService;
 	}
+
 
 	@GetMapping(path = "")
 	public ReservationInfoResponse getReservationInfoResponse(
@@ -52,12 +57,12 @@ public class ReservationApiController {
 		return reservationService.cancelReservationInfo(reservationInfoId);
 	}
 
-	public static final String FILE_PATH = "img_comment/";
 
 	@PostMapping(path = "/{reservationInfoId}/comments")
 	public CommentResponse insertCommentAndImage(@PathVariable int reservationInfoId, CommentParam commentParam,
 			@RequestParam(required = false) MultipartFile commentImageFile) {
 
+		logger.info(Thread.currentThread().getStackTrace()[1].getMethodName());
 		return commentService.insertCommentAndImage(commentParam, commentImageFile);
 
 	}

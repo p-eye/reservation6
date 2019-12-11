@@ -45,7 +45,7 @@ public class CommentDao {
 			params.put("productId", productId);
 			return jdbc.queryForObject(CALC_AVERAGE_SCORE, params, Double.class);
 
-		} catch (EmptyResultDataAccessException e) {
+		} catch (NullPointerException e) {
 			return 0;
 		}
 	}

@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function() {
       oReq.addEventListener("load", function() {
         if (oReq.status === 200) {
           alert("리뷰가 등록되었습니다");
-          //  document.location.href = "./main.html";
+          document.location.href = "./";
         } else if (oReq.status !== 200) {
           alert("Request failed.  Returned status of " + oReq.status);
         }

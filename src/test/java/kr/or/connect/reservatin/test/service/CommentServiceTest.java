@@ -7,7 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import kr.or.connect.reservation.config.ApplicationConfig;
 import kr.or.connect.reservation.dto.Comment;
-import kr.or.connect.reservation.dto.CommentParam;
+import kr.or.connect.reservation.dto.param.CommentParam;
 import kr.or.connect.reservation.service.CommentService;
 
 public class CommentServiceTest {
@@ -29,15 +29,18 @@ public class CommentServiceTest {
 		/* getCommentImageList */
 		System.out.println(commentService.getCommentImageList(2));
 		
-		/* insertComment */
 		
+		/* insertComment */
+		/*
 		CommentParam commentParam = new CommentParam();
 		commentParam.setComment("코멘트");
 		commentParam.setProductId(31);
 		commentParam.setReservationInfoId(41);
 		commentParam.setScore(2);
-		System.out.println(commentService.insertCommentAndImage(commentParam));
+		System.out.println(commentService.insertComment(commentParam));
+		*/
 		
+
 	}
 
 }

@@ -25,10 +25,12 @@ public class CommentDaoTest {
 
 		*/
 		/* getCommentAvg */
-		System.out.println(commentDao.getCommentAverageScore(1));
+		System.out.println(commentDao.getCommentAverageScore(7));
 		
 		/* getCommentResponse */
 		System.out.println(commentDao.getCommentResponse(3));
+		
+		
 	}
 
 }

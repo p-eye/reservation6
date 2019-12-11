@@ -2,6 +2,8 @@ package kr.or.connect.reservation.service.impl;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,24 +26,39 @@ public class FileServiceImpl implements FileService {
 	@Override
 	public int insertFileInfo(MultipartFile commentImageFile, int commentId) {
 
-		uploadCommentImageFile(commentImageFile);
+		String fileNameTimeStamped = uploadCommentImageFile(commentImageFile);
 
 		FileInfo fileInfo = new FileInfo();
 
-		fileInfo.setFileName(commentImageFile.getOriginalFilename());
-		fileInfo.setSaveFileName(FILE_PATH + commentImageFile.getOriginalFilename());
+		fileInfo.setFileName(fileNameTimeStamped);
+		fileInfo.setSaveFileName(FILE_PATH + fileNameTimeStamped);
 		fileInfo.setContentType(commentImageFile.getContentType());
 
 		return fileDao.insertFileInfo(fileInfo);
 	}
 
-	// 이런 함수도 인터페이스에서 선언하고 Override 해야 하나요?
-	public void uploadCommentImageFile(MultipartFile commentImageFile) {
+	static final String ILLEGAL_EXP = "[:\\\\/%*?:|\"<>]";
 
+	public String uploadCommentImageFile(MultipartFile commentImageFile) {
+
+		/* 파일명 유효성 검사 */
+		String fileName = commentImageFile.getOriginalFilename();
+		if (!isValidFileName(fileName)) {
+			fileName = makeValidFileName(fileName, "_");
+
+		}
+
+		/* 파일명에 현재시간 timeStamp 붙이기 */
+		String _fileName = fileName.substring(0, fileName.lastIndexOf("."));
+		String fileType = fileName.substring(fileName.lastIndexOf(".") + 1);
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss.SSS").format(System.currentTimeMillis());
+
+		String fileNameTimeStamped = _fileName + "_" + timeStamp + "." + fileType;
+
+		/* 파일업로드 */
 		try (
 
-				FileOutputStream fos = new FileOutputStream(
-						"c:/tmp/" + FILE_PATH + commentImageFile.getOriginalFilename());
+				FileOutputStream fos = new FileOutputStream("c:/tmp/" + FILE_PATH + fileNameTimeStamped);
 				InputStream is = commentImageFile.getInputStream();) {
 			int readCount = 0;
 			byte[] buffer = new byte[1024];
@@ -52,6 +69,20 @@ public class FileServiceImpl implements FileService {
 			throw new RuntimeException("file Save Error");
 		}
 
+		return fileNameTimeStamped;
 	}
 
+	public static boolean isValidFileName(String fileName) {
+		if (fileName == null || fileName.trim().length() == 0)
+			return false;
+
+		return !Pattern.compile(ILLEGAL_EXP).matcher(fileName).find();
+	}
+
+	public static String makeValidFileName(String fileName, String replaceStr) {
+		if (fileName == null || fileName.trim().length() == 0 || replaceStr == null)
+			return String.valueOf(System.currentTimeMillis());
+
+		return fileName.replaceAll(ILLEGAL_EXP, replaceStr);
+	}
 }
