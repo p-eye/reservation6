@@ -38,7 +38,7 @@
 						title="이전 화면으로 이동"> <i class="fn fn-backward1"></i>
 					</a>
 					<h2>
-						<span class="title">클림트 인사이드</span>
+						<span class="title">productDescription</span>
 					</h2>
 				</div>
 				<form action="" method="post" id="fileForm"

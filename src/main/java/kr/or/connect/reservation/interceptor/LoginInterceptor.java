@@ -44,6 +44,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 		// 로그인 성공시
 		if (reservationInfo != null) {
+			logger.info("client IP: "+request.getRemoteAddr());
 			logger.info("new login success");
 			
 			HttpSession httpSession = request.getSession();
@@ -62,12 +63,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 			} else {
 				
-				// 없을 때 = main, detail 페이지에서 넘어왔을 때
+				/* 없을 때 = main, detail 페이지에서 넘어왔을 때
+				 * 나의 예매내역 페이지로 이동
+				 */
 				response.sendRedirect("./myreservation?reservationEmail=" + reservationEmail);
 			}
 
 		}
-		
+
 		logger.debug("{} 가종료되었습니다. {} 를 view로 사용합니다.", handler.toString(), modelAndView.getViewName());
 
 	}

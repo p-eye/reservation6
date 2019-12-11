@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import kr.or.connect.reservation.dto.Product;
 import kr.or.connect.reservation.dto.ProductImage;
 import kr.or.connect.reservation.dto.ProductPrice;
-import kr.or.connect.reservation.dto.ProductTable;
 import kr.or.connect.reservation.dto.response.ProductResponse;
 
 @Service
@@ -26,5 +25,5 @@ public interface ProductService {
 
 	public List<ProductImage> getProductImageList(int productId);
 
-	public ProductTable getProduct(int productId);
+	public Product getProduct(int productId);
 }

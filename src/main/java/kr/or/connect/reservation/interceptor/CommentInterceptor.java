@@ -22,7 +22,10 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 
 		if (httpSession.getAttribute(LOGIN) == null) {
 			
-			// 로그인 정보 없을 때
+			/* 로그인 정보 없을 때
+			 * 로그인 후 돌아갈 페이지 (= 현재페이지)를 destination으로 저장한다
+			 * 로그인 폼으로 리다이렉트
+			 */
 			logger.info("no user is logged");
 
 			saveDestination(request);
@@ -32,9 +35,9 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 
 		else {
 			
-			//로그인 정보 있을 때
-			
+			/*로그인 정보 있을 때 reviewWrite 컨트롤러로 */
 			logger.debug("{} 를 호출했습니다.", handler.toString());
+			
 			return true;
 		}
 
@@ -56,5 +59,14 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 		}
 
 	}
+	
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+			throws Exception {
+		
+		/* reviewWrite에서 return View 한 후 세션 삭제 */
+		request.getSession().removeAttribute("currentURI");
+	}
+	
 
 }

@@ -13,7 +13,6 @@ import kr.or.connect.reservation.dto.Category;
 import kr.or.connect.reservation.dto.Product;
 import kr.or.connect.reservation.dto.ProductImage;
 import kr.or.connect.reservation.dto.ProductPrice;
-import kr.or.connect.reservation.dto.ProductTable;
 import kr.or.connect.reservation.dto.response.ProductResponse;
 import kr.or.connect.reservation.service.ProductService;
 
@@ -81,7 +80,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductTable getProduct(int productId) {
+	public Product getProduct(int productId) {
 		return productDao.getProduct(productId);
 	}
 

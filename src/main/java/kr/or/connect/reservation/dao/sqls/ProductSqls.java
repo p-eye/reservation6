@@ -36,4 +36,10 @@ public class ProductSqls {
 			+ "WHERE pi.type = 'th' "
 			+ "AND p.category_id = :categoryId "
 			+ "limit :start, :limit";
+	
+	public static final String SELECT_PRODUCT = 
+			"SELECT id AS product_id, "
+			+ "description AS product_description "
+			+ "FROM product "
+			+ "WHERE id = :productId";
 }

@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     setProdudctTitle: function(productData) {
       document.querySelector(".top_title .title").innerHTML =
-        productData.description;
+        productData.productDescription;
     }
   };
 
@@ -208,9 +208,7 @@ document.addEventListener("DOMContentLoaded", function() {
       uploadedFile.value == "";
 
       console.log(uploadedFile.files[0]);
-      //      console.log(files[0]);
-      //    files[0].select();
-      //  document.selection.clear;
+
     }
   };
 
@@ -223,7 +221,6 @@ document.addEventListener("DOMContentLoaded", function() {
     new Comment();
     new CommentImage();
     new SubmitBtn();
-    //  new ReservationInfo(reservationInfoId);
   };
 
   const CommentInput = function() {

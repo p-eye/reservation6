@@ -63,6 +63,7 @@ public class ReservationApiController {
 			@RequestParam(required = false) MultipartFile commentImageFile) {
 
 		logger.info(Thread.currentThread().getStackTrace()[1].getMethodName());
+		
 		return commentService.insertCommentAndImage(commentParam, commentImageFile);
 
 	}

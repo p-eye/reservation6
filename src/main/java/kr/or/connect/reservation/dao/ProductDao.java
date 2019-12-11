@@ -1,7 +1,6 @@
 package kr.or.connect.reservation.dao;
 
-import static kr.or.connect.reservation.dao.sqls.ProductSqls.SELECT_PRODUCTS_ALL;
-import static kr.or.connect.reservation.dao.sqls.ProductSqls.SELECT_PRODUCTS_BY_CATEGORY;
+import static kr.or.connect.reservation.dao.sqls.ProductSqls.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.connect.reservation.dao.mapper.ProductMapper;
 import kr.or.connect.reservation.dto.Product;
-import kr.or.connect.reservation.dto.ProductTable;
 
 @Repository
 public class ProductDao {
@@ -45,12 +43,11 @@ public class ProductDao {
 		return jdbc.query(SELECT_PRODUCTS_BY_CATEGORY, params, new ProductMapper());
 	}
 
-	public ProductTable getProduct(int productId) {
+	public Product getProduct(int productId) {
 		try {
 			Map<String, Integer> params = new HashMap<>();
 			params.put("productId", productId);
-			String sql = "SELECT * FROM product WHERE id = :productId";
-			return jdbc.queryForObject(sql, params, BeanPropertyRowMapper.newInstance(ProductTable.class));
+			return jdbc.queryForObject(SELECT_PRODUCT, params, BeanPropertyRowMapper.newInstance(Product.class));
 
 		} catch (EmptyResultDataAccessException e) {
 			return null;

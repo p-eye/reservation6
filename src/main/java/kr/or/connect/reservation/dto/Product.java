@@ -1,10 +1,14 @@
 package kr.or.connect.reservation.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
 public class Product {
 
 	private int displayInfoId;
 	private int productId;
-	private String proudctDescription;
+	private String productDescription;
 	private String placeName;
 	private String productContent;
 	private String productImageUrl;
@@ -13,12 +17,12 @@ public class Product {
 		super();
 	}
 
-	public Product(int displayInfoId, int productId, String proudctDescription, String placeName, String productContent,
+	public Product(int displayInfoId, int productId, String productDescription, String placeName, String productContent,
 			String productImageUrl) {
 		super();
 		this.displayInfoId = displayInfoId;
 		this.productId = productId;
-		this.proudctDescription = proudctDescription;
+		this.productDescription = productDescription;
 		this.placeName = placeName;
 		this.productContent = productContent;
 		this.productImageUrl = productImageUrl;
@@ -40,12 +44,12 @@ public class Product {
 		this.productId = productId;
 	}
 
-	public String getProudctDescription() {
-		return proudctDescription;
+	public String getProductDescription() {
+		return productDescription;
 	}
 
-	public void setProudctDescription(String proudctDescription) {
-		this.proudctDescription = proudctDescription;
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
 	}
 
 	public String getPlaceName() {
@@ -74,8 +78,8 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [displayInfoId=" + displayInfoId + ", productId=" + productId + ", proudctDescription="
-				+ proudctDescription + ", placeName=" + placeName + ", productContent=" + productContent
+		return "Product [displayInfoId=" + displayInfoId + ", productId=" + productId + ", productDescription="
+				+ productDescription + ", placeName=" + placeName + ", productContent=" + productContent
 				+ ", productImageUrl=" + productImageUrl + "]";
 	}
 

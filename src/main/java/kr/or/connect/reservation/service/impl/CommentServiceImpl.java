@@ -2,6 +2,8 @@ package kr.or.connect.reservation.service.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,8 @@ import kr.or.connect.reservation.service.FileService;
 
 @Service
 public class CommentServiceImpl implements CommentService {
+
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private final CommentDao commentDao;
 	private final CommentImageDao commentImageDao;
@@ -68,7 +72,6 @@ public class CommentServiceImpl implements CommentService {
 		return commentImageDao.getCommentImage(commentId);
 	}
 
-	
 	/* insert */
 
 	@Override
@@ -77,19 +80,18 @@ public class CommentServiceImpl implements CommentService {
 
 		int commentId = insertComment(commentParam);
 
-		System.out.println(commentImageFile);
 		// 파일 없을 때
 		if (commentImageFile == null) {
-			System.out.println("no file");
+			logger.info("no file");
 			return getCommentResponse(commentId);
 		}
 
 		// 파일 있을 때
-		System.out.println("yes file");
 		int fileId = fileService.insertFileInfo(commentImageFile, commentId);
 		int reservationInfoId = commentParam.getReservationInfoId();
 
 		insertCommentImage(commentId, reservationInfoId, fileId);
+		logger.info("file is uploaded");
 		return getCommentResponse(commentId);
 	}
 
@@ -97,7 +99,7 @@ public class CommentServiceImpl implements CommentService {
 	public int insertComment(CommentParam commentParam) {
 		return commentDao.insertComment(commentParam);
 	}
-	
+
 	@Override
 	public void insertCommentImage(int reservationUserCommentId, int reservationInfoId, int fileId) {
 

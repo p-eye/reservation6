@@ -26,6 +26,8 @@ public class ProductDaoTest {
 
 		}
 
+		/* getProduct */
+		System.out.println(productDao.getProduct(42));
 	}
 
 }
