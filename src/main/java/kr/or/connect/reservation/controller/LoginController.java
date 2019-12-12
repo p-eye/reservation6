@@ -21,7 +21,6 @@ public class LoginController {
 
 	@Autowired
 	public LoginController(ReservationService reservationService) {
-		super();
 		this.reservationService = reservationService;
 	}
 

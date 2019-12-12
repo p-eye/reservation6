@@ -56,6 +56,7 @@ public class ReservationServiceImpl implements ReservationService {
 		for (ReservationInfo reservationInfo : reservationInfoList) {
 			int displayInfoId = reservationInfo.getDisplayInfoId();
 			reservationInfo.setDisplayInfo(displayInfoService.getDisplayInfo(displayInfoId));
+			//질문: reservationInfo.setDisplayInfo(displayInfoService.getDisplayInfo(reservationInfo.getDisplayInfoId()));
 
 			int reservationInfoId = reservationInfo.getReservationInfoId();
 			reservationInfo.setTotalPrice(getReservationTotalPrice(reservationInfoId));

@@ -89,8 +89,8 @@ public class CommentServiceImpl implements CommentService {
 		// 파일 있을 때
 		int fileId = fileService.insertFileInfo(commentImageFile, commentId);
 		int reservationInfoId = commentParam.getReservationInfoId();
-
 		insertCommentImage(commentId, reservationInfoId, fileId);
+
 		logger.info("file is uploaded");
 		return getCommentResponse(commentId);
 	}

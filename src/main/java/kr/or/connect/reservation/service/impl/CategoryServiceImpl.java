@@ -27,11 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public CategoryResponse getCategoryResponse() {
-
-		CategoryResponse categoryResponse = new CategoryResponse();
-		categoryResponse.setItems(getCategoryList());
-
-		return categoryResponse;
+		return new CategoryResponse(getCategoryList());
 	}
 
 }

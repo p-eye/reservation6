@@ -49,7 +49,7 @@ public class CommentController {
 		// 내가 예매했지만 이미 리뷰를 등록했을 때
 		if (matchingService.matchComment(reservationInfoId, productId) != MatchingService.IS_NOT_MATCHED) {
 
-			// 세션등록이유: 이미 내가 리뷰 작성했을 때만 내 예매내역 페이지로 이동하게 하려고
+			// 세션등록이유: 내 예매내역 페이지에서 등록한 리뷰 있을 때만 현 페이지 새로고침 하려고  (view 호출 후 세션 삭제)
 			httpSession.setAttribute("currentURI", request.getHeader("referer"));
 
 			model.addAttribute("errorMsg", "이미 리뷰를 작성하셨습니다");

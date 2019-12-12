@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.or.connect.reservation.dao.CategoryDao;
 import kr.or.connect.reservation.dao.ProductDao;
 import kr.or.connect.reservation.dao.ProductImageDao;
 import kr.or.connect.reservation.dao.ProductPriceDao;
@@ -14,20 +13,21 @@ import kr.or.connect.reservation.dto.Product;
 import kr.or.connect.reservation.dto.ProductImage;
 import kr.or.connect.reservation.dto.ProductPrice;
 import kr.or.connect.reservation.dto.response.ProductResponse;
+import kr.or.connect.reservation.service.CategoryService;
 import kr.or.connect.reservation.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
-	private final CategoryDao categoryDao;
+	private final CategoryService categoryService;
 	private final ProductDao productDao;
 	private final ProductPriceDao productPriceDao;
 	private final ProductImageDao productImageDao;
-	
+
 	@Autowired
-	public ProductServiceImpl(CategoryDao categoryDao, ProductDao productDao, ProductPriceDao productPriceDao,
+	public ProductServiceImpl(CategoryService categoryService, ProductDao productDao, ProductPriceDao productPriceDao,
 			ProductImageDao productImageDao) {
-		this.categoryDao = categoryDao;
+		this.categoryService = categoryService;
 		this.productDao = productDao;
 		this.productPriceDao = productPriceDao;
 		this.productImageDao = productImageDao;
@@ -59,11 +59,11 @@ public class ProductServiceImpl implements ProductService {
 
 		int totalCount = 0;
 		if (categoryId == TOTAL_CATEGORIES) {
-			for (Category category : categoryDao.getCategoryList()) {
+			for (Category category : categoryService.getCategoryList()) {
 				totalCount += category.getDisplayInfoCount();
 			}
 		} else {
-			totalCount = categoryDao.getCategoryList().get(categoryId - 1).getDisplayInfoCount();
+			totalCount = categoryService.getCategoryList().get(categoryId - 1).getDisplayInfoCount();
 		}
 
 		return totalCount;

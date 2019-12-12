@@ -41,7 +41,7 @@ public class FileController {
 
 	}
 
-	public void downloadImageFile(FileInfo fileInfo, HttpServletResponse response) {
+	private void downloadImageFile(FileInfo fileInfo, HttpServletResponse response) {
 
 		String fileName = fileInfo.getFileName();
 		String saveFileName = "c:/tmp/" + fileInfo.getSaveFileName();
@@ -53,7 +53,8 @@ public class FileController {
 		response.setHeader("Pragma", "no-cache;");
 		response.setHeader("Expires", "-1;");
 
-		try (FileInputStream fis = new FileInputStream(saveFileName); OutputStream out = response.getOutputStream();) {
+		try (FileInputStream fis = new FileInputStream(saveFileName); 
+				OutputStream out = response.getOutputStream();) {
 			int readCount = 0;
 			byte[] buffer = new byte[1024];
 			while ((readCount = fis.read(buffer)) != -1) {

@@ -27,11 +27,7 @@ public class PromotionServiceImpl implements PromotionService {
 
 	@Override
 	public PromotionResponse getPromotionResponse() {
-		
-		PromotionResponse promotionResponse = new PromotionResponse();
-		promotionResponse.setItems(getPromotionList());
-		
-		return promotionResponse;
+		return new PromotionResponse(getPromotionList());
 	}
 
 }
