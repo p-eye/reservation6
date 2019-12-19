@@ -19,7 +19,7 @@ public interface ProductService {
 
 	public List<Product> getProductList(int categoryId, int start);
 
-	public int getProductListTotalCount(int categoryId);
+	public int countProductList(int categoryId);
 
 	public List<ProductPrice> getProductPriceList(int productId);
 

@@ -3,20 +3,38 @@ package kr.or.connect.reservation.dto.param;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
 import kr.or.connect.reservation.dto.ReservationPrice;
 
 public class ReservationParam {
 
 	private int displayInfoId;
+
+	@NotEmpty(message = "수량을 입력해주세요")
 	private List<ReservationPrice> prices;
+
 	private int productId;
+
+	@Pattern(regexp = "^[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\\.[_0-9a-zA-Z-]+){1,2}$", 
+			message = "이메일 형식을 확인해주세요")
 	private String reservationEmail;
+
+	@Pattern(regexp = "^[가-힣]{2,4}", 
+			message = "이름 형식을 확인해주세요")
 	private String reservationName;
+
+	@Pattern(regexp = "^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$", 
+			message = "연락처 형식을 확인해주세요")
 	private String reservationTel;
+
 	private String reservationDate;
 	private boolean cancelFlag;
 	private LocalDateTime createDate;
 	private LocalDateTime modifyDate;
+	
+	
 
 	public ReservationParam() {
 		createDate = LocalDateTime.now();

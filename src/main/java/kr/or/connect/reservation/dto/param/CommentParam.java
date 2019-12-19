@@ -2,12 +2,24 @@ package kr.or.connect.reservation.dto.param;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
+
 public class CommentParam {
 
 	private int productId;
 	private int reservationInfoId;
+
+	@Range(min = 1, max = 5,
+			message = "별점을 확인해주세요")
 	private int score;
+
+	@Size(min = 5, max = 400,
+			message = "글자 수를 확인해주세요")
 	private String comment;
+	
 	private LocalDateTime createDate;
 	private LocalDateTime modifyDate;
 

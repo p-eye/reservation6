@@ -11,12 +11,27 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Spring -->
-		<spring.version>4.3.5.RELEASE</spring.version>
+		<spring.version>5.1.5.RELEASE</spring.version>
 
 		<!-- jackson -->
 		<jackson2.version>2.9.10</jackson2.version>
 	</properties>
 	<dependencies>
+
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.7.Final</version>
+		</dependency>
 
 		<!-- file upload -->
 		<dependency>

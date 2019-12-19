@@ -89,7 +89,7 @@
 									<div class="inline_control">
 										<input type="text" name="reservationName" id="name"
 											class="text" placeholder="네이버" maxlength="17" required
-											<c:if test="${not empty login }">readOnly value=${login.reservationName}</c:if>>
+											<c:if test="${not empty login }"> value=${login.reservationName}</c:if>>
 										<div class="warning_msg"></div>
 									</div>
 								</div>
@@ -100,7 +100,7 @@
 									<div class="inline_control tel_wrap">
 										<input type="tel" name="reservationTel" id="tel" class="tel"
 											placeholder="000-0000-0000 (예매내역 문자발송)" required
-											<c:if test="${not empty login }">readOnly value=${login.reservationTel}</c:if>>
+											<c:if test="${not empty login }"> value=${login.reservationTel}</c:if>>
 										<div class="warning_msg"></div>
 									</div>
 								</div>

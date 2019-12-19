@@ -1,5 +1,7 @@
 package kr.or.connect.reservation.controller.api;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,29 +27,27 @@ import kr.or.connect.reservation.service.ReservationService;
 @RestController
 @RequestMapping(path = "/api/reservations")
 @CrossOrigin
-
 public class ReservationApiController {
-	
+
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	private final ReservationService reservationService;
 	private final CommentService commentService;
-	
+
 	@Autowired
 	public ReservationApiController(ReservationService reservationService, CommentService commentService) {
 		this.reservationService = reservationService;
 		this.commentService = commentService;
 	}
 
-
-	@GetMapping(path = "")
+	@GetMapping
 	public ReservationInfoResponse getReservationInfoResponse(
 			@RequestParam(name = "reservationEmail", defaultValue = "") String reservationEmail) {
 		return reservationService.getReservationInfoResponse(reservationEmail);
 	}
 
-	@PostMapping(path = "")
-	public ReservationResponse insertReservationInfo(@RequestBody ReservationParam reservationParam) {
+	@PostMapping
+	public ReservationResponse insertReservationInfo(@RequestBody @Valid ReservationParam reservationParam) {
 		return reservationService.insertReservationInfoAndPrice(reservationParam);
 
 	}
@@ -57,13 +57,11 @@ public class ReservationApiController {
 		return reservationService.cancelReservationInfo(reservationInfoId);
 	}
 
-
 	@PostMapping(path = "/{reservationInfoId}/comments")
-	public CommentResponse insertCommentAndImage(@PathVariable int reservationInfoId, CommentParam commentParam,
+	public CommentResponse insertCommentAndImage(@Valid CommentParam commentParam,
 			@RequestParam(required = false) MultipartFile commentImageFile) {
-
-		logger.info(Thread.currentThread().getStackTrace()[1].getMethodName());
 		
+		logger.info(Thread.currentThread().getStackTrace()[1].getMethodName());
 		return commentService.insertCommentAndImage(commentParam, commentImageFile);
 
 	}

@@ -1,10 +1,14 @@
 package kr.or.connect.reservation.service.impl;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +21,8 @@ import kr.or.connect.reservation.service.FileService;
 
 @Service
 public class FileServiceImpl implements FileService {
+
+	private static final String ILLEGAL_EXP = "[:\\\\/%*?:|\"<>]";
 
 	private final FileDao fileDao;
 
@@ -40,7 +46,15 @@ public class FileServiceImpl implements FileService {
 		return fileDao.insertFileInfo(fileInfo);
 	}
 
-	static final String ILLEGAL_EXP = "[:\\\\/%*?:|\"<>]";
+	@Override
+	public FileInfo getFileInfoByProductId(int productId) {
+		return fileDao.getFileInfoByProductId(productId);
+	}
+
+	@Override
+	public FileInfo getFileInfo(int fileId) {
+		return fileDao.getFileInfo(fileId);
+	}
 
 	private String uploadCommentImageFile(MultipartFile commentImageFile) {
 
@@ -48,10 +62,9 @@ public class FileServiceImpl implements FileService {
 		String fileName = commentImageFile.getOriginalFilename();
 		if (!isValidFileName(fileName)) {
 			fileName = createValidFileName(fileName, "_");
-
 		}
 
-		/* 파일명 중복 방지: 파일명에 현재시간 timeStamp 붙이기 */
+		/* 파일명에 현재시간 timeStamp 붙이기 */
 		String fileNameTimeStamped = createTimeStampedFileName(fileName);
 
 		/* 파일 업로드 디렉토리 */

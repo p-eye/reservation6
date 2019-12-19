@@ -2,15 +2,14 @@ package kr.or.connect.reservation.service;
 
 import org.springframework.stereotype.Service;
 
+import kr.or.connect.reservation.dto.response.MsgResponse;
+
 @Service
 public interface MatchingService {
 	
-	public final int IS_MATCHED = 1;
-	public final int IS_NOT_MATCHED = 0;
+	public final boolean IS_MATCHED = true;
+	public final boolean IS_NOT_MATCHED = false;
 	
-	public int matchComment(int reservationInfoId, int productId);
+	public MsgResponse getMsgResponse(int reservationInfoId, String reservationEmail, int productId);
 	
-	public int matchReservationInfo(int reservationInfoId, int productId);
-	
-	public int matchReservationInfo(int reservationInfoId, String reservationEmail);
 }

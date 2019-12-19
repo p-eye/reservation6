@@ -1,7 +1,12 @@
 package kr.or.connect.reservation.dao;
 
-import static kr.or.connect.reservation.dao.sqls.ProductSqls.*;
+import static kr.or.connect.reservation.dao.sqls.ProductSqls.SELECT_COUNT_PRODUCTS_ALL;
+import static kr.or.connect.reservation.dao.sqls.ProductSqls.SELECT_COUNT_PRODUCTS_BY_CATEGORY;
+import static kr.or.connect.reservation.dao.sqls.ProductSqls.SELECT_PRODUCT;
+import static kr.or.connect.reservation.dao.sqls.ProductSqls.SELECT_PRODUCTS_ALL;
+import static kr.or.connect.reservation.dao.sqls.ProductSqls.SELECT_PRODUCTS_BY_CATEGORY;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +36,6 @@ public class ProductDao {
 		params.put("limit", limit);
 
 		return jdbc.query(SELECT_PRODUCTS_ALL, params, new ProductMapper());
-
 	}
 
 	public List<Product> getProductListByCategory(int categoryId, int start, int limit) {
@@ -43,6 +47,16 @@ public class ProductDao {
 		return jdbc.query(SELECT_PRODUCTS_BY_CATEGORY, params, new ProductMapper());
 	}
 
+	public int countProductListAll() {
+		return jdbc.queryForObject(SELECT_COUNT_PRODUCTS_ALL, Collections.emptyMap(), Integer.class);
+	}
+
+	public int countProductListByCategory(int categoryId) {
+		Map<String, Integer> params = new HashMap<>();
+		params.put("categoryId", categoryId);
+		return jdbc.queryForObject(SELECT_COUNT_PRODUCTS_BY_CATEGORY, params, Integer.class);
+	}
+	
 	public Product getProduct(int productId) {
 		try {
 			Map<String, Integer> params = new HashMap<>();

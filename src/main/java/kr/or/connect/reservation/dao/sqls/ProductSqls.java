@@ -37,6 +37,18 @@ public class ProductSqls {
 			+ "AND p.category_id = :categoryId "
 			+ "limit :start, :limit";
 	
+	public static final String SELECT_COUNT_PRODUCTS_ALL = 
+			"SELECT count(*) "
+			+ "FROM display_info";
+
+	public static final String SELECT_COUNT_PRODUCTS_BY_CATEGORY = 
+			"SELECT count(*) "
+			+ "FROM display_info di "
+			+ "INNER JOIN product p "
+			+ "ON di.product_id = p.id "
+			+ "WHERE p.category_id = :categoryId "
+			+ "GROUP BY p.category_id;";
+	
 	public static final String SELECT_PRODUCT = 
 			"SELECT id AS product_id, "
 			+ "description AS product_description "

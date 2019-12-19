@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
 		ProductResponse productResponse = new ProductResponse();
 
 		productResponse.setItems(getProductList(categoryId, start));
-		productResponse.setTotalCount(getProductListTotalCount(categoryId));
+		productResponse.setTotalCount(countProductList(categoryId));
 
 		return productResponse;
 	}
@@ -55,18 +55,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public int getProductListTotalCount(int categoryId) {
+	public int countProductList(int categoryId) {
 
-		int totalCount = 0;
 		if (categoryId == TOTAL_CATEGORIES) {
-			for (Category category : categoryService.getCategoryList()) {
-				totalCount += category.getDisplayInfoCount();
-			}
+			return productDao.countProductListAll();
 		} else {
-			totalCount = categoryService.getCategoryList().get(categoryId - 1).getDisplayInfoCount();
+			return productDao.countProductListByCategory(categoryId);
 		}
-
-		return totalCount;
 	}
 
 	@Override

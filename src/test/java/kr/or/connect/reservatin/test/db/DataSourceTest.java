@@ -15,6 +15,9 @@ public class DataSourceTest {
 		// TODO Auto-generated method stub
 
 		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+		
+		System.out.println(ac);
+		/*
 		DataSource ds = ac.getBean(DataSource.class);
 		Connection conn = null;
 		try {
@@ -31,7 +34,7 @@ public class DataSourceTest {
 					e.printStackTrace();
 				}
 			}
-		}            
+		}           */ 
 	}
 
 }

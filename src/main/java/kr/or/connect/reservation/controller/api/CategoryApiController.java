@@ -19,7 +19,7 @@ public class CategoryApiController {
 		this.categoryService = categoryService;
 	}
 
-	@GetMapping(path = "")
+	@GetMapping
 	public CategoryResponse getCategoryResponse() {
 		return categoryService.getCategoryResponse();
 	}

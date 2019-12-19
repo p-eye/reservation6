@@ -19,7 +19,7 @@ public class PromotionApiController {
 		this.promotionService = promotionService;
 	}
 
-	@GetMapping(path = "")
+	@GetMapping
 	public PromotionResponse getPromotionResponse() {
 		return promotionService.getPromotionResponse();
 	}

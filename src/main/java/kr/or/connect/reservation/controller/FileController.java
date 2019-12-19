@@ -1,5 +1,6 @@
 package kr.or.connect.reservation.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
 
@@ -11,24 +12,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.or.connect.reservation.dao.FileDao;
 import kr.or.connect.reservation.dto.FileInfo;
+import kr.or.connect.reservation.service.FileService;
 
 @RestController
 @RequestMapping(path = "/file")
 public class FileController {
 
-	private final FileDao fileDao;
+	private final FileService fileService;
 
 	@Autowired
-	public FileController(FileDao fileDao) {
-		this.fileDao = fileDao;
+	public FileController(FileService fileService) {
+		this.fileService = fileService;
 	}
 
 	@GetMapping(path = "/product/{proudctId}")
 	public void getImageByProductId(@PathVariable int proudctId, HttpServletResponse response) {
 
-		FileInfo fileInfo = fileDao.getFileInfoByProductId(proudctId);
+		FileInfo fileInfo = fileService.getFileInfoByProductId(proudctId);
 		downloadImageFile(fileInfo, response);
 
 	}
@@ -36,7 +37,7 @@ public class FileController {
 	@GetMapping(path = "/{fileId}")
 	public void getImage(@PathVariable int fileId, HttpServletResponse response) {
 
-		FileInfo fileInfo = fileDao.getFileInfo(fileId);
+		FileInfo fileInfo = fileService.getFileInfo(fileId);
 		downloadImageFile(fileInfo, response);
 
 	}
@@ -44,7 +45,7 @@ public class FileController {
 	private void downloadImageFile(FileInfo fileInfo, HttpServletResponse response) {
 
 		String fileName = fileInfo.getFileName();
-		String saveFileName = "c:/tmp/" + fileInfo.getSaveFileName();
+		String saveFileName = File.separator + "tmp" + File.separator + fileInfo.getSaveFileName();
 		String contentType = fileInfo.getContentType();
 
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";");

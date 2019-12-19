@@ -25,7 +25,7 @@ public class ProductApiController {
 		this.displayInfoService = displayInfoService;
 	}
 
-	@GetMapping(path = "")
+	@GetMapping
 	public ProductResponse getProductResponse(
 			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
 			@RequestParam(name = "start", required = false, defaultValue = "0") int start) {

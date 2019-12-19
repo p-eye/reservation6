@@ -329,7 +329,6 @@ document.addEventListener("DOMContentLoaded", function() {
       CommentInput.prototype.createHiddenInput("score", score);
 
       const commentFormData = new FormData(document.querySelector("#fileForm"));
-      console.log(commentFormData);
       SubmitBtn.prototype.sendCommentForm(commentFormData);
     },
 
