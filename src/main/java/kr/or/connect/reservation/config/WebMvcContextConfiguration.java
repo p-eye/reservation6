@@ -18,7 +18,7 @@ import kr.or.connect.reservation.interceptor.LoginInterceptor;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "kr.or.connect.reservation.controller" })
-public class WebMvcContextConfiguration implements WebMvcConfigurer	 {
+public class WebMvcContextConfiguration implements WebMvcConfigurer {
 
 	public static final int CACHE_PERIOD = 31556926;
 
@@ -51,11 +51,14 @@ public class WebMvcContextConfiguration implements WebMvcConfigurer	 {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/bookinglogin");
-		registry.addInterceptor(new CommentInterceptor()).addPathPatterns("/reviewWrite");		
+		registry.addInterceptor(new LoginInterceptor())
+				.addPathPatterns("/bookinglogin");
+		registry.addInterceptor(new CommentInterceptor())
+				.addPathPatterns("/reviewWrite")
+				.addPathPatterns("/myreservation");
 
 	}
-	
+
 	@Bean
 	public MultipartResolver multipartResolver() {
 		org.springframework.web.multipart.commons.CommonsMultipartResolver multipartResolver = new org.springframework.web.multipart.commons.CommonsMultipartResolver();

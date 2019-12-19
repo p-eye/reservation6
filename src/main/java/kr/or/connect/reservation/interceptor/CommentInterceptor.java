@@ -13,7 +13,7 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 	private static final String LOGIN = "login";
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	// /reviewWrite 실행 전
+	// /reviewWrite, myreservation 실행 전
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -21,23 +21,25 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 		HttpSession httpSession = request.getSession();
 
 		if (httpSession.getAttribute(LOGIN) == null) {
-			
-			/* 로그인 정보 없을 때
-			 * 로그인 후 돌아갈 페이지 (= 현재페이지)를 destination으로 저장한다
-			 * 로그인 폼으로 리다이렉트
-			 */
-			logger.info("no user is logged");
+			/* 로그인 정보 있을 때 */
 
-			saveDestination(request);
+			logger.info("no user is logged in");
+
+			if (request.getRequestURI().contains("reviewWrite")) {
+				/*
+				 * reviewWrite 페이지에서 넘어왔을 때 
+				 * 로그인 후 돌아갈 페이지 (= 현재페이지)를 destination으로 저장한다 
+				 * 로그인 폼으로 리다이렉트
+				 */
+				saveDestination(request);
+			}
 			response.sendRedirect("./bookingloginForm");
 			return false;
 		}
 
 		else {
-			
-			/*로그인 정보 있을 때 reviewWrite 컨트롤러로 */
-			logger.debug("{} 를 호출했습니다.", handler.toString());
-			
+
+			/* 로그인 정보 있을 때 해당 컨트롤러로 */
 			return true;
 		}
 
@@ -59,14 +61,13 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 		}
 
 	}
-	
+
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		
+
 		/* reviewWrite에서 return View 한 후 세션 삭제 */
 		request.getSession().removeAttribute("currentURI");
 	}
-	
 
 }

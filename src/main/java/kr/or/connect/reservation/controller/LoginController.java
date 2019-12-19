@@ -2,6 +2,9 @@ package kr.or.connect.reservation.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,17 +14,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.connect.reservation.dto.ReservationInfo;
+import kr.or.connect.reservation.service.MatchingService;
 import kr.or.connect.reservation.service.ReservationService;
 
 @Controller
 @CrossOrigin
 public class LoginController {
 
+	private static final String LOGIN = "login";
+
 	private final ReservationService reservationService;
+	private final MatchingService matchingService;
 
 	@Autowired
-	public LoginController(ReservationService reservationService) {
+	public LoginController(ReservationService reservationService, MatchingService matchingService) {
 		this.reservationService = reservationService;
+		this.matchingService = matchingService;
 	}
 
 	@GetMapping(path = "/bookingloginForm")
@@ -44,7 +52,15 @@ public class LoginController {
 	}
 
 	@GetMapping(path = "/myreservation")
-	public String getMyReservation(@RequestParam(name = "reservationEmail", required = true) String reservationEmail) {
+	public String getMyReservation(@RequestParam(name = "reservationEmail", required = true) String reservationEmail,
+			HttpServletRequest request) {
+
+		HttpSession httpSession = request.getSession();
+		ReservationInfo reservationInfo = (ReservationInfo) httpSession.getAttribute(LOGIN);
+		String loginedEmail = reservationInfo.getReservationEmail();
+
+		matchingService.matchEmail(reservationEmail, loginedEmail);
+		
 		return "/myreservation";
 	}
 

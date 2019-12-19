@@ -30,7 +30,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			httpSession.removeAttribute(LOGIN);
 		}
 
-		logger.debug("{} 를 호출했습니다.", handler.toString());
 		return true;
 	}
 
@@ -44,8 +43,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 		// 로그인 성공시
 		if (reservationInfo != null) {
-			logger.info("client IP: "+request.getRemoteAddr());
-			logger.info("new login success");
 			
 			HttpSession httpSession = request.getSession();
 			httpSession.setAttribute(LOGIN, reservationInfo);
@@ -70,8 +67,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			}
 
 		}
-
-		logger.debug("{} 가종료되었습니다. {} 를 view로 사용합니다.", handler.toString(), modelAndView.getViewName());
 
 	}
 

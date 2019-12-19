@@ -1,6 +1,6 @@
 package kr.or.connect.reservation.dto.response;
 
-public class ApiResponse {
+public class ErrorResponse {
 
 	// HttpStatus
 	private int errorCode;
@@ -8,10 +8,10 @@ public class ApiResponse {
 	// Http Default Message
 	private String message;
 
-	public ApiResponse() {
+	public ErrorResponse() {
 	}
 
-	public ApiResponse(int errorCode, String message) {
+	public ErrorResponse(int errorCode, String message) {
 		this.errorCode = errorCode;
 		this.message = message;
 	}
@@ -34,7 +34,7 @@ public class ApiResponse {
 
 	@Override
 	public String toString() {
-		return "ApiResponse [errorCode=" + errorCode + ", message=" + message + "]";
+		return "ErrorResponse [errorCode=" + errorCode + ", message=" + message + "]";
 	}
 
 	
