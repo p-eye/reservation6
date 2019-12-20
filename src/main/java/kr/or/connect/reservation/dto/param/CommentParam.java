@@ -16,6 +16,7 @@ public class CommentParam {
 			message = "별점을 확인해주세요")
 	private int score;
 
+	@NotEmpty
 	@Size(min = 5, max = 400,
 			message = "글자 수를 확인해주세요")
 	private String comment;
@@ -30,7 +31,6 @@ public class CommentParam {
 
 	public CommentParam(int productId, int reservationInfoId, int score, String comment, LocalDateTime createDate,
 			LocalDateTime modifyDate) {
-		super();
 		this.productId = productId;
 		this.reservationInfoId = reservationInfoId;
 		this.score = score;

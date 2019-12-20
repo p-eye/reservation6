@@ -20,7 +20,6 @@ public class FileInfo {
 
 	public FileInfo(int id, String fileName, String saveFileName, String contentType, boolean deleteFlag,
 			LocalDateTime createDate, LocalDateTime modifyDate) {
-		super();
 		this.id = id;
 		this.fileName = fileName;
 		this.saveFileName = saveFileName;

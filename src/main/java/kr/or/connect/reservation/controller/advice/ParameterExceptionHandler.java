@@ -1,4 +1,4 @@
-package kr.or.connect.reservation.controller.error;
+package kr.or.connect.reservation.controller.advice;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

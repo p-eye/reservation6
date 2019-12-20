@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function() {
       event.preventDefault();
 
       //검사
-      if (!InputCondition.prototype.isAllConditionValid()) return;
+      //if (!InputCondition.prototype.isAllConditionValid()) return;
 
       SubmitBtn.prototype.createCommentFormData();
     },
@@ -346,6 +346,14 @@ document.addEventListener("DOMContentLoaded", function() {
             Reservation.prototype.reservationEmail;
         } else if (oReq.status !== 200) {
           alert("Request failed.  Returned status of " + oReq.status);
+          const ratings = document.querySelectorAll(".rating_rdo");
+
+          ratings.forEach(function(rating) {
+            rating.disabled = false;
+          });
+
+          const scoreInput = document.querySelector("input#score");
+          scoreInput.parentNode.removeChild(scoreInput);
         }
       });
 

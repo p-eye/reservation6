@@ -21,13 +21,11 @@ public class ReservationInfo {
 	private int totalPrice;
 
 	public ReservationInfo() {
-		super();
 	}
 
 	public ReservationInfo(int reservationInfoId, int productId, int displayInfoId, String reservationName,
 			String reservationTel, String reservationEmail, boolean cancelYn, String reservationDate,
 			String createDate, String modifyDate, DisplayInfo displayInfo, int totalPrice) {
-		super();
 		this.reservationInfoId = reservationInfoId;
 		this.productId = productId;
 		this.displayInfoId = displayInfoId;

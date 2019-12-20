@@ -23,6 +23,7 @@ public class DisplayInfoDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 
+
 	public DisplayInfo getDisplayInfo(int displayInfoId) {
 		try {
 			Map<String, Integer> params = new HashMap<>();
@@ -34,5 +35,22 @@ public class DisplayInfoDao {
 		}
 
 	}
+
+	/* 테스트 1
+	public DisplayInfo getDisplayInfo(int displayInfoId) throws EmptyResultDataAccessException {
+			Map<String, Integer> params = new HashMap<>();
+			params.put("displayInfoId", displayInfoId);
+			return jdbc.queryForObject(SELECT_DISPLAY_INFO, params, new DisplayInfoMapper());
+	}
+	*/
+
+	
+	/* 테스트 2
+	public DisplayInfo getDisplayInfo(int displayInfoId) {
+			Map<String, Integer> params = new HashMap<>();
+			params.put("displayInfoId", displayInfoId);
+			return jdbc.queryForObject(SELECT_DISPLAY_INFO, params, new DisplayInfoMapper());
+	}
+	*/
 
 }

@@ -21,7 +21,7 @@ public class CommentInterceptor extends HandlerInterceptorAdapter {
 		HttpSession httpSession = request.getSession();
 
 		if (httpSession.getAttribute(LOGIN) == null) {
-			/* 로그인 정보 있을 때 */
+			/* 로그인 정보 없을 때 */
 
 			logger.info("no user is logged in");
 

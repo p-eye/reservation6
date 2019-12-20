@@ -14,12 +14,10 @@ public class ProductImage {
 	private String modifyDate;
 
 	public ProductImage() {
-		super();
 	}
 
 	public ProductImage(int productId, int productImageId, String type, int fileInfoId, String fileName,
 			String saveFileName, String contentType, boolean deleteFlag, String createDate, String modifyDate) {
-		super();
 		this.productId = productId;
 		this.productImageId = productImageId;
 		this.type = type;

@@ -13,12 +13,10 @@ public class DisplayInfoImage {
 	private String modifyDate;
 
 	public DisplayInfoImage() {
-		super();
 	}
 
 	public DisplayInfoImage(int displayInfoImageId, int displayInfoId, int fileId, String fileName, String saveFileName,
 			String contentType, boolean deleteFlag, String createDate, String modifyDate) {
-		super();
 		this.displayInfoImageId = displayInfoImageId;
 		this.displayInfoId = displayInfoId;
 		this.fileId = fileId;

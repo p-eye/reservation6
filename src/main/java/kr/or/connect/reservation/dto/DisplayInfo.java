@@ -20,13 +20,11 @@ public class DisplayInfo {
 	private String modifyDate;
 
 	public DisplayInfo() {
-		super();
 	}
 
 	public DisplayInfo(int productId, int categoryId, int displayInfoId, String categoryName, String productDescription,
 			String productContent, String productEvent, String openingHours, String placeName, String placeLot,
 			String placeStreet, String telephone, String homepage, String email, String createDate, String modifyDate) {
-		super();
 		this.productId = productId;
 		this.categoryId = categoryId;
 		this.displayInfoId = displayInfoId;

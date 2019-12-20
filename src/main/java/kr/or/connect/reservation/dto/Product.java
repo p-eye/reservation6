@@ -14,12 +14,10 @@ public class Product {
 	private String productImageUrl;
 
 	public Product() {
-		super();
 	}
 
 	public Product(int displayInfoId, int productId, String productDescription, String placeName, String productContent,
 			String productImageUrl) {
-		super();
 		this.displayInfoId = displayInfoId;
 		this.productId = productId;
 		this.productDescription = productDescription;

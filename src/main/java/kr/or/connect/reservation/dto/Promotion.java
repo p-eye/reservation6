@@ -7,11 +7,9 @@ public class Promotion {
 	private String productImageUrl;
 
 	public Promotion() {
-		super();
 	}
 
 	public Promotion(int id, int productId, String productImageUrl) {
-		super();
 		this.id = id;
 		this.productId = productId;
 		this.productImageUrl = productImageUrl;

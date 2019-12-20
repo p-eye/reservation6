@@ -8,11 +8,9 @@ public class ReservationPrice {
 	private int count;
 
 	public ReservationPrice() {
-		super();
 	}
 
 	public ReservationPrice(int reservationInfoPriceId, int reservationInfoId, int productPriceId, int count) {
-		super();
 		this.reservationInfoPriceId = reservationInfoPriceId;
 		this.reservationInfoId = reservationInfoId;
 		this.productPriceId = productPriceId;

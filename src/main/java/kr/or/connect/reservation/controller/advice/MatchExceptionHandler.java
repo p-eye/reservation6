@@ -1,4 +1,4 @@
-package kr.or.connect.reservation.controller.error;
+package kr.or.connect.reservation.controller.advice;
 
 import javax.servlet.http.HttpServletRequest;
 

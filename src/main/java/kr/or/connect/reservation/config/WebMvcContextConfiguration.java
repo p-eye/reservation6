@@ -12,8 +12,8 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import kr.or.connect.reservation.interceptor.ApiInterceptor;
 import kr.or.connect.reservation.interceptor.CommentInterceptor;
-import kr.or.connect.reservation.interceptor.LoginInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -51,11 +51,10 @@ public class WebMvcContextConfiguration implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new LoginInterceptor())
-				.addPathPatterns("/bookinglogin");
-		registry.addInterceptor(new CommentInterceptor())
-				.addPathPatterns("/reviewWrite")
+//		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/bookinglogin");
+		registry.addInterceptor(new CommentInterceptor()).addPathPatterns("/reviewWrite")
 				.addPathPatterns("/myreservation");
+		registry.addInterceptor(new ApiInterceptor()).addPathPatterns("/api/**");
 
 	}
 

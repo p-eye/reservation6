@@ -14,8 +14,8 @@ public class DisplayInfoDaoTest {
 
 		DisplayInfoDao displayInfoDao = ac.getBean(DisplayInfoDao.class);
 
-		/* getDislayInfo*/
-		System.out.println(displayInfoDao.getDisplayInfo(59));
+		/* getDislayInfo : EmptyResultDataAccessException 테스트*/
+		System.out.println(displayInfoDao.getDisplayInfo(1000));
 		
 
 	}

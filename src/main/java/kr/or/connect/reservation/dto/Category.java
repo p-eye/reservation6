@@ -7,11 +7,9 @@ public class Category {
 	private int displayInfoCount;
 
 	public Category() {
-		super();
 	}
 
 	public Category(int categoryId, String categoryName, int displayInfoCount) {
-		super();
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 		this.displayInfoCount = displayInfoCount;

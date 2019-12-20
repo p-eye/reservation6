@@ -34,8 +34,6 @@ public class ReservationParam {
 	private LocalDateTime createDate;
 	private LocalDateTime modifyDate;
 	
-	
-
 	public ReservationParam() {
 		createDate = LocalDateTime.now();
 		modifyDate = LocalDateTime.now();
@@ -44,7 +42,6 @@ public class ReservationParam {
 	public ReservationParam(int displayInfoId, List<ReservationPrice> prices, int productId, String reservationEmail,
 			String reservationName, String reservationTel, String reservationDate, boolean cancelFlag,
 			LocalDateTime createDate, LocalDateTime modifyDate) {
-		super();
 		this.displayInfoId = displayInfoId;
 		this.prices = prices;
 		this.productId = productId;

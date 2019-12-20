@@ -11,12 +11,10 @@ public class ProductPrice {
 	private String modifyDate;
 
 	public ProductPrice() {
-		super();
 	}
 
 	public ProductPrice(int productPriceId, int productId, String priceTypeName, int price, double discountRate,
 			String createDate, String modifyDate) {
-		super();
 		this.productPriceId = productPriceId;
 		this.productId = productId;
 		this.priceTypeName = priceTypeName;

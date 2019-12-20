@@ -14,12 +14,10 @@ public class CommentImage {
 	private String modifyDate;
 
 	public CommentImage() {
-		super();
 	}
 
 	public CommentImage(int imageId, int reservationInfoId, int reservationUserCommentId, int fileId, String fileName,
 			String saveFileName, String contentType, boolean deleteFlag, String createDate, String modifyDate) {
-		super();
 		this.imageId = imageId;
 		this.reservationInfoId = reservationInfoId;
 		this.reservationUserCommentId = reservationUserCommentId;

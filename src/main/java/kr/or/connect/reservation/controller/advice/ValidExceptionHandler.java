@@ -1,4 +1,4 @@
-package kr.or.connect.reservation.controller.error;
+package kr.or.connect.reservation.controller.advice;
 
 import java.util.ArrayList;
 import java.util.List;

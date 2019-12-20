@@ -18,13 +18,11 @@ public class Comment {
 	private List<CommentImage> commentImages;
 
 	public Comment() {
-		super();
 	}
 
 	public Comment(int commentId, int productId, int reservationInfoId, int score, String comment,
 			String reservationName, String reservationTelephone, String reservationEmail, String reservationDate,
 			String createDate, String modifyDate, List<CommentImage> commentImages) {
-		super();
 		this.commentId = commentId;
 		this.productId = productId;
 		this.reservationInfoId = reservationInfoId;
